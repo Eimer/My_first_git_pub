@@ -1,0 +1,8 @@
+, greetings from the Dungeon Master.
+You are a warrior. After the battle for you city, you have been locked up in the dungeon with ancient monsters. Try to get out if it alive!
+
+Use arrows to move around. You can hit <1> to attack monsters if you are close enough*, but watch out - they can hit back!
+
+*close enough means two cells away, but some cool swords can hit from a three-cell distance. Legend has it such swords, once owned by fallen knights, can be found in these gloomy places. But why did these knights fall though?...
+
+Press <SPACE> to continue...
