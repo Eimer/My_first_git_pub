@@ -1,0 +1,8 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "libmx.h": "c",
+        "fcntl.h": "c",
+        "stdio.h": "c"
+    }
+}
