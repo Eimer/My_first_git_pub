@@ -46,6 +46,7 @@ int main()
 	//TEST CASES!!!
 	//
 	//mx_quicksort
+	sleep(1);
 	printf("%s\n", "\x1b[36mTEST FOR mx_quicksort\033[0m");
 	char *sort_test[] = {"Michelangelo", "Donatello", "Leonardo", "Raphael"};
 	if((mx_quicksort(sort_test, 0, 3)) == 2) {
@@ -509,7 +510,7 @@ int main()
 		printf("%c", '\n');
 		sleep(1);
 		printf("%s\n", "\x1b[36mTEST FOR mx_sort_list\033[0m");
-		printf("%s\n", "INPUTS: 1,2");
+		printf("%s\n", "INPUTS: 2,1");
 		printf("%s", "OUTPUTS: ");
 		mx_sort_list(node1, cmp);
 		while(node1->next != NULL) {
