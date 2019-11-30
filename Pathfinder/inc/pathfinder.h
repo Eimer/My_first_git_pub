@@ -37,5 +37,22 @@ void mx_true_argumensts(int argv);
 void mx_true_content(char **argc);
 void mx_openfile(char **argc);
 char *mx_fill_first_line(char *first_line, char *str_from_file);
-t_island *mx_islands_arr(char *str);
+t_island **mx_islands_arr(char *str);
+char **mx_memory_for_islands(char *str);
+char **mx_memory_for_each_island(char *str, char **splited_islands);
+char **mx_filling_no_repeat(char **splited_islands);
+t_island **mx_struct_name(char **splited_islands, t_island **islands_arr);
+int mx_atoi(char *str);
+t_island **mx_struct_distance(t_island **islands_arr);
+char **mx_arr_from(char *str);
+char **mx_arr_to(char *str);
+int *mx_arr_dist(char *str);
+char *mx_strtrim(const char *str);
+char *mx_del_extra_spaces(const char *str);
+int **mx_matrix(char *first_line);
+int **mx_fill_matrix(char *first_line, char *str);
+int **mx_path(char *str, char *first_line);
+void mx_output_path(char *str, char *first_line);
+int **mx_path_dist(char *str, char *first_line);
+
 #endif

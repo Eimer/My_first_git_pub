@@ -8,6 +8,7 @@ char **mx_filling_islands(char **splited_islands, char **buff) {
     while(buff[count]) {
         tmp = mx_strjoin(str, buff[count]);
         str = mx_strjoin(tmp, "-");
+        free(tmp);
         count++;
     }
     str[mx_strlen(str) - 1] = '\0'; 
