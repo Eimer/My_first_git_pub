@@ -2,7 +2,6 @@
 
 int main(int argv, char*argc[]) {
     char *str_from_file = NULL;
-    int count = 0;
     int invalid_line = 0;
     char *first_line = NULL;
     
@@ -10,9 +9,6 @@ int main(int argv, char*argc[]) {
     mx_openfile(argc);
     mx_true_content(argc);
     str_from_file = mx_file_to_str(argc[1]);
-    while(str_from_file[count]!= '\n') {
-        count++;
-    }
     first_line = mx_fill_first_line(first_line, str_from_file);
     mx_arr_dist(str_from_file);
     if(!mx_isdigit(first_line)) {

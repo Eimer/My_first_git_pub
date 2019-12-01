@@ -54,5 +54,8 @@ int **mx_fill_matrix(char *first_line, char *str);
 int **mx_path(char *str, char *first_line);
 void mx_output_path(char *str, char *first_line);
 int **mx_path_dist(char *str, char *first_line);
+void mx_printstr(const char *s);
+void mx_print_delim();
+void mx_output(t_island **islands, int i, int j);
 
 #endif
