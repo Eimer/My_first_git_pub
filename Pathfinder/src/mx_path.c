@@ -4,8 +4,8 @@ int **mx_path(char *str, char *first_line) {
     int **matrix_path = mx_matrix(first_line);
     int len = mx_atoi(first_line);
     int **floyd = mx_fill_matrix(first_line, str);
-    for (int i = 0; i < atoi(first_line); i++) {
-        for (int j = 0; j < atoi(first_line); j++) {
+    for (int i = 0; i < mx_atoi(first_line); i++) {
+        for (int j = 0; j < mx_atoi(first_line); j++) {
             matrix_path[i][j] = 0;
         }
     }

@@ -18,11 +18,11 @@ int **mx_fill_matrix(char *first_line, char *str) {
     int res_len = mx_atoi(first_line);
     char **from = mx_arr_from(str);
     char **to = mx_arr_to(str);
-    int *distance = mx_arr_dist(str);
+    int *distance = mx_arr_dist(str);;
     t_island **islands = mx_islands_arr(str);
     for (int i = 0; i < res_len; i++) {
         for (int j = 0; j < res_len; j++) {
-            matrix[i][j] = 90000000;
+            matrix[i][j] = 900000000;
         }
     }
     for (int i = 0; i < res_len; i++){

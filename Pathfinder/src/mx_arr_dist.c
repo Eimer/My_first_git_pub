@@ -8,6 +8,7 @@ int *mx_arr_dist(char *str) {
     char *kostyl = "-ajkagdvf ";
     char *buff = mx_strnew(mx_strlen(str));
     int count_symb = 0;
+    char *test = NULL;
     while(str[len]) {
         if(str[len] == '\n') {
             count++;
@@ -30,7 +31,7 @@ int *mx_arr_dist(char *str) {
         buff[count_symb] = ' ';
         count_symb++;
     }
-    char *test = mx_del_extra_spaces(buff);
+    test = mx_del_extra_spaces(buff);
     test = mx_strjoin(kostyl, test);
     numbers = mx_strsplit(test, ' ');
     res = (int *)malloc(sizeof(int) * count);

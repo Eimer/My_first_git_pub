@@ -10,15 +10,13 @@ int main(int argv, char*argc[]) {
     mx_true_content(argc);
     str_from_file = mx_file_to_str(argc[1]);
     first_line = mx_fill_first_line(first_line, str_from_file);
-    mx_arr_dist(str_from_file);
+    invalid_line = mx_invalid_line(str_from_file);
     if(!mx_isdigit(first_line)) {
-        mx_printerr("error: line 1 isn't valid");
+        mx_printerr("error: line 1 is not valid");
         free(str_from_file);
         free(first_line);
         return 0;
     }
-    invalid_line = mx_invalid_line(str_from_file);
-
     if(invalid_line != 0) {
         mx_print_invalid_line(str_from_file);
         return 0;

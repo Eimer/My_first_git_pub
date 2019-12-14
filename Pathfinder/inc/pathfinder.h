@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include <stdio.h>
 
 typedef struct  s_island {
     char *name;
@@ -57,5 +56,6 @@ int **mx_path_dist(char *str, char *first_line);
 void mx_printstr(const char *s);
 void mx_print_delim();
 void mx_output(t_island **islands, int i, int j);
-
+char *mx_count_path(char *str, char *first_line);
+char **mx_count_dist(char **path_no_repeat, char *first_line, char *str);
 #endif

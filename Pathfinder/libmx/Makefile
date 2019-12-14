@@ -110,7 +110,7 @@ mx_push_back.o \
 mx_pop_front.o \
 mx_pop_back.o \
 mx_list_size.o \
-mx_sort_list.o
+mx_sort_list.o 
 
 INC = inc/libmx.h
 
