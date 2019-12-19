@@ -1,7 +1,0 @@
-5
-Aa-Bb,11
-Aa-Cc,10
-Bb-Dd,5
-Cc-Dd,6
-Cc-Ee,15
-Dd-Ee,4
