@@ -1,4 +1,7 @@
 *.a
 1
-a.out
+*.out
 uls
+*.DS_Store
+*.txt
+
