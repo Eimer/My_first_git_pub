@@ -1,21 +1,21 @@
 #include "../inc/uls.h"
+#include <fcntl.h>
+static void test1_readdir(const char *argv[]) {
+    DIR *dir;
+    struct dirent *entry;
 
-// static void test1_readdir(const char *argv[]) {
-//     DIR *dir;
-//     struct dirent *entry;
-
-//     dir = opendir(argv[1]);
-//     if (!dir) {
-//         perror("diropen");
-//         exit(1);
-//     };
-//     while ( (entry = readdir(dir)) != NULL) {
-//         mx_printstr(entry->d_name);
-//         mx_printstr("\t");
-//     }
-//     mx_printstr("\n");
-//     closedir(dir);
-// }
+    dir = opendir(argv[1]);
+    if (!dir) {
+        perror("diropen");
+        exit(1);
+    };
+    while ( (entry = readdir(dir)) != NULL) {
+        mx_printstr(entry->d_name);
+        mx_printstr("\t");
+    }
+    mx_printstr("\n");
+    closedir(dir);
+}
 
 // static void test1_stat() {
 //     char *date;
@@ -32,9 +32,27 @@
 //         printf("\n %lld size\n", buf.st_size);
 // }
 
+// static void test2_getpwuid() {
+//     struct stat buf;
+//     lstat("test.txt", &buf);
+//     printf("\n %d uid\n", buf.st_uid);
+    
+//     struct passwd *pwuid = getpwuid(buf.st_uid);
+//     printf("%s", pwuid->pw_name);
+//     write(1, &buf.st_size,10);
+// }
+
+// static void window() {
+//     struct winsize w;
+//     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+//     printf ("lines %d\n", w.ws_row);
+//     printf ("columns %d\n", w.ws_col);
+    
+// }
+
 int main (int argc, char const *argv[]) {
     argc = 0;
-    argv = NULL;
-
+    
+    test1_readdir(argv);
     return 0;
 }
