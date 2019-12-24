@@ -1,7 +1,5 @@
 #include "../inc/uls.h"
 
-char **flags = {"-l", "-a"};
-
 static void noassces(int argc, char *argv[]) {
     char *flag = mx_strdup("ab");
     int lol = 0;
