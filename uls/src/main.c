@@ -32,10 +32,6 @@
 //         printf("\n %lld size\n", buf.st_size);
 // }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ypratsovit
 // static void test2_getpwuid() {
 //     struct stat buf;
 //     lstat("test.txt", &buf);
@@ -48,17 +44,8 @@
 
 int main (int argc, char const *argv[]) {
     argc = 0;
-<<<<<<< HEAD
     
     test1_readdir(argv);
-=======
-int main (int argc, char *argv[]) {
-    // argc = 0;
-    // argv = NULL;
-    mx_errors(argc, argv);
->>>>>>> origin/dashuta
-=======
     argv = NULL;
->>>>>>> ypratsovit
     return 0;
 }
