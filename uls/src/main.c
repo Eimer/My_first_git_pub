@@ -32,9 +32,9 @@
 //         printf("\n %lld size\n", buf.st_size);
 // }
 
-int main (int argc, char const *argv[]) {
-    argc = 0;
-    argv = NULL;
-
+int main (int argc, char *argv[]) {
+    // argc = 0;
+    // argv = NULL;
+    mx_errors(argc, argv);
     return 0;
 }
