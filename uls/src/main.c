@@ -1,21 +1,21 @@
 #include "../inc/uls.h"
 #include <fcntl.h>
-static void test1_readdir(const char *argv[]) {
-    DIR *dir;
-    struct dirent *entry;
+// static void test1_readdir(const char *argv[]) {
+//     DIR *dir;
+//     struct dirent *entry;
 
-    dir = opendir(argv[1]);
-    if (!dir) {
-        perror("diropen");
-        exit(1);
-    };
-    while ( (entry = readdir(dir)) != NULL) {
-        mx_printstr(entry->d_name);
-        mx_printstr("\t");
-    }
-    mx_printstr("\n");
-    closedir(dir);
-}
+//     dir = opendir(argv[1]);
+//     if (!dir) {
+//         perror("diropen");
+//         exit(1);
+//     };
+//     while ( (entry = readdir(dir)) != NULL) {
+//         mx_printstr(entry->d_name);
+//         mx_printstr("\t");
+//     }
+//     mx_printstr("\n");
+//     closedir(dir);
+// }
 
 // static void test1_stat() {
 //     char *date;
@@ -52,7 +52,6 @@ static void test1_readdir(const char *argv[]) {
 
 int main (int argc, char const *argv[]) {
     argc = 0;
-    
-    test1_readdir(argv);
+    argv = NULL;
     return 0;
 }
