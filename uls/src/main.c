@@ -1,5 +1,5 @@
 #include "../inc/uls.h"
-#include <fcntl.h>
+
 // static void test1_readdir(const char *argv[]) {
 //     DIR *dir;
 //     struct dirent *entry;
@@ -40,14 +40,6 @@
 //     struct passwd *pwuid = getpwuid(buf.st_uid);
 //     printf("%s", pwuid->pw_name);
 //     write(1, &buf.st_size,10);
-// }
-
-// static void window() {
-//     struct winsize w;
-//     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-//     printf ("lines %d\n", w.ws_row);
-//     printf ("columns %d\n", w.ws_col);
-    
 // }
 
 int main (int argc, char const *argv[]) {
