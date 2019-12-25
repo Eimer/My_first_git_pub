@@ -1,21 +1,4 @@
 #include "../inc/uls.h"
-//test git git
-// static void test1_readdir(const char *argv[]) {
-//     DIR *dir;
-//     struct dirent *entry;
-
-//     dir = opendir(argv[1]);
-//     if (!dir) {
-//         perror("diropen");
-//         exit(1);
-//     };
-//     while ( (entry = readdir(dir)) != NULL) {
-//         mx_printstr(entry->d_name);
-//         mx_printstr("\t");
-//     }
-//     mx_printstr("\n");
-//     closedir(dir);
-// }
 
 // static void test1_stat() {
 //     char *date;
@@ -44,8 +27,12 @@
 
 int main (int argc, char const *argv[]) {
     argc = 0;
+<<<<<<< HEAD
     mx_errors(argc, argv);
     // test1_readdir(argv);
     // argv = NULL;
+=======
+    argv = NULL;
+>>>>>>> ae536262bda6193ffba0feaa8b3a94bde3c032b8
     return 0;
 }
