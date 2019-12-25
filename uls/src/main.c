@@ -26,6 +26,7 @@
 // }
 
 int main (int argc, char const *argv[]) {
+    mx_arr_files(argc, argv);
     argc = 0;
     argv = NULL;
     return 0;
