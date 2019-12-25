@@ -27,6 +27,8 @@
 
 int main (int argc, char const *argv[]) {
     argc = 0;
+    
+    test1_readdir(argv);
     argv = NULL;
     return 0;
 }
