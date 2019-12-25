@@ -1,5 +1,6 @@
 #include "../inc/uls.h"
 
+<<<<<<< HEAD
 static int (const char *argv[]) {
     DIR *dir;
     struct dirent *entry;
@@ -16,3 +17,23 @@ static int (const char *argv[]) {
     mx_printstr("\n");
     closedir(dir);
 }
+=======
+int mx_dirorfile(const char *obj) {
+    DIR *dir;
+    int file;
+
+    dir = opendir(obj);
+    if (dir) {
+        closedir(dir);
+        return 0;
+    }
+    else {
+        file = open(obj, O_RDONLY);
+        if(file != -1) {
+            close(file);
+            return 1;
+        }
+    }
+    return -1;
+}
+>>>>>>> master
