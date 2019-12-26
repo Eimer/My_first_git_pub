@@ -1,5 +1,11 @@
 #include "../inc/uls.h"
 
+// static int check_next(int argc, int ind_char, char const *argv[]) {
+//     for (; ind_char < argc; ind_char++) {
+
+//     }
+// }
+
 static void check_fileordir(char const *argv[], int ind_char, int argc) {
     while (ind_char < argc) {
         if (mx_dirorfile(argv[ind_char]) == 1 
@@ -15,7 +21,7 @@ static void check_fileordir(char const *argv[], int ind_char, int argc) {
     }
 }
 
-static int check_flag(int argc, char const *argv[], int lol, int ind_char) {
+static int check_flag(int argc, char const *argv[], int lol, int ind_char) { // 1
     if (argv[ind_char][0] == '-' && argv[ind_char][1] == '-'
             && argv[ind_char][2] == '\0') {
             check_fileordir(argv, ++ind_char, argc);
@@ -27,17 +33,16 @@ static int check_flag(int argc, char const *argv[], int lol, int ind_char) {
         return 1;
     }
     if (argv[ind_char][0] != '-') {
-        mx_printerr("usage: ./uls [-ab] [file ...]\n");
-        exit(0);
+        // check_next();
+        // mx_printerr("usage: ./uls [-ab] [file ...]\n");
+        // exit(0);
     }
-    if (lol == 0) {
+    if (lol == 0)
         mx_printerr("usage: ./uls [-ab] [file ...]\n");
-        exit(0);
-    }
     return 0;
 }
 
-static void noassces(int argc, char const *argv[]) {
+static void noassces(int argc, char const *argv[]) { // 2
     char *flag = mx_strdup("ab");
     int lol = 0;
 
