@@ -20,4 +20,5 @@ typedef struct  s_size {
 void mx_printerr(const char *s);
 t_size mx_get_screencoord();
 int mx_dirorfile(const char *obj);
+char **mx_arr_files(int argc, char const *argv[]);
 #endif
