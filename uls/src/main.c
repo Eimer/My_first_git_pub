@@ -19,14 +19,12 @@
 //     struct stat buf;
 //     lstat("test.txt", &buf);
 //     printf("\n %d uid\n", buf.st_uid);
-    
 //     struct passwd *pwuid = getpwuid(buf.st_uid);
 //     printf("%s", pwuid->pw_name);
 //     write(1, &buf.st_size,10);
 // }
 
 int main (int argc, char const *argv[]) {
-    mx_arr_files(argc, argv);
     argc = 0;
 <<<<<<< HEAD
     mx_errors(argc, argv);
