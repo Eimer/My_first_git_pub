@@ -19,15 +19,21 @@
 //     struct stat buf;
 //     lstat("test.txt", &buf);
 //     printf("\n %d uid\n", buf.st_uid);
-    
 //     struct passwd *pwuid = getpwuid(buf.st_uid);
 //     printf("%s", pwuid->pw_name);
 //     write(1, &buf.st_size,10);
 // }
 
 int main (int argc, char const *argv[]) {
+<<<<<<< HEAD
     // argc = 0;
     mx_errors(argc, argv);
     // test1_readdir(argv);
+=======
+    argc = 0;
+    mx_errors(argc, argv);
+    // test1_readdir(argv);
+    // argv = NULL;
+>>>>>>> master
     return 0;
 }
