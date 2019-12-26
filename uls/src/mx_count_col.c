@@ -9,7 +9,6 @@ static int multiple(int longest) {
     while (multiple % 8 != 0) {
         multiple++;
     }
-    
     return multiple;
 }
 
@@ -20,6 +19,5 @@ int mx_count_col(int argc, char const *argv[]) {
     t_size screen_res = mx_get_screencoord();
     
     col = screen_res.col/each_obj;
-
     return col;
 }
