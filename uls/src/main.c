@@ -25,7 +25,9 @@
 // }
 
 int main (int argc, char const *argv[]) {
-    argc = 0;
+    // argc = 0;
+    // test1_readdir(argv);
+    // argc = 0;
     mx_errors(argc, argv);
     // test1_readdir(argv);
     // argv = NULL;
