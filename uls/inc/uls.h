@@ -23,11 +23,8 @@ void mx_errors(int argc,  char const *argv[]);
 int mx_dirorfile(const char *obj);
 int mx_dirorfile(const char *obj);
 char **mx_arr_files(int argc, char const *argv[]);
-<<<<<<< HEAD
 char **mx_arr_dirs(int argc, char const *argv[]);
 int mx_count_longest(int argc, char const *argv[]);
 int mx_count_col(int argc, char const *argv[]);
-=======
->>>>>>> dashuta
 
 #endif
