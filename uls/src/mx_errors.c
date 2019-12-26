@@ -15,23 +15,23 @@ static void check_fileordir(char const *argv[], int ind_char, int argc) {
     }
 }
 
-// static void check_flag(char const *argv[], int lol, int ind_char) {
-//     // mx_printstr(" LOL ");
-//     // mx_printint(lol);
-//     if (argv[ind_char][0] == '-' && argv[ind_char][1] == '-' 
-//         && argv[ind_char][2] != '\0') {
-//         mx_printstr("usage: ./uls [-ab] [file ...]\n");
-//         return;
-//     }
-//     if (argv[ind_char][0] != '-') {
-//         mx_printerr("usage: ./uls [-ab] [file ...]\n");
-//         exit(0);
-//     }
-//     if (lol == 0) {
-//         mx_printerr("usage: ./uls [-ab] [file ...]\n");
-//         exit(0);
-//     }
-// }
+static void check_flag(char const *argv[], int lol, int ind_char) {
+    // mx_printstr(" LOL ");
+    // mx_printint(lol);
+    if (argv[ind_char][0] == '-' && argv[ind_char][1] == '-' 
+        && argv[ind_char][2] != '\0') {
+        mx_printstr("usage: ./uls [-ab] [file ...]\n");
+        return;
+    }
+    if (argv[ind_char][0] != '-') {
+        mx_printerr("usage: ./uls [-ab] [file ...]\n");
+        exit(0);
+    }
+    if (lol == 0) {
+        mx_printerr("usage: ./uls [-ab] [file ...]\n");
+        exit(0);
+    }
+}
 
 static void noassces(int argc, char const *argv[]) {
     char *flag = mx_strdup("ab");
@@ -46,7 +46,7 @@ static void noassces(int argc, char const *argv[]) {
                 }
                 lol = 0;
             }
-        // check_flag(argv, lol, ind_char);
+        check_flag(argv, lol, ind_char);
         if (argv[ind_char][0] == '-' && argv[ind_char][1] == '-'
             && argv[ind_char][2] == '\0') {
             check_fileordir(argv, ++ind_char, argc);
