@@ -5,12 +5,13 @@ char **mx_arr_dirs(int argc, char const *argv[]) {
     int count_dirs = 0;
     
     for (int i = 1; i < argc; i++) {
-        if(mx_dirorfile(argv[i]) == 1) {
+        if(mx_dirorfile(argv[i]) == 0) {
             count_dirs++;
         }
     }
     if (count_dirs != 0) {
-        arr_dirs = (char **)malloc(sizeof(char *) * count_dirs);
+        arr_dirs = (char **)malloc(sizeof(char *) * (count_dirs + 1));
+        arr_dirs[count_dirs] = NULL;
         count_dirs = 0;
         for (int i = 1; i < argc; i++) {
             if(mx_dirorfile(argv[i]) == 0) {
