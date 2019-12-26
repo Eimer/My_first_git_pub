@@ -26,12 +26,8 @@
 
 int main (int argc, char const *argv[]) {
     argc = 0;
-<<<<<<< HEAD
     mx_errors(argc, argv);
     // test1_readdir(argv);
     // argv = NULL;
-=======
-    argv = NULL;
->>>>>>> ae536262bda6193ffba0feaa8b3a94bde3c032b8
     return 0;
 }
