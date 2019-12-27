@@ -27,7 +27,6 @@
 int main (int argc, char const *argv[]) {
     mx_uls_noatr(argc, argv);
     // argc = 0;
-    mx_errors(argc, argv);
     // test1_readdir(argv);
     // argv = NULL;
     // system("leaks -q a.out");
