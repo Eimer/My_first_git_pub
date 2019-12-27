@@ -27,5 +27,6 @@ char **mx_arr_dirs(int argc, char const *argv[]);
 int mx_count_longest(int argc, char const *argv[]);
 int mx_count_col(int argc, char const *argv[]);
 char **mx_arr_dirs(int argc, char const *argv[]);
+char **mx_uls_noatr(int argc, char const *argv[]);
 
 #endif
