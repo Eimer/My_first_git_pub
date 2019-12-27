@@ -25,10 +25,7 @@
 // }
 
 int main (int argc, char const *argv[]) {
-    mx_count_col(argc, argv);
-    char x[7] = "123456";
-    mx_printstr(x);
-    mx_printchar('\t');
+    mx_uls_noatr(argc, argv);
     argc = 0;
     argv = NULL;
     return 0;
