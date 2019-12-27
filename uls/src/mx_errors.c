@@ -39,12 +39,13 @@ static int check_flag(int argc, char const *argv[], int lol, int ind_char) {
 }
 
 void mx_errors(int argc, char const *argv[]) {
-    char *flag = mx_strdup("ab");
+    char *flag = mx_strdup("abcb");
     int lol = 0;
 
     for (int ind_char = 1;  ind_char < argc; ind_char++) {
-        for (int index = 1; index < mx_strlen(argv[ind_char]); index++)
-            for (int check = 0; check < 2; check++) {
+        for (int index = 1; index < mx_strlen(argv[ind_char]) 
+            || index == 1; index++) {
+            for (int check = 0; check < mx_strlen(flag); check++) {
                 lol = 0;
                 if (argv[ind_char][index] == flag[check]) {
                     lol = 1;
@@ -54,6 +55,7 @@ void mx_errors(int argc, char const *argv[]) {
                     if (check_flag(argc, argv, lol, ind_char) == 1)
                         return;
             }
+        }
     }
     free(flag);
 }
