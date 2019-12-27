@@ -2,7 +2,7 @@
 
 static int multiple(int longest) {
     int multiple = longest;
-    
+
     if(multiple % 8 == 0)
         multiple++;
 

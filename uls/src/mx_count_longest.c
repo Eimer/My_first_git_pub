@@ -31,6 +31,7 @@ static int longestdir(int argc, char const *argv[]) {
             }
             count++;
         }
+        closedir(dir);
     }
     return longest;
 }
