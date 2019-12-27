@@ -2,8 +2,13 @@
 
 static int multiple(int longest) {
     int multiple = longest;
+<<<<<<< HEAD
 
     if(multiple % 8 == 0)
+=======
+    
+    if (multiple % 8 == 0)
+>>>>>>> master
         multiple++;
 
     while (multiple % 8 != 0) {

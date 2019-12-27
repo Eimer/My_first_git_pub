@@ -11,7 +11,7 @@ int mx_dirorfile(const char *obj) {
     }
     else {
         file = open(obj, O_RDONLY);
-        if(file != -1) {
+        if (file != -1) {
             close(file);
             return 1;
         }
