@@ -21,7 +21,7 @@ static int longestdir(int argc, char const *argv[]) {
     DIR *dir;
     struct dirent *entry;
     int count = 0;
-    
+
     if (dirs) {
         while (dirs[count] != NULL) {
             dir = opendir(dirs[count]);

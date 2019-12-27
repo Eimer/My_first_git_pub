@@ -21,5 +21,11 @@ char **mx_arr_dirs(int argc, char const *argv[]) {
             }
         }
     }
+    else if (argc == 1 ) {
+        arr_dirs = (char **)malloc(sizeof(char *) * 2);
+        arr_dirs[1] = NULL;
+        arr_dirs[0] = mx_strnew(1);
+        mx_strcpy(arr_dirs[0], ".");
+    }
     return arr_dirs;
 }
