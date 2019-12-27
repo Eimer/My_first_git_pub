@@ -30,5 +30,6 @@ int main (int argc, char const *argv[]) {
     mx_errors(argc, argv);
     // test1_readdir(argv);
     // argv = NULL;
+    // system("leaks -q a.out");
     return 0;
 }

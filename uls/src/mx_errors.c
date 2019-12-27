@@ -1,7 +1,7 @@
 #include "../inc/uls.h"
 
 static void check_fileordir(char const *argv[], int ind_str, int argc) {
-    char **print_error = (char **)(malloc)(sizeof(char *) * (argc));
+    char **print_error = (char **)malloc(sizeof(char *) * argc);
     int count = 0;
 
     for (; count < argc; count++)
@@ -20,6 +20,7 @@ static void check_fileordir(char const *argv[], int ind_str, int argc) {
         mx_printstr(print_error[j]);
         mx_printerr(": No such file or directory\n");
     }
+    mx_del_strarr(&print_error);
 }
 
 static int check_flag(int argc, char const *argv[], int check, int ind_str) {
@@ -45,14 +46,14 @@ static int check_flag(int argc, char const *argv[], int check, int ind_str) {
 }
 
 void mx_errors(int argc, char const *argv[]) {
-    char *flag = mx_strdup("abcd");
+    char *flag = "abcd";
     int check = 0;
-    int s_f = mx_strlen(flag); // strlen_flag
+    int s_f = mx_strlen(flag);// strlen_flag
 
     for (int ind_str = 1;  ind_str < argc; ind_str++) {
         for (int index = 1; index < mx_strlen(argv[ind_str])
             || index == 1; index++) {
-            for (int i_f = 0; i_f < s_f; i_f++) { // index_flag
+            for (int i_f = 0; i_f < s_f; i_f++) {// index_flag
                 check = 0;
                 if (argv[ind_str][index] == flag[i_f]) {
                     check = 1;
@@ -64,5 +65,4 @@ void mx_errors(int argc, char const *argv[]) {
             }
         }
     }
-    free(flag);
 }

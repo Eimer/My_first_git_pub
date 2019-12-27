@@ -6,7 +6,7 @@ static int logestfile(int argc, char const *argv[]) {
     char **files = mx_arr_files(argc, argv);
     if (files) {
         while (files[count_files]) {
-            if(mx_strlen(files[count_files]) > longest) {
+            if (mx_strlen(files[count_files]) > longest) {
                 longest = mx_strlen(files[count_files]);
             }
             count_files++;
@@ -26,8 +26,8 @@ static int longestdir(int argc, char const *argv[]) {
         while (dirs[count] != NULL) {
             dir = opendir(dirs[count]);
             while ((entry = readdir(dir)) != NULL) {
-                if(mx_strlen(entry->d_name) > longest)
-                    longest =  mx_strlen(entry->d_name);
+                if (mx_strlen(entry->d_name) > longest)
+                    longest = mx_strlen(entry->d_name);
             }
             count++;
         }
@@ -37,7 +37,7 @@ static int longestdir(int argc, char const *argv[]) {
 
 int mx_count_longest(int argc, char const *argv[]) {
     int longest_file = logestfile(argc, argv);
-    int longest_dir =  longestdir(argc, argv);
+    int longest_dir = longestdir(argc, argv);
     if (longest_file > longest_dir) {
         return longest_file;
     }
