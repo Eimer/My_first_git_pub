@@ -15,5 +15,5 @@ char **mx_sort_overallarr(char **overall_arr) {
             }
         }
     }
-    return NULL;
+    return overall_arr;
 }

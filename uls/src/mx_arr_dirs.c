@@ -3,7 +3,7 @@
 char **mx_arr_dirs(int argc, char const *argv[]) {
     char **arr_dirs = NULL;
     int count_dirs = 0;
-    
+
     for (int i = 1; i < argc; i++) {
         if (mx_dirorfile(argv[i]) == 0) {
             count_dirs++;

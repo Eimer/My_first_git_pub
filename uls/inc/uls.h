@@ -30,5 +30,6 @@ char **mx_arr_dirs(int argc, char const *argv[]);
 char **mx_uls_noatr(int argc, char const *argv[]);
 char **mx_sort_overallarr(char **);
 void mx_output(int argc, char const *argv[], char **overall_arr);
+int mx_count_obj(char **overall_arr);
 
 #endif

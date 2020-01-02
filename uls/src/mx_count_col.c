@@ -18,6 +18,7 @@ int mx_count_col(int argc, char const *argv[]) {
     int each_obj = multiple(longest);
     t_size screen_res = mx_get_screencoord();
     
+
     col = screen_res.col/each_obj;
     return col;
 }
