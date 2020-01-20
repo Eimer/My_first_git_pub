@@ -8,9 +8,9 @@ LIB = libmx
 
 CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 
-SRC = src/main.c
+SRC = src/*.c
 
-OUT = main.o 
+OUT = *.o 
 
 INC = inc/uls.h
 
