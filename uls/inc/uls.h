@@ -11,6 +11,8 @@
 #include <grp.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
+#include <string.h>
+#include <errno.h>
 
 typedef struct  s_size {
     unsigned short col;
