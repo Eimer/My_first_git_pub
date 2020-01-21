@@ -62,7 +62,8 @@ void mx_output(int argc, char const *argv[], char **overall_arr) {
             count_out = buffer_count;
         }
         mx_printstr(sorted_overall_arr[count_out]);
-        write_tabs(argc, argv, mx_strlen(sorted_overall_arr[count_out]));
+        if (count_out + main_row < amount_obj)
+            write_tabs(argc, argv, mx_strlen(sorted_overall_arr[count_out]));
         count_out += main_row;
     }
     mx_printchar('\n');
