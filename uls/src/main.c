@@ -30,7 +30,7 @@ int main (int argc, char const *argv[]) {
     // argc = 0;
     // test1_readdir(argv);
     // argv = NULL;
-    // system("leaks -q a.out");
+    //system("leaks -q a.out");
     // system("leaks -q uls");
     return 0;
 }

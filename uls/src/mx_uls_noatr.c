@@ -31,7 +31,6 @@ char **mx_uls_noatr(int argc, char const *argv[]) {
         }
     }
     closedir(dir);
-    
     mx_output(argc, argv, overall_arr);
     return overall_arr;
 }
