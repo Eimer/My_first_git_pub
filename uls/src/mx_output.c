@@ -4,7 +4,8 @@ static int which_element(int argc, char const *argv[], char **sorted_overall_arr
     int col = mx_count_col(argc, argv);
     int amount_obj = mx_count_obj(sorted_overall_arr);
     int res = 0;
-
+    printf("%d ", amount_obj);
+    exit(0);
     if (amount_obj % col != 0) {
         res = amount_obj / col + 1;
     }
