@@ -40,7 +40,7 @@ void mx_output(int argc, char const *argv[], char **overall_arr) {
     int main_row = which_element(argc, argv, sorted_overall_arr);
     int amount_obj = mx_count_obj(sorted_overall_arr);
     int buffer_count = 0;
-    int count_out = 0;
+    // int test = 0;
 
     for (int i = 0; i < amount_obj; i++) {
         if (count_out >= amount_obj) {

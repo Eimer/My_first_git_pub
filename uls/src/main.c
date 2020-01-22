@@ -5,10 +5,10 @@
 //         int ret;
 //         struct stat buf;
 //         if ((ret = stat("test.txt", &buf))!=0)
-//           {
+//             {
 //             fprintf(stderr, "stat failure error .%d", ret);
 //             abort();
-//           }
+//             }
 //         date = asctime(localtime(&buf.st_ctime));
 //         printf("\n %s\n", date);
 //         printf("\n %d mode\n", buf.st_mode);
