@@ -25,9 +25,6 @@
 // }
 
 int main (int argc, char const *argv[]) {
-    char **arr_dirs = mx_arr_dirs(argc, argv);
-    for (int u = 0; arr_dirs[u]; u++)
-        mx_printstr(arr_dirs[u]);
     // mx_uls_noatr(argc, argv);
     // argc = 0;
     // test1_readdir(argv);
