@@ -27,8 +27,9 @@ static int longestdir(int argc, char const *argv[]) {
         while (dirs[count] != NULL) {
             dir = opendir(dirs[count]);
             while ((entry = readdir(dir)) != NULL) {
-                if (mx_strlen(entry->d_name) > longest)
-                    longest = mx_strlen(entry->d_name);
+                if (entry->d_name[0] != '.')
+                    if (mx_strlen(entry->d_name) > longest)
+                        longest = mx_strlen(entry->d_name);
             }
             count++;
         }
