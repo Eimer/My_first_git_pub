@@ -8,7 +8,7 @@ char **mx_sort_overallarr(char **overall_arr) {
     }
     for (int i = 0; i < count - 1; i++) {
         for (int j = 0; j < count - 1 - i; j++) {
-            if(mx_strcmp(overall_arr[j], overall_arr[j + 1]) > 0) {
+            if (mx_strcmp(overall_arr[j], overall_arr[j + 1]) > 0) {
                 buff = overall_arr[j];
                 overall_arr[j] = overall_arr[j + 1];
                 overall_arr[j + 1] = buff;

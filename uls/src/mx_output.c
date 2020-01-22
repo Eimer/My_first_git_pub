@@ -43,13 +43,13 @@ void mx_output(int argc, char const *argv[], char **overall_arr) {
     int count_out = 0;
 
     for (int i = 0; i < amount_obj; i++) {
-        if(count_out >= amount_obj) {
+        if (count_out >= amount_obj) {
             mx_printchar('\n');
             buffer_count++;
             count_out = buffer_count;
         }
         mx_printstr(sorted_overall_arr[count_out]);
-        //if (count_out + main_row < amount_obj)
+        if (count_out + main_row < amount_obj)
             write_tabs(argc, argv, mx_strlen(sorted_overall_arr[count_out]));
         count_out += main_row;
     }
