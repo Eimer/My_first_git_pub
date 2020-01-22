@@ -2,6 +2,7 @@
 #define ULS_H
 
 #include "../libmx/inc/libmx.h"
+#include "dashuta.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
