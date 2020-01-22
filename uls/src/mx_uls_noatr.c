@@ -17,8 +17,8 @@ char **mx_uls_noatr(int argc, char const *argv[]) {
     DIR *dir;
     struct dirent *entry;
     int count_el = 0;
-    char **overall_arr = (char**)malloc(sizeof(char *) * (count_obj() + 1));
-    
+    char **overall_arr = (char **)malloc(sizeof(char *) * (count_obj() + 1));
+
     overall_arr[count_obj()] = NULL;
     dir = opendir(".");
     while ((entry = readdir(dir)) != NULL)
