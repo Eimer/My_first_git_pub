@@ -24,3 +24,9 @@
 //     write(1, &buf.st_size,10);
 // }
 
+int main (int argc, char const *argv[]) {
+
+     mx_enter_fileordir(argc, argv);
+     // system("leaks -q uls");
+     return 0;
+}
