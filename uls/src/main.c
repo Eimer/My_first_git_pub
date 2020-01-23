@@ -24,10 +24,15 @@
 //     write(1, &buf.st_size,10);
 // }
 
-
 int main (int argc, char const *argv[]) {
 
-     mx_uls_noatr(argc, argv);
+     // argc = 0;
+     // int t = 0;
+     // while (test[t]) {
+     //      printf("%s ", test[t]);
+     //      t++;
+     // }
+     //mx_output(argc, argv, test);
 //     // argc = 0;
 //     // test1_readdir(argv);
 //     // argv = NULL;
