@@ -21,8 +21,7 @@ static void open_dir(char **arr_dirs, char const *argv[], int argc) {
     struct dirent *entry;
     int count_el;
     char **overall_arr;
-// mx_printstr(argv[0]);
-mx_printint(argc);
+
     for (int u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
@@ -33,17 +32,15 @@ mx_printint(argc);
         overall_arr = (char **)malloc(sizeof(char *) * (count_obj(arr_dirs[u]) + 1));
         while ((entry = readdir(dir)) != NULL)
             if (entry->d_name[0] != '.') {
-                overall_arr[count_el] = mx_strnew(mx_strlen(entry->d_name));
-                overall_arr[count_el] = mx_strcpy(overall_arr[count_el], entry->d_name);
+                overall_arr[count_el] = mx_strdup(entry->d_name);
                 count_el++;
             }
-            // if (u != 0)
-                mx_output(u + 2, argv, overall_arr);
         closedir(dir);
+        mx_output(argc, argv, overall_arr);
         if (arr_dirs[u][0] != '.' && arr_dirs[u + 1] != NULL)
             mx_printchar(10);
         // if (arr_dirs[u][0] != '.')
-        //     mx_del_strarr(&overall_arr);
+            mx_del_strarr(&overall_arr);
     }
 }
 
