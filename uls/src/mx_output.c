@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-static int which_element(int argc, char const *argv[], char **sorted_overall_arr) {
+static int which_element(int argc, char **argv, char **sorted_overall_arr) {
     int col = mx_count_col(argc, argv);
     int amount_obj = mx_count_obj(sorted_overall_arr);
     int res = 0;
@@ -14,7 +14,7 @@ static int which_element(int argc, char const *argv[], char **sorted_overall_arr
     return res;
 }
 
-static void write_tabs(int argc, char const *argv[], int word_len) {
+static void write_tabs(int argc, char **argv, int word_len) {
     int longest = mx_count_longest(argc, argv);
     int number_of_tabs = 0;
     int result_number_of_tabs = 0;
@@ -35,7 +35,7 @@ static void write_tabs(int argc, char const *argv[], int word_len) {
     }
 }
 
-void mx_output(int argc, char const *argv[], char **overall_arr) {
+void mx_output(int argc, char **argv, char **overall_arr) {
     char **sorted_overall_arr = mx_sort_overallarr(overall_arr);
     int main_row = which_element(argc, argv, sorted_overall_arr);
     int amount_obj = mx_count_obj(sorted_overall_arr);

@@ -8,5 +8,6 @@ typedef struct s_add_in_func {
     int numb;
 } t_add_in_func;
 
-void mx_enter_fileordir (int argc, char const *argv[]);
+void mx_enter_fileordir(int argc, char **argv);
+void mx_flag_r(int argc, char **argv);
 #endif

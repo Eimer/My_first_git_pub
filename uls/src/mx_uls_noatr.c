@@ -13,7 +13,7 @@ static int count_obj() {
     return res;
 }
 
-char **mx_uls_noatr(int argc, char const *argv[]) {
+char **mx_uls_noatr(int argc, char **argv) {
     DIR *dir;
     struct dirent *entry;
     int count_el = 0;

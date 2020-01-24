@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-static int logestfile(int argc, char const *argv[]) {
+static int logestfile(int argc, char **argv) {
     int longest = 0;
     int count_files = 0;
     char **files = mx_arr_files(argc, argv);
@@ -16,7 +16,7 @@ static int logestfile(int argc, char const *argv[]) {
     return longest;
 }
 
-static int longestdir(int argc, char const *argv[]) {
+static int longestdir(int argc, char **argv) {
     int longest = 0;
     char **dirs = mx_arr_dirs(argc, argv);
     DIR *dir;
@@ -38,7 +38,7 @@ static int longestdir(int argc, char const *argv[]) {
     return longest;
 }
 
-int mx_count_longest(int argc, char const *argv[]) {
+int mx_count_longest(int argc, char **argv) {
     int longest_file = logestfile(argc, argv);
     int longest_dir = longestdir(argc, argv);
     

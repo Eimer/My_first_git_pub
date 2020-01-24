@@ -14,7 +14,7 @@ static int multiple(int longest) {
     return multiple;
 }
 
-int mx_count_col(int argc, char const *argv[]) {
+int mx_count_col(int argc, char **argv) {
     int col = 0;
     int longest = mx_count_longest(argc, argv);
     int each_obj = multiple(longest);

@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-static void check_fileordir(char const *argv[], int ind_str, int argc) {
+static void check_fileordir(char **argv, int ind_str, int argc) {
     char **print_error = (char **)malloc(sizeof(char *) * argc);
     int count = 0;
 
@@ -19,7 +19,7 @@ static void check_fileordir(char const *argv[], int ind_str, int argc) {
     mx_del_strarr(&print_error);
 }
 
-static int check_flag(int argc, char const *argv[], int check, int ind_str) {
+static int check_flag(int argc, char **argv, int check, int ind_str) {
     if (argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
         && argv[ind_str][2] == '\0') {
             check_fileordir(argv, ++ind_str, argc);
@@ -41,7 +41,7 @@ static int check_flag(int argc, char const *argv[], int check, int ind_str) {
     return 0;
 }
 
-void mx_errors(int argc, char const *argv[]) {
+void mx_errors(int argc, char **argv) {
     char *flag = "abcd";
     int check = 0;
     int s_f = mx_strlen(flag);// strlen_flag

@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-char **mx_arr_dirs(int argc, char const *argv[]) {
+char **mx_arr_dirs(int argc, char **argv) {
     char **arr_dirs = NULL;
     int count_dirs = 0;
 
