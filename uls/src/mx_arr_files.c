@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-char **mx_arr_files(int argc, char const *argv[]) {
+char **mx_arr_files(int argc, char **argv) {
     char **arr_files = NULL;
     int count_files = 0;
 

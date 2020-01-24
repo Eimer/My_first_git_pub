@@ -1,7 +1,7 @@
 #include "../inc/uls.h"
 
-static int which_element(int argc, char **argv, char **sorted_overall_arr) {
-    int col = mx_count_col(argc, argv);
+static int which_element(char **sorted_overall_arr) {
+    int col = mx_count_col_with_atr(sorted_overall_arr);
     int amount_obj = mx_count_obj(sorted_overall_arr);
     int res = 0;
 
@@ -14,8 +14,8 @@ static int which_element(int argc, char **argv, char **sorted_overall_arr) {
     return res;
 }
 
-static void write_tabs(int argc, char **argv, int word_len) {
-    int longest = mx_count_longest(argc, argv);
+static void write_tabs(char **overall_arr, int word_len) {
+    int longest = mx_count_longest_with_atr(overall_arr);
     int number_of_tabs = 0;
     int result_number_of_tabs = 0;
 
@@ -35,9 +35,9 @@ static void write_tabs(int argc, char **argv, int word_len) {
     }
 }
 
-void mx_output(int argc, char **argv, char **overall_arr) {
+void mx_output_with_atr(char **overall_arr) {
     char **sorted_overall_arr = mx_sort_overallarr(overall_arr);
-    int main_row = which_element(argc, argv, sorted_overall_arr);
+    int main_row = which_element(sorted_overall_arr);
     int amount_obj = mx_count_obj(sorted_overall_arr);
     int buffer_count = 0;
     int count_out = 0;
@@ -50,9 +50,8 @@ void mx_output(int argc, char **argv, char **overall_arr) {
         }
         mx_printstr(sorted_overall_arr[count_out]);
         if (count_out + main_row < amount_obj)
-            write_tabs(argc, argv, mx_strlen(sorted_overall_arr[count_out]));
+            write_tabs(sorted_overall_arr, mx_strlen(sorted_overall_arr[count_out]));
         count_out += main_row;
     }
     mx_printchar('\n');
 }
-

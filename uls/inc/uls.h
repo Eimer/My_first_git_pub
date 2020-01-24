@@ -23,17 +23,17 @@ typedef struct  s_size {
 
 void mx_printerr(const char *s);
 t_size mx_get_screencoord();
-void mx_errors(int argc,  char const *argv[]);
+void mx_errors(int argc,  char **argv);
 int mx_dirorfile(const char *obj);
 int mx_dirorfile(const char *obj);
-char **mx_arr_files(int argc, char const *argv[]);
-char **mx_arr_dirs(int argc, char const *argv[]);
-int mx_count_longest(int argc, char const *argv[]);
-int mx_count_col(int argc, char const *argv[]);
-char **mx_arr_dirs(int argc, char const *argv[]);
-char **mx_uls_noatr(int argc, char const *argv[]);
+char **mx_arr_files(int argc, char **argv);
+char **mx_arr_dirs(int argc, char **argv);
+int mx_count_longest(int argc, char **argv);
+int mx_count_col(int argc, char **argv);
+char **mx_arr_dirs(int argc, char **argv);
+char **mx_uls_noatr(int argc, char **argv);
 char **mx_sort_overallarr(char **);
-void mx_output(int argc, char const *argv[], char **overall_arr);
+void mx_output(int argc, char **argv, char **overall_arr);
 int mx_count_obj(char **overall_arr);
 
 #endif
