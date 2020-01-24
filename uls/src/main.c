@@ -23,4 +23,6 @@
 //     printf("%s", pwuid->pw_name);
 //     write(1, &buf.st_size,10);
 // }
-
+int main(int argc, char *argv[]) {
+    mx_get_obj_info(argc, argv);
+}
