@@ -25,8 +25,10 @@
 // }
 
 int main (int argc, char const *argv[]) {
+     // t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
 
      mx_enter_fileordir(argc, argv);
+     // free(audit);
      // system("leaks -q uls");
      return 0;
 }

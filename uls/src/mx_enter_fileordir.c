@@ -13,53 +13,59 @@ static int count_obj(const char *str) {
     return res;
 }
 
-static int check_denied(char *arr_dirs_u) {
+static int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
     DIR *dir;
 
+    if (arr_dirs[1] != NULL) {
+        mx_printstr(arr_dirs[u]);
+        mx_printstr(":\n");
+    }
     dir = opendir(arr_dirs_u);
     if (dir) {
         closedir(dir);
         return 0;
     }
-    else {
-        mx_printerr("./uls ");
-        mx_printstr(arr_dirs_u);
-        mx_printerr(": ");
-        mx_printerr(strerror(errno));
-        mx_printerr("\n");
+    else if (errno == 13) {
+        mx_printerr("./uls: ");
+        mx_printerr(arr_dirs_u);
+        mx_printerr(": Permission denied\n");
+        if (arr_dirs[1] != NULL && arr_dirs[u + 1] != NULL)
+            mx_printstr("\n");
         return 1;
     }
+    return 0;
 }
 
+static char **read_dir(char **arr_dirs, int u, int count_el, DIR *dir) {
+    struct dirent *entry;
+    char **overall_arr;
+    int numb = count_obj(arr_dirs[u]);
+
+    overall_arr = (char **)malloc(sizeof(char *) * (numb + 1));
+    for (int k = 0; k <= numb; k++)
+        overall_arr[k] = NULL;
+    while ((entry = readdir(dir)) != NULL)
+        if (entry->d_name[0] != '.') {
+            overall_arr[count_el] = mx_strdup(entry->d_name);
+            count_el++;
+        }
+    closedir(dir);
+    return overall_arr;
+}
 
 static void open_dir(char **arr_dirs) {
-    DIR *dir = NULL;
-    struct dirent *entry;
+    DIR *dir;
     int count_el;
     char **overall_arr;
 
     for (int u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
-        if (arr_dirs[1] != NULL) {
-            mx_printstr(arr_dirs[u]);
-            mx_printstr(":\n");
-        }
-        if (check_denied(arr_dirs[u]) == 1) {
-            if (arr_dirs[1] != NULL && arr_dirs[u + 1] != NULL)
-                mx_printstr("\n");
+        if (check_denied(arr_dirs[u], arr_dirs, u) == 1)
             continue;
-        }
-        overall_arr = (char **)malloc(sizeof(char *) * (count_obj(arr_dirs[u]) + 1));
-        for (int k = 0; k <= count_obj(arr_dirs[u]); k++)
-            overall_arr[k] = NULL;
-        while ((entry = readdir(dir)) != NULL)
-            if (entry->d_name[0] != '.') {
-                overall_arr[count_el] = mx_strdup(entry->d_name);
-                count_el++;
-            }
-        closedir(dir);
-        mx_output_with_atr(overall_arr);
+        overall_arr = read_dir(arr_dirs, u, count_el, dir);
+        if (overall_arr[0] != NULL)
+            mx_output_with_atr(overall_arr);
         if (arr_dirs[u + 1] != NULL)
             mx_printchar(10);
             mx_del_strarr(&overall_arr);
