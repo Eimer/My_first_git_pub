@@ -6,6 +6,7 @@ LIBMX.A = ./libmx/libmx.a
 
 LIB = libmx
 
+# CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic -g -fsanitize=address
 CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 
 SRC = src/*.c

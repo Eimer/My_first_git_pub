@@ -102,6 +102,7 @@ OUT = mx_printchar.o \
 		mx_list_size.o \
 		mx_sort_list.o 
 
+# CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic -g -fsanitize=address
 CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 
 INC = inc/libmx.h
