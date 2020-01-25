@@ -11,6 +11,6 @@
 int mx_count_longest_with_atr(char **overall_arr);
 int mx_count_col_with_atr(char **overall_arr);
 void mx_output_with_atr(char **overall_arr);
-void mx_get_obj_info(int argc, char *argv[]);
+void mx_get_obj_info(char *obj_name);
 
 #endif
