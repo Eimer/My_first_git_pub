@@ -23,6 +23,7 @@ void mx_get_obj_info(int argc, char *argv[]) {
         printf( (obj_stat.st_mode & S_IROTH) ? "r" : "-");
         printf( (obj_stat.st_mode & S_IWOTH) ? "w" : "-");
         printf( (obj_stat.st_mode & S_IXOTH) ? "x" : "-");
+        
         printf("\n\n");
         count++;
         printf("%c", '\n');
@@ -32,5 +33,4 @@ void mx_get_obj_info(int argc, char *argv[]) {
     //     if(entry->d_name[0]!= '.')
     //         count++;
     // }
-
 }
