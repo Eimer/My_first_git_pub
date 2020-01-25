@@ -12,12 +12,9 @@ int mx_dirorfile(const char *obj) {
     }
     else if (errno == 13)
         return 0;
-    else {
-        file = open(obj, O_RDONLY);
-        if (file != -1) {
-            close(file);
-            return 1;
-        }
+    else if ((file = open(obj, O_RDONLY)) != -1) {
+        close(file);
+        return 1;
     }
     return -1;
 }

@@ -27,8 +27,8 @@
 int main (int argc, char **argv) {
      // t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
 
-     // mx_flag_r(argc, argv);
-     mx_enter_fileordir(argc, argv);
+     mx_flag_r(argc, argv);
+     // mx_enter_fileordir(argc, argv);
      // free(audit);
      // system("leaks -q uls");
      return 0;
