@@ -52,12 +52,30 @@ static char **read_dir(char **arr_dirs, int u, int *count_el, DIR *dir) {
     return overall_arr;
 }
 
+static void open_dir(char **arr_dirs);
+
+static void namecpy(char **overall_arr, int count_el, char *arr_dirs) {
+    char **arr_dirs_new = mx_arr_dirs(count_el, overall_arr);
+
+    if (arr_dirs_new != NULL && arr_dirs_new[1] != NULL) {
+        arr_dirs_new = mx_arr_dirs(count_el, overall_arr);
+        for (int u = 0; arr_dirs_new[u] != NULL; u++) {
+            char *new1 = mx_strjoin(arr_dirs, "/");
+            char *new2 = mx_strjoin(new1, arr_dirs_new[u]);
+            arr_dirs_new[u] = new2;
+        }
+        mx_printstr("\n");
+        mx_sort_overallarr(arr_dirs_new);
+        open_dir(arr_dirs_new);
+        mx_del_strarr(&arr_dirs_new);
+    }
+}
+
 static void open_dir(char **arr_dirs) {
     DIR *dir;
     int count_el;
     char **overall_arr;
     int u = 0;
-    char **arr_dirs_new;
 
     for (u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
@@ -67,10 +85,7 @@ static void open_dir(char **arr_dirs) {
         overall_arr = read_dir(arr_dirs, u, &count_el, dir);
         if (overall_arr[0] != NULL)
             mx_output_with_atr(overall_arr);
-        arr_dirs_new = mx_arr_dirs(count_el, overall_arr);
-        if (arr_dirs_new != NULL)
-        open_dir(arr_dirs_new);
-        // mx_del_strarr(&arr_dirs_new);
+        namecpy(overall_arr, count_el, arr_dirs[u]);
         if (arr_dirs[u + 1] != NULL)
             mx_printchar(10);
         mx_del_strarr(&overall_arr);

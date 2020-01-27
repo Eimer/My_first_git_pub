@@ -1,4 +1,5 @@
 #include "../inc/libmx.h"
+
 char *mx_strcat(char *restrict s1, const char *restrict s2){
 	int a = 0;
 	int i;
