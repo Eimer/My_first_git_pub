@@ -107,20 +107,20 @@ CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 
 INC = inc/libmx.h
 
-all: install uninstall
+all: install
 
-install: 
+install:
 	@mkdir -p $(DIROBJ)
 	@clang $(CLANG) -c $(SRC) -I $(INC)
 	@ar -rc $(NAME)  $(OUT)
 	@mv $(OUT) $(DIROBJ)
 
-uninstall:
+clean:
 	@rm -rf $(DIROBJ)
 
-clean:
+uninstall:
 	@rm -rf $(NAME)
 	@rm -rf $(DIROBJ)
 	@rm -rf $(OUT)
 
-reinstall: clean all
+reinstall: uninstall install

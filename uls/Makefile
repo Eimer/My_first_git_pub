@@ -15,7 +15,7 @@ OUT = *.o
 
 INC = inc/uls.h
 
-all: install uninstall
+all: install
 
 install:
 	@mkdir -p $(OBJ)
@@ -24,15 +24,15 @@ install:
 	@make install -C $(LIB)
 	@clang $(CLANG) $(SRC) $(LIBMX.A) -o $(NAME) -I $(INC)
 
-uninstall:
-	@rm -rf $(OBJ)
-	@make uninstall -C $(LIB)
-
 clean:
 	@make clean -C $(LIB)
+	@rm -rf $(OBJ)
+
+uninstall:
+	@make uninstall -C $(LIB)
 	@rm -rf $(NAME)
 	@rm -rf $(OBJ)
 	@rm -rf $(OUT)
 
-reinstall: clean all
+reinstall: uninstall install
 	@make reinstall -C $(LIB)
