@@ -1,53 +1,18 @@
 #include "../inc/uls.h"
 
-static int count_obj(const char *str) {
-    int res = 0;
-    DIR *dir;
-    struct dirent *entry;
-    dir = opendir(str);
-
-    while ((entry = readdir(dir)) != NULL)
-        if (entry->d_name[0] != '.')
-            res++;
-    closedir(dir);
-    return res;
-}
-
-static int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
-    DIR *dir;
-
-    if (arr_dirs[1] != NULL) {
-        mx_printstr(arr_dirs[u]);
-        mx_printstr(":\n");
-    }
-    dir = opendir(arr_dirs_u);
-    if (dir) {
-        closedir(dir);
-        return 0;
-    }
-    else if (errno == 13) {
-        mx_printerr("./uls: ");
-        mx_printerr(arr_dirs_u);
-        mx_printerr(": Permission denied\n");
-        if (arr_dirs[1] != NULL && arr_dirs[u + 1] != NULL)
-            mx_printstr("\n");
-        return 1;
-    }
-    return 0;
-}
-
 static char **read_dir(char **arr_dirs, int u, int *count_el, DIR *dir) {
     struct dirent *entry;
     char **overall_arr;
-    int numb = count_obj(arr_dirs[u]);
+    int numb = mx_count_obj_dash(arr_dirs[u]);
 
-    overall_arr = (char **)malloc(sizeof(char *) * (numb + 1));
+    overall_arr = (char **)malloc(sizeof(char *) * (numb + 3));
     overall_arr[numb] = NULL;
-    while ((entry = readdir(dir)) != NULL)
+    while ((entry = readdir(dir)) != NULL) {
         if (entry->d_name[0] != '.') {
             overall_arr[(*count_el)] = mx_strdup(entry->d_name);
             (*count_el)++;
         }
+    }
     closedir(dir);
     return overall_arr;
 }
@@ -55,29 +20,28 @@ static char **read_dir(char **arr_dirs, int u, int *count_el, DIR *dir) {
 static void open_dir(char **arr_dirs);
 
 static void namecpy(char **overall_arr, int count_el, char *arr_dirs) {
-    char **arr_dirs_new = mx_arr_dirs(count_el, overall_arr);
+    int u = 0;
 
-    if (arr_dirs_new != NULL && arr_dirs_new[1] != NULL) {
-        arr_dirs_new = mx_arr_dirs(count_el, overall_arr);
-        for (int u = 0; arr_dirs_new[u] != NULL; u++) {
-            char *new1 = mx_strjoin(arr_dirs, "/");
-            char *new2 = mx_strjoin(new1, arr_dirs_new[u]);
-            free(arr_dirs_new[u]);
-            arr_dirs_new[u] = mx_strdup(new2);
-            free(new1);
-            free(new2);
-        }
+    for (u = 0; overall_arr[u] != NULL; u++) {
+        char *new1 = mx_strjoin(arr_dirs, "/");
+        char *new2 = mx_strjoin(new1, overall_arr[u]);
+        free(overall_arr[u]);
+        overall_arr[u] = mx_strdup(new2);
+        free(new1);
+        free(new2);
+    }
+    char **arr_dirs_new = mx_arr_dirs_1(count_el, overall_arr);
+    if (arr_dirs_new != NULL) {
         mx_printstr("\n");
         mx_sort_overallarr(arr_dirs_new);
         open_dir(arr_dirs_new);
-        // mx_flag_r(count_el, arr_dirs_new);
         mx_del_strarr(&arr_dirs_new);
     }
 }
 
 static void open_dir(char **arr_dirs) {
     DIR *dir;
-    int count_el;
+    int count_el = 0;
     char **overall_arr;
     int u = 0;
 
@@ -87,8 +51,14 @@ static void open_dir(char **arr_dirs) {
         if (check_denied(arr_dirs[u], arr_dirs, u) == 1)
             continue;
         overall_arr = read_dir(arr_dirs, u, &count_el, dir);
+        if (mx_dirorfile(overall_arr[u]) == 1)
+            mx_printstr(overall_arr[u]);
         if (overall_arr[0] != NULL)
             mx_output_with_atr(overall_arr);
+        if (overall_arr[0] == NULL) {
+            mx_printstr(arr_dirs[u]);
+            mx_printstr(":\n");
+        }
         namecpy(overall_arr, count_el, arr_dirs[u]);
         if (arr_dirs[u + 1] != NULL)
             mx_printchar(10);

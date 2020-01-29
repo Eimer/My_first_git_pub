@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-static int count_obj(const char *str) {
+int mx_count_obj_dash(const char *str) {
     int res = 0;
     DIR *dir;
     struct dirent *entry;
@@ -13,7 +13,7 @@ static int count_obj(const char *str) {
     return res;
 }
 
-static int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
+int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
     DIR *dir;
 
     if (arr_dirs[1] != NULL) {
@@ -36,10 +36,10 @@ static int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
     return 0;
 }
 
-static char **read_dir(char **arr_dirs, int u, int count_el, DIR *dir) {
+char **read_dir(char **arr_dirs, int u, int count_el, DIR *dir) {
     struct dirent *entry;
     char **overall_arr;
-    int numb = count_obj(arr_dirs[u]);
+    int numb = mx_count_obj_dash(arr_dirs[u]);
 
     overall_arr = (char **)malloc(sizeof(char *) * (numb + 1));
     for (int k = 0; k <= numb; k++)
