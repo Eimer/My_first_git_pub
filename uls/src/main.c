@@ -30,6 +30,6 @@ int main (int argc, char **argv) {
      mx_flag_r(argc, argv);
      // mx_enter_fileordir(argc, argv);
      // free(audit);
-     // system("leaks -q uls");
+     system("leaks -q uls");
      return 0;
 }

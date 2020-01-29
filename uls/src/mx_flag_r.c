@@ -62,11 +62,15 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs) {
         for (int u = 0; arr_dirs_new[u] != NULL; u++) {
             char *new1 = mx_strjoin(arr_dirs, "/");
             char *new2 = mx_strjoin(new1, arr_dirs_new[u]);
-            arr_dirs_new[u] = new2;
+            free(arr_dirs_new[u]);
+            arr_dirs_new[u] = mx_strdup(new2);
+            free(new1);
+            free(new2);
         }
         mx_printstr("\n");
         mx_sort_overallarr(arr_dirs_new);
         open_dir(arr_dirs_new);
+        // mx_flag_r(count_el, arr_dirs_new);
         mx_del_strarr(&arr_dirs_new);
     }
 }
