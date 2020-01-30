@@ -27,7 +27,7 @@ int check_denied(char *arr_dirs_u, char **arr_dirs, int u, char **argv) { // Ð±Ð
         return 0;
     }
     else if (errno == 13) {
-        mx_printerr("./uls: ");
+        mx_printerr("uls: ");
         mx_printerr(arr_dirs_u);
         mx_printerr(": Permission denied\n");
         if (arr_dirs[1] != NULL && arr_dirs[u + 1] != NULL)
