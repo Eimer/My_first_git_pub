@@ -14,5 +14,6 @@ int mx_count_col_with_atr(char **overall_arr);
 void mx_output_with_atr(char **overall_arr);
 void mx_get_obj_info(char *obj_name);
 void mx_get_xatr(char *obg);
+void mx_output_l(char *obj);
 
 #endif
