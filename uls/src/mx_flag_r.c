@@ -5,13 +5,11 @@ static char **read_dir(char **arr_dirs, int u, int *count_el, DIR *dir) {
     char **overall_arr;
     int numb = mx_count_obj_dash(arr_dirs[u]);
 
-    overall_arr = (char **)malloc(sizeof(char *) * (numb + 3));
+    overall_arr = (char **)malloc(sizeof(char *) * (numb + 1));
     overall_arr[numb] = NULL;
     while ((entry = readdir(dir)) != NULL) {
-        if (entry->d_name[0] != '.') {
-            overall_arr[(*count_el)] = mx_strdup(entry->d_name);
-            (*count_el)++;
-        }
+        if (entry->d_name[0] != '.')
+            overall_arr[(*count_el)++] = mx_strdup(entry->d_name);
     }
     closedir(dir);
     return overall_arr;
