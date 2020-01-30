@@ -1,10 +1,10 @@
-#include "../inc/libmx.h" 
+#include "libmx.h" 
 
 int mx_binary_search(char **arr, int size, const char *s, int *count) {
     int l = 0;
     int r = size - 1;
 
-    while(l <=r) {
+    while(l <= r) {
         int m = (l + r) / 2;
 
         (*count)++;
