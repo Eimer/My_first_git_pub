@@ -13,10 +13,11 @@ int mx_count_obj_dash(const char *str) {
     return res;
 }
 
-int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
+int check_denied(char *arr_dirs_u, char **arr_dirs, int u, char **argv) { // больше чем 20 строк
     DIR *dir;
 
-    if (arr_dirs[1] != NULL) {
+    if ((arr_dirs != NULL && mx_strcmp(argv[1], arr_dirs[u]) != 0)
+        || argv[2] != NULL) {
         mx_printstr(arr_dirs[u]);
         mx_printstr(":\n");
     }
@@ -53,7 +54,7 @@ char **read_dir(char **arr_dirs, int u, int count_el, DIR *dir) {
     return overall_arr;
 }
 
-static void open_dir(char **arr_dirs) {
+static void open_dir(char **arr_dirs, char **argv) {
     DIR *dir;
     int count_el;
     char **overall_arr;
@@ -61,36 +62,32 @@ static void open_dir(char **arr_dirs) {
     for (int u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
-        if (check_denied(arr_dirs[u], arr_dirs, u) == 1)
+        if (check_denied(arr_dirs[u], arr_dirs, u, argv) == 1)
             continue;
         overall_arr = read_dir(arr_dirs, u, count_el, dir);
         if (overall_arr[0] != NULL)
             mx_output_with_atr(overall_arr);
         if (arr_dirs[u + 1] != NULL)
             mx_printchar(10);
-            mx_del_strarr(&overall_arr);
+        mx_del_strarr(&overall_arr);
     }
 }
 
 void mx_enter_fileordir(int argc, char **argv) {
-    // if (argc == 1)
-    //     mx_uls_noatr(argc, argv);
-    // else {
-        mx_errors(argc, argv);
-        char **arr_files = mx_arr_files(argc, argv);
-        char **arr_dirs = mx_arr_dirs(argc, argv);
+    mx_errors(argc, argv);
+    char **arr_files = mx_arr_files(argc, argv);
+    char **arr_dirs = mx_arr_dirs(argc, argv);
 
+    if (arr_files != NULL)
+        mx_output_with_atr(arr_files);
+    if (arr_dirs != NULL) {
+        mx_sort_overallarr(arr_dirs);
         if (arr_files != NULL)
-            mx_output_with_atr(arr_files);
-        if (arr_dirs != NULL) {
-            mx_sort_overallarr(arr_dirs);
-            if (arr_files != NULL)
-                mx_printstr("\n");
-            open_dir(arr_dirs);
-        }
-        if (arr_files != NULL)
-            mx_del_strarr(&arr_files);
-        if (arr_dirs != NULL)
-            mx_del_strarr(&arr_dirs);
-    // }
+            mx_printstr("\n");
+        open_dir(arr_dirs, argv);
+    }
+    if (arr_files != NULL)
+        mx_del_strarr(&arr_files);
+    if (arr_dirs != NULL)
+        mx_del_strarr(&arr_dirs);
 }

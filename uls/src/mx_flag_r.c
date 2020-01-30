@@ -17,9 +17,9 @@ static char **read_dir(char **arr_dirs, int u, int *count_el, DIR *dir) {
     return overall_arr;
 }
 
-static void open_dir(char **arr_dirs);
+static void open_dir(char **arr_dirs, char **argv);
 
-static void namecpy(char **overall_arr, int count_el, char *arr_dirs) {
+static void namecpy(char **overall_arr, int count_el, char *arr_dirs, char **argv) {
     int u = 0;
 
     for (u = 0; overall_arr[u] != NULL; u++) {
@@ -34,12 +34,12 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs) {
     if (arr_dirs_new != NULL) {
         mx_printstr("\n");
         mx_sort_overallarr(arr_dirs_new);
-        open_dir(arr_dirs_new);
+        open_dir(arr_dirs_new, argv);
         mx_del_strarr(&arr_dirs_new);
     }
 }
 
-static void open_dir(char **arr_dirs) {
+static void open_dir(char **arr_dirs, char **argv) {
     DIR *dir;
     int count_el = 0;
     char **overall_arr;
@@ -48,18 +48,12 @@ static void open_dir(char **arr_dirs) {
     for (u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
-        if (check_denied(arr_dirs[u], arr_dirs, u) == 1)
+        if (check_denied(arr_dirs[u], arr_dirs, u, argv) == 1)
             continue;
         overall_arr = read_dir(arr_dirs, u, &count_el, dir);
-        if (mx_dirorfile(overall_arr[u]) == 1)
-            mx_printstr(overall_arr[u]);
         if (overall_arr[0] != NULL)
             mx_output_with_atr(overall_arr);
-        if (overall_arr[0] == NULL) {
-            mx_printstr(arr_dirs[u]);
-            mx_printstr(":\n");
-        }
-        namecpy(overall_arr, count_el, arr_dirs[u]);
+        namecpy(overall_arr, count_el, arr_dirs[u], argv);
         if (arr_dirs[u + 1] != NULL)
             mx_printchar(10);
         mx_del_strarr(&overall_arr);
@@ -76,7 +70,7 @@ void mx_flag_r(int argc, char **argv) {
         mx_sort_overallarr(arr_dirs);
         if (arr_files != NULL)
             mx_printstr("\n");
-        open_dir(arr_dirs);
+        open_dir(arr_dirs, argv);
     }
     if (arr_files != NULL)
         mx_del_strarr(&arr_files);

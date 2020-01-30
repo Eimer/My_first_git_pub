@@ -26,12 +26,9 @@
 
 int main (int argc, char **argv) {
      // t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
-     // char **arr_test = mx_arr_dirs(argc, argv);
-     // int i = 0;
-     // for (i = 0; arr_test[i] != NULL; i++){
-     //      printf("%s ", arr_test[i]);
-     // }
-     // exit(0);
+     // mx_uls_noatr(argc, argv);
+     if (argc == 1)
+          argv[1] = ".";
      mx_flag_r(argc, argv);
      // mx_enter_fileordir(argc, argv);
      // free(audit);
