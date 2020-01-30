@@ -17,7 +17,7 @@ int check_denied(char *arr_dirs_u, char **arr_dirs, int u, char **argv) { // Ð±Ð
     DIR *dir;
 
     if ((arr_dirs != NULL && mx_strcmp(argv[1], arr_dirs[u]) != 0)
-        || argv[2] != NULL) {
+        || (argv[2] != NULL && mx_strcmp(argv[1], ".") != 0)) {
         mx_printstr(arr_dirs[u]);
         mx_printstr(":\n");
     }
