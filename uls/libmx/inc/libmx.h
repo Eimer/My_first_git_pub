@@ -1,5 +1,6 @@
 #ifndef LIMBX_H
 #define LIMBX_H
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -8,7 +9,6 @@
 
 char *mx_new(char *str);
 void mx_sort_arr_int(int *arr, int size);
-
 void mx_printchar(char c);
 void mx_print_unicode(wchar_t c);
 void mx_printstr(const char *s);
@@ -53,20 +53,20 @@ void *mx_memccpy(void *restrict dst, const void *restrict src, int c, size_t n);
 int mx_memcmp(const void *s1, const void *s2, size_t n);
 void *mx_memchr(const void *s, int c, size_t n);
 void *mx_memrchr(const void *s, int c, size_t n);
-void *mx_memmem(const void *big, size_t big_len, const void *little, size_t little_len);
 void *mx_memmove(void *dst, const void *src, size_t len);
 void *mx_realloc(void *ptr, size_t size);
 
-typedef struct  s_list {
+typedef struct s_list {
     void  *data;
     struct s_list *next;
-}         t_list;
+} t_list;
 
-t_list  *mx_create_node(void *data);
+t_list *mx_create_node(void *data);
 void mx_push_front(t_list **list, void *data);
 void mx_push_back(t_list **list, void *data);
 void mx_pop_front(t_list **head);
 void mx_pop_back(t_list **head);
 int mx_list_size(t_list *list);
 t_list *mx_sort_list(t_list *lst, bool (*cmp)(void *, void *));
+
 #endif

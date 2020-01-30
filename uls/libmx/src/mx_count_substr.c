@@ -1,4 +1,4 @@
- #include "../inc/libmx.h" 
+ #include "libmx.h" 
 
 int mx_count_substr(const char *str, const char *sub) {
     int count = 0;

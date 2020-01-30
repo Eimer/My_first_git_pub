@@ -7,7 +7,7 @@ static int count_obj() {
     dir = opendir(".");
 
     while ((entry = readdir(dir)) != NULL)
-        if (entry->d_name[0] != '.')
+        //if (entry->d_name[0] != '.')
             res++;
     closedir(dir);
     return res;
@@ -21,12 +21,13 @@ char **mx_uls_noatr(int argc, char **argv) {
 
     overall_arr[count_obj()] = NULL;
     dir = opendir(".");
-    while ((entry = readdir(dir)) != NULL)
-        if (entry->d_name[0] != '.') {
+    while ((entry = readdir(dir)) != NULL) {
+        // if (entry->d_name[0] != '.') {
             overall_arr[count_el] = mx_strnew(mx_strlen(entry->d_name));
             overall_arr[count_el] = mx_strcpy(overall_arr[count_el], entry->d_name);
             count_el++;
-        }
+        // }
+    }
     closedir(dir);
     mx_output(argc, argv, overall_arr);
     return overall_arr;

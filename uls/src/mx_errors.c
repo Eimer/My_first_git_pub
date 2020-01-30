@@ -31,11 +31,11 @@ static int check_flag(int argc, char **argv, int check, int ind_str) {
     }
     if (argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
         && argv[ind_str][2] != '\0') {
-        mx_printstr("usage: ./uls [-abcd] [file ...]\n");
+        mx_printstr("usage: uls [-abcd] [file ...]\n");
         exit(0);
     }
     if (check == 0) {
-        mx_printerr("usage: ./uls [-abcd] [file ...]\n");
+        mx_printerr("usage: uls [-abcd] [file ...]\n");
         exit(0);
     }
     return 0;
