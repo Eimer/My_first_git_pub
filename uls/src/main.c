@@ -8,9 +8,13 @@ int main(int argc, char *argv[]) {
     //mx_get_obj_info("/sbin");
     //mx_get_obj_info("link_to_main");
     //mx_get_obj_info(".");
-    mx_output_l(".");
+    if (argc == 1) {
+        argv[1] = ".";
+    }
+    mx_output_l(argv[1]);
     argv = NULL;
     argc = 0;
+    //system("leaks -q a.out");
 }
 // static void test1_stat() {
 //     char *date;
