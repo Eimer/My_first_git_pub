@@ -12,8 +12,9 @@
 int mx_count_longest_with_atr(char **overall_arr);
 int mx_count_col_with_atr(char **overall_arr);
 void mx_output_with_atr(char **overall_arr);
-void mx_get_obj_info(char *obj_name);
+void mx_get_obj_info(char *obj_name, char *not_need);
 void mx_get_xatr(char *obg);
 void mx_output_l(char *obj);
+int mx_spaces_first_col(char *obj);
 
 #endif
