@@ -1,6 +1,6 @@
 #include "../inc/uls.h"
 
-<<<<<<< HEAD
+
 int main(int argc, char *argv[]) {
     //mx_get_obj_info("/installer.failurerequests");
     //mx_get_obj_info("main.c");
@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     mx_output_l(".");
     argv = NULL;
     argc = 0;
-=======
+}
 // static void test1_stat() {
 //     char *date;
 //         int ret;
@@ -36,15 +36,14 @@ int main(int argc, char *argv[]) {
 //     write(1, &buf.st_size,10);
 // }
 
-int main (int argc, char **argv) {
-     // t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
-     // mx_uls_noatr(argc, argv);
-     // if (argc == 1)
-     //      argv[1] = ".";
-     // mx_flag_r(argc, argv);
-     mx_enter_fileordir(argc, argv);
-     // free(audit);
-     // system("leaks -q uls");
-     return 0;
->>>>>>> d6e81878527e56a3362f7467a613319070d2d045
-}
+// int main (int argc, char **argv) {
+//      // t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
+//      // mx_uls_noatr(argc, argv);
+//      // if (argc == 1)
+//      //      argv[1] = ".";
+//      // mx_flag_r(argc, argv);
+//      mx_enter_fileordir(argc, argv);
+//      // free(audit);
+//      // system("leaks -q uls");
+//      return 0;
+// }
