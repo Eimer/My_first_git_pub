@@ -12,7 +12,7 @@ static void check_fileordir(char **argv, int ind_str, int argc) {
     for (count = 0; print_error[count] != NULL; count++);
     mx_bubble_sort(print_error, count);
     for (int j = 0; print_error[j] != NULL; j++) {
-        mx_printerr("./uls: ");
+        mx_printerr("uls: ");
         mx_printerr(print_error[j]);
         mx_printerr(": No such file or directory\n");
     }

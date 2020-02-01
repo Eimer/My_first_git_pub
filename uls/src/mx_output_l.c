@@ -1,5 +1,6 @@
 #include "../inc/uls.h"
 
+<<<<<<< HEAD
 static int count_numbers(int number) {
     int res = 0;
     while (number != 0) {
@@ -26,6 +27,24 @@ static int longest_numbers_links(char *obj){
     closedir(dir);
     return longest;
 }
+=======
+// static int count_numbers(int number) {
+//     int res = 0;
+//     while (number != 0) {
+//         number = number / 10;
+//         res++;
+//     }
+//     printf("%d ", res);
+//     return res;
+// }
+
+// static int count_spaces_first_col(char *obj) {
+//     struct stat buf;
+//     lstat(obj, &buf);
+//     int len_amount_links = 0;
+//     return len_amount_links;
+// }
+>>>>>>> e68011273594c96126954a8cff075241797b35a5
 
 // static int count_spaces_first_col(char *obj) {
 
@@ -41,6 +60,10 @@ void mx_output_l(char *obj) {
         dir = opendir(obj);
         while ((entry = readdir(dir)) != NULL) {
             mx_get_obj_info(entry->d_name);
+<<<<<<< HEAD
+=======
+            // count_spaces_first_col(obj);
+>>>>>>> e68011273594c96126954a8cff075241797b35a5
         }
     }
     else {

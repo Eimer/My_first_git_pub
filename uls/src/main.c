@@ -28,12 +28,12 @@ int main(int argc, char *argv[]) {
 // }
 
 // static void test2_getpwuid() {
-//     struct stat buf;
-//     lstat("test.txt", &buf);
-//     printf("\n %d uid\n", buf.st_uid);
-//     struct passwd *pwuid = getpwuid(buf.st_uid);
-//     printf("%s", pwuid->pw_name);
-//     write(1, &buf.st_size,10);
+//    struct stat buf;
+//    lstat("test.txt", &buf);
+//    printf("\n %d uid\n", buf.st_uid);
+//    struct passwd *pwuid = getpwuid(buf.st_uid);
+//    printf("%s", pwuid->pw_name);
+//    write(1, &buf.st_size,10);
 // }
 
 // int main (int argc, char **argv) {
