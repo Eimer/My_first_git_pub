@@ -38,6 +38,7 @@ static void get_obj_time(char *obj) {
     time_t current_time;
     lstat(obj, &buf);
     char *res_time = ctime(&buf.st_mtime);
+
     if ((time(&current_time)) - buf.st_mtime > 15768000) {
         for (int i = 4; i < 11; i++)
             printf("%c", res_time[i]);
@@ -50,10 +51,11 @@ static void get_obj_time(char *obj) {
     }
 }
 
-void mx_get_obj_info(char *obj_name) {
+void mx_get_obj_info(char *obj_name, char *not_need) {
     struct stat obj_stat;
     char linked_file[500];
     int link_bytes = 0;
+    
     if (mx_dirorfile(obj_name) == 1) {
         printf( (S_ISLNK(obj_stat.st_mode)) ? "l" : "-");
         lstat(obj_name,&obj_stat);
@@ -78,12 +80,15 @@ void mx_get_obj_info(char *obj_name) {
     get_obj_time(obj_name);
     printf("%s", " ");
     if ((S_ISLNK(obj_stat.st_mode))) {
-        link_bytes = readlink("link_to_main", linked_file, 500);
-        printf("%s", obj_name);
+        link_bytes = readlink(obj_name, linked_file, 500);
+        for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++) {
+            printf("%c", obj_name[i]);
+        }
         printf("%s", " -> ");
         printf("%s", linked_file);
+        not_need = NULL;
     }
     else
         printf("%s", obj_name);
-    printf("%c", '\n');
+    printf("%s", "\n");
 }
