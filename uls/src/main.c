@@ -14,7 +14,6 @@ int main(int argc, char *argv[]) {
     mx_output_l(argv[1]);
     argv = NULL;
     argc = 0;
-    //system("leaks -q a.out");
 }
 // static void test1_stat() {
 //     char *date;
