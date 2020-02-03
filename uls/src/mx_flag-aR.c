@@ -1,17 +1,5 @@
 #include "../inc/uls.h"
 
-static int mx_count_obj_d(const char *str) {
-    int res = 0;
-    DIR *dir;
-    struct dirent *entry;
-    dir = opendir(str);
-
-    while ((entry = readdir(dir)) != NULL)
-        res++;
-    closedir(dir);
-    return res;
-}
-
 static char **read_dir_2(char **arr_dirs, int u, int *count_el, DIR *dir) {
     struct dirent *entry;
     char **overall_arr;
@@ -25,9 +13,9 @@ static char **read_dir_2(char **arr_dirs, int u, int *count_el, DIR *dir) {
     return overall_arr;
 }
 
-static void open_dir(char **arr_dirs, char **argv);
+static void open_dir(char **arr_dirs, t_add_in_func *audit);
 
-static void namecpy(char **overall_arr, int count_el, char *arr_dirs, char **argv) {
+static void namecpy(char **overall_arr, int count_el, char *arr_dirs, t_add_in_func *audit) {
     int u = 0;
     char *new1;
     char *new2;
@@ -48,12 +36,12 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs, char **arg
     if (arr_dirs_new != NULL) {
         mx_printstr("\n");
         mx_sort_overallarr(arr_dirs_new);
-        open_dir(arr_dirs_new, argv);
+        open_dir(arr_dirs_new, audit);
         mx_del_strarr(&arr_dirs_new);
     }
 }
 
-static void open_dir(char **arr_dirs, char **argv) {
+static void open_dir(char **arr_dirs, t_add_in_func *audit) {
     DIR *dir;
     int count_el = 0;
     char **overall_arr;
@@ -62,19 +50,19 @@ static void open_dir(char **arr_dirs, char **argv) {
     for (u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
-        if (check_denied(arr_dirs[u], arr_dirs, u, argv) == 1)
+        if (check_denied(arr_dirs[u], arr_dirs, u) == 1)
             continue;
         overall_arr = read_dir_2(arr_dirs, u, &count_el, dir);
         if (overall_arr[0] != NULL)
-            mx_print_result(overall_arr, 2, arr_dirs[u], argv);
-        namecpy(overall_arr, count_el, arr_dirs[u], argv);
+            mx_print_result(overall_arr, audit, arr_dirs[u]);
+        namecpy(overall_arr, count_el, arr_dirs[u], audit);
         if (arr_dirs[u + 1] != NULL && mx_searchstr(arr_dirs[u], "/.") != 1)
             mx_printchar(10);
         mx_del_strarr(&overall_arr);
     }
 }
 
-void mx_flag_aR(int argc, char **argv) {
+void mx_flag_aR(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
     char **arr_dirs = mx_arr_dirs(argc, argv);
 
@@ -84,7 +72,7 @@ void mx_flag_aR(int argc, char **argv) {
         mx_sort_overallarr(arr_dirs);
         if (arr_files != NULL)
             mx_printstr("\n");
-        open_dir(arr_dirs, argv);
+        open_dir(arr_dirs, audit);
     }
     if (arr_files != NULL)
         mx_del_strarr(&arr_files);
