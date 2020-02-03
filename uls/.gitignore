@@ -6,3 +6,4 @@ uls
 *.txt
 main.c
 uls.dSYM
+obj
