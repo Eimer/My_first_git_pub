@@ -9,7 +9,10 @@ void mx_get_xatr(char *obj) {
     if (xatr > 0) {
         printf("@");
     }
-    if (plus != NULL)
+    else if (plus != NULL)
         printf("+");
+    else {
+        printf(" ");
+    }
     acl_free(plus);
 }
