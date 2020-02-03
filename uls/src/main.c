@@ -7,14 +7,14 @@ int main (int argc, char **argv) {
     for (int u = 0; u < 10; u++)
         audit->flags[u] = 0;
     mx_errors(argc, argv, audit, "aARl1");
-    if (argc == 1)
-        argv[1] = ".";
+    // if (argc == 1)
+    //     argv[1] = ".";
     // for (int u = 0; u < 10; u++)
     //     mx_printint(audit->flags[u]);
-    // if (audit->flags[3] == 1)
+    if (audit->flags[3] == 1)
         mx_flag_aR(argc, argv, audit);
-    // else
-        // mx_enter_fileordir(argc, argv, audit);
+    else
+        mx_enter_fileordir(argc, argv, audit);
     free(audit->flags);
     free(audit);
     // system("leaks -q uls");

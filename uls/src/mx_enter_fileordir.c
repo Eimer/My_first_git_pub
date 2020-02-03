@@ -58,8 +58,8 @@ static void open_dir(char **arr_dirs, t_add_in_func *audit) {
             overall_arr = read_dir_2(arr_dirs, u, count_el, dir);
         if (overall_arr[0] != NULL)
             mx_print_result(overall_arr, audit, arr_dirs[u]);
-        if (arr_dirs[u + 1] != NULL)
-            mx_printchar(10);
+        // if (arr_dirs[u + 1] != NULL)
+        //     mx_printchar(10);
         mx_del_strarr(&overall_arr);
     }
 }

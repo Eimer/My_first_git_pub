@@ -34,7 +34,7 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
     int numb = 0;
 
     if (audit->flags[2] == 1 || audit->flags[1] == 1)
-    if (arr != NULL) {
+    if (arr[0] != NULL && audit->flags[0] == 1) {
         mx_printstr(check_a);
         mx_printstr(":\n");
     }
