@@ -12,7 +12,7 @@ int mx_count_obj_d(const char *str) {
     return res;
 }
 
-int check_denied(char *arr_dirs_u, char **arr_dirs, int u) { // больше чем 20 строк
+int check_denied(char *arr_dirs_u, char **arr_dirs, int u) {
     DIR *dir;
 
     dir = opendir(arr_dirs_u);
@@ -58,15 +58,15 @@ static void open_dir(char **arr_dirs, t_add_in_func *audit) {
             overall_arr = read_dir_2(arr_dirs, u, count_el, dir);
         if (overall_arr[0] != NULL)
             mx_print_result(overall_arr, audit, arr_dirs[u]);
-        // if (arr_dirs[u + 1] != NULL)
-        //     mx_printchar(10);
+        if (arr_dirs[u + 1] != NULL)
+            mx_printchar(10);
         mx_del_strarr(&overall_arr);
     }
 }
 
 void mx_enter_fileordir(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
-    char **arr_dirs = mx_arr_dirs(argc, argv);
+    char **arr_dirs = mx_arr_dirs_1(argc, argv, audit);
 
     if (arr_files != NULL)
         mx_output_with_atr(arr_files);

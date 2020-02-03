@@ -64,7 +64,7 @@ static void open_dir(char **arr_dirs, t_add_in_func *audit) {
 
 void mx_flag_aR(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
-    char **arr_dirs = mx_arr_dirs(argc, argv);
+    char **arr_dirs = mx_arr_dirs_1(argc, argv, audit);
 
     if (arr_files != NULL)
         mx_output_with_atr(arr_files);

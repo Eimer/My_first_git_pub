@@ -29,17 +29,18 @@ static void mx_print_n(char **arr) {
 }
 
 void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
-    char **new_arr;
+    char **new_arr = NULL;
     int count = 0;
     int numb = 0;
 
-    if (audit->flags[2] == 1 || audit->flags[1] == 1)
-    if (arr[0] != NULL && audit->flags[0] == 1) {
-        mx_printstr(check_a);
-        mx_printstr(":\n");
-    }
-    if (audit->flags[1] == 1) { // flag -a 
+    if (arr[0] != NULL && audit->flags[0] == 1)
+        if (audit->flags[1] == 1 || audit->flags[2] == 1) {
+            mx_printstr(check_a);
+            mx_printstr(":\n");
+        }
+    if (audit->flags[1] == 1 && isatty(1) == 1) { // flag -a
         mx_output_with_atr(arr);
+        audit->flags[0] = 1;
         return;
     }
     if (audit->flags[2] == 1) { // flag -A
@@ -62,18 +63,20 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
                 if (arr[count][0] != '.')
                     numb++;
             new_arr = (char **)malloc(sizeof(char *) * numb + 1);
+            for (int u = 0; u < numb; u++)
+                new_arr[u] = NULL;
             new_arr[numb] = NULL;
             for (count = 0, numb = 0; arr[count] != NULL; count++)
                 if (arr[count][0] != '.')
                     new_arr[numb++] = mx_strdup(arr[count]);
         }
     }
-        if (new_arr != NULL) {
-            if (new_arr[0] != NULL)
+        if (new_arr != NULL && audit->flags[5] == 0) {
+            if (new_arr[0] != NULL && isatty(1) == 1)
                 mx_output_with_atr(new_arr);
             mx_del_strarr(&new_arr);
         }
-        if (audit->flags[5] == 1)
+        if (audit->flags[5] == 1 || isatty(1) == 0)
             mx_print_n(arr);
         audit->flags[0] = 1;
 }

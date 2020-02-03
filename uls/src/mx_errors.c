@@ -10,6 +10,7 @@ static void check_fileordir(char **argv, int ind_str, t_add_in_func *audit) {
     for (count = 0, check_n = 0; ind_str < audit->argc; ind_str++, check_n++)
         if (mx_dirorfile(argv[ind_str]) == -1 && errno != 13)
             print_error[count++] = mx_strdup(argv[ind_str]);
+    audit->check_n = check_n;
     if (check_n > 1)
         audit->flags[0] = 1;
     for (count = 0; print_error[count] != NULL; count++);
