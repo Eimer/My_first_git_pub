@@ -12,6 +12,7 @@ typedef struct s_spaces_l {
     int third_col;
     int fourth_col;
     int count;
+    blkcnt_t total;
 } t_spaces_l;
 
 int mx_count_longest_with_atr(char **overall_arr);
@@ -25,5 +26,7 @@ int longest_numbers_links(char *obj);
 int mx_count_numbers(int number);
 int mx_longest_numbers_links(char *obj);
 int mx_longest_numbers_pwuid(char *obj);
+int mx_longest_numbers_pwgid(char *obj);
+int mx_longest_numbers_st_size(char *obj);
 
 #endif

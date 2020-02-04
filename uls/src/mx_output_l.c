@@ -19,8 +19,10 @@ void mx_output_l(char *obj) {
     struct dirent *entry;
     char **sorted_arr_l = NULL;
     char *tmp = NULL;
+    struct stat buf;
+
     t_spaces_l *spaces = (t_spaces_l*)malloc(sizeof(t_spaces_l));
-    system("leaks -q a.out");
+    spaces->total = 0;
     spaces->count = count_el_before_sorted(obj);
     if (spaces->count != 0) {
         sorted_arr_l = (char**)malloc(sizeof(char*) * spaces->count + 1);
@@ -31,14 +33,22 @@ void mx_output_l(char *obj) {
         tmp = mx_strjoin(obj, "/");
         dir = opendir(tmp);
         spaces->first_col = mx_longest_numbers_links(tmp);
+        spaces->second_col = mx_longest_numbers_pwuid(tmp);
+        spaces->third_col = mx_longest_numbers_pwgid(tmp);
+        spaces->fourth_col = mx_longest_numbers_st_size(tmp);
         while ((entry = readdir(dir)) != NULL) {
                 sorted_arr_l[spaces->count] = mx_strnew(mx_strlen(tmp) + mx_strlen(entry->d_name));
                 sorted_arr_l[spaces->count] = mx_strjoin(tmp, entry->d_name);
+                lstat(sorted_arr_l[spaces->count], &buf);
+                spaces->total += buf.st_blocks;
                 spaces->count++;
+                
         }
-
         sorted_arr_l = mx_sort_overallarr(sorted_arr_l);
         spaces->count = 0;
+        printf("%s", "total ");
+        printf("%lld", spaces->total);
+        printf("%c", '\n');
         while (sorted_arr_l[spaces->count]) {
             mx_get_obj_info(sorted_arr_l[spaces->count], obj, spaces);
             spaces->count++;

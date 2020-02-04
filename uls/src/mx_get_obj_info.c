@@ -11,7 +11,13 @@ static void print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces) 
     printf( (obj_stat.st_mode & S_IXGRP) ? "x" : "-");
     printf( (obj_stat.st_mode & S_IROTH) ? "r" : "-");
     printf( (obj_stat.st_mode & S_IWOTH) ? "w" : "-");
-    printf( (obj_stat.st_mode & S_IXOTH) ? "x" : "-");
+    if (obj_stat.st_mode & S_ISVTX)
+        printf("%c", 't');
+    else if (obj_stat.st_mode & S_IXOTH){
+        printf("%c", 'x');
+    }
+    else
+        printf("%c", '-');
     mx_get_xatr(obj_name);
     printf("%s", " ");
     for (int i = 0; i < spaces->first_col - mx_count_numbers(buf.st_nlink); i++)
@@ -21,21 +27,29 @@ static void print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces) 
     
 }
 
-static void get_obj_pwgid(char *obj) {
+static void get_obj_pwgid(char *obj, t_spaces_l *spaces) {
     struct stat buf;
     lstat(obj, &buf);
     struct group *groups = getgrgid(buf.st_gid);
-    if (!groups)
-        printf ("%d",buf.st_gid);
-    else
-        printf("%s", groups->gr_name);
+    if (!groups) {
+        printf("%d", buf.st_gid);
+        for (int i = 0; i < spaces->third_col- mx_count_numbers(buf.st_gid); i++)
+            printf("%s", " ");
+    }   
+    else {
+    printf("%s", groups->gr_name);
+        for (int i = 0; i < spaces->third_col- mx_strlen(groups->gr_name); i++)
+            printf("%s", " ");
+    }
 }
 
-static void get_obj_pwuid(char *obj) {
+static void get_obj_pwuid(char *obj, t_spaces_l *spaces) {
     struct stat buf;
     lstat(obj, &buf);
     struct passwd *pwuid = getpwuid(buf.st_uid);
     printf("%s", pwuid->pw_name);
+    for (int i = 0; i < spaces->second_col - mx_strlen(pwuid->pw_name); i++)
+        printf("%c", ' ');
 }
 
 static void get_obj_time(char *obj) {
@@ -62,24 +76,42 @@ void mx_get_obj_info(char *obj_name, char *not_need, t_spaces_l *spaces) {
     int link_bytes = 0;
     
     if (mx_dirorfile(obj_name) == 1) {
-        printf( (S_ISLNK(obj_stat.st_mode)) ? "l" : "-");
         lstat(obj_name,&obj_stat);
+        if ((S_ISLNK(obj_stat.st_mode)))
+            printf("%s", "l");
+        else if (S_ISBLK(obj_stat.st_mode))
+            printf("%s", "b");
+        else if (S_ISCHR(obj_stat.st_mode))
+            printf("%s", "c");
+        else
+            printf("%s", "-");
         print_acl(obj_stat, obj_name, spaces);
     }
     else if (mx_dirorfile(obj_name) == 0) {
         lstat(obj_name, &obj_stat);
-        printf( (S_ISDIR(obj_stat.st_mode)) ? "d" : "-");
+        if ((S_ISLNK(obj_stat.st_mode)))
+            printf("%s", "l");
+        else
+            printf( (S_ISDIR(obj_stat.st_mode)) ? "d" : "-");
         print_acl(obj_stat, obj_name, spaces);
     }
     else {
         lstat(obj_name, &obj_stat);
-        printf( (S_ISBLK(obj_stat.st_mode)) ? "b" : "-");
+        if (S_ISBLK(obj_stat.st_mode))
+            printf("%s", "b");
+        else if (S_ISCHR(obj_stat.st_mode))
+            printf("%s", "c");
+        else
+            printf("%s", "-");
         print_acl(obj_stat, obj_name, spaces);
     }
-    get_obj_pwuid(obj_name);
+    get_obj_pwuid(obj_name, spaces);
     printf("%s", "  ");
-    get_obj_pwgid(obj_name);
+    get_obj_pwgid(obj_name, spaces);
     printf("%s", "  ");
+    for (int i = 0; i < spaces->fourth_col - mx_count_numbers(obj_stat.st_size); i++) {
+        printf("%s", " ");
+    }
     printf( "%lld", obj_stat.st_size);
     printf("%s", " ");
     get_obj_time(obj_name);
