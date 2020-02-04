@@ -34,7 +34,6 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs, t_add_in_f
     }
     arr_dirs_new = mx_arr_dirs_2(count_el, overall_arr);
     if (arr_dirs_new != NULL) {
-        mx_printstr("\n");
         mx_sort_overallarr(arr_dirs_new);
         open_dir(arr_dirs_new, audit);
         mx_del_strarr(&arr_dirs_new);
@@ -56,8 +55,6 @@ static void open_dir(char **arr_dirs, t_add_in_func *audit) {
         if (overall_arr[0] != NULL)
             mx_print_result(overall_arr, audit, arr_dirs[u]);
         namecpy(overall_arr, count_el, arr_dirs[u], audit);
-        if (arr_dirs[u + 1] != NULL && mx_searchstr(arr_dirs[u], "/.") != 1)
-            mx_printchar(10);
         mx_del_strarr(&overall_arr);
     }
 }
@@ -70,8 +67,6 @@ void mx_flag_aR(int argc, char **argv, t_add_in_func *audit) {
         mx_output_with_atr(arr_files);
     if (arr_dirs != NULL) {
         mx_sort_overallarr(arr_dirs);
-        if (arr_files != NULL)
-            mx_printstr("\n");
         open_dir(arr_dirs, audit);
     }
     if (arr_files != NULL)
