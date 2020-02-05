@@ -1,5 +1,6 @@
 #include "../inc/uls.h"
 
+<<<<<<< HEAD
 
 int main(int argc, char *argv[]) {
     //mx_get_obj_info("/installer.failurerequests");
@@ -53,6 +54,24 @@ int main(int argc, char *argv[]) {
     // mx_enter_fileordir(argc, argv, 3);
     // argc = 0;
     // free(audit);
+=======
+int main (int argc, char **argv) {
+    t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
+    audit->flags = (int *)malloc(sizeof(int) * 10);
+
+    audit->argc = argc;
+    audit->check = 0;
+    audit->check_n = 0;
+    for (int u = 0; u < 10; u++)
+        audit->flags[u] = 0;
+    mx_errors(argc, argv, audit, "aARl1");
+    if (audit->flags[3] == 1)
+        mx_flag_aR(argc, argv, audit);
+    else
+        mx_enter_fileordir(argc, argv, audit);
+    free(audit->flags);
+    free(audit);
+>>>>>>> dashuta
     // system("leaks -q uls");
     // return 0;
 // }
