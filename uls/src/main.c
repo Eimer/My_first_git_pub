@@ -1,6 +1,8 @@
 #include "../inc/uls.h"
 
 int main (int argc, char **argv) {
+    mx_output_l(argv[1]);
+    exit(0);
     t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
     audit->flags = (int *)malloc(sizeof(int) * 10);
 
