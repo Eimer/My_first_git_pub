@@ -72,8 +72,7 @@ static void get_obj_time(char *obj) {
 
 void mx_get_obj_info(char *obj_name, char *not_need, t_spaces_l *spaces) {
     struct stat obj_stat;
-    char linked_file[500];
-    int link_bytes = 0;
+    char *linked_file = mx_strnew(500);
     
     if (mx_dirorfile(obj_name) == 1) {
         lstat(obj_name,&obj_stat);
@@ -117,7 +116,7 @@ void mx_get_obj_info(char *obj_name, char *not_need, t_spaces_l *spaces) {
     get_obj_time(obj_name);
     printf("%s", " ");
     if ((S_ISLNK(obj_stat.st_mode))) {
-        link_bytes = readlink(obj_name, linked_file, 500);
+        readlink(obj_name, linked_file, 500);
         for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++) {
             printf("%c", obj_name[i]);
         }
@@ -131,7 +130,7 @@ void mx_get_obj_info(char *obj_name, char *not_need, t_spaces_l *spaces) {
         else {
             for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++) {
             printf("%c", obj_name[i]);
-        }
+            }
         }
     printf("%s", "\n");
 }
