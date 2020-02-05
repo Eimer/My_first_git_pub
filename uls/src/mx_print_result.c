@@ -70,7 +70,7 @@ static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
     if (arr != NULL && audit->flags[0] == 1) {
         if (audit->check != 0)
             mx_printchar(10);
->>>>>>> dashuta
+
         mx_printstr(check_a);
         mx_printstr(":\n");
     }
