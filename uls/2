@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+.
+..
+.DS_Store
+.gitignore
+.vscode
+=======
 Endgame
 Main_pathfinder
 Pathfinder
@@ -525,6 +532,7 @@ mx_swap_char.c
 test.txt
 
 ../uls:
+>>>>>>> dashuta
 1
 2
 Makefile
@@ -536,12 +544,30 @@ obj
 src
 uls
 
+<<<<<<< HEAD
+./.vscode:
+.
+..
+c_cpp_properties.json
+settings.json
+
+./inc:
+.
+..
+=======
 ../uls/inc:
+>>>>>>> dashuta
 dashuta.h
 uls.h
 ypratsovit.h
 
+<<<<<<< HEAD
+./libmx:
+.
+..
+=======
 ../uls/libmx:
+>>>>>>> dashuta
 Makefile
 inc
 libmx
@@ -549,6 +575,27 @@ libmx.a
 obj
 src
 
+<<<<<<< HEAD
+./libmx/inc:
+.
+..
+libmx.h
+
+./libmx/libmx:
+.
+..
+ss
+
+./libmx/libmx/ss:
+.
+..
+oo
+w
+
+./libmx/obj:
+.
+..
+=======
 ../uls/libmx/inc:
 libmx.h
 
@@ -560,6 +607,7 @@ oo
 w
 
 ../uls/libmx/obj:
+>>>>>>> dashuta
 mx_binary_search.o
 mx_bubble_sort.o
 mx_count_substr.o
@@ -610,7 +658,13 @@ mx_strsplit.o
 mx_strstr.o
 mx_swap_char.o
 
+<<<<<<< HEAD
+./libmx/src:
+.
+..
+=======
 ../uls/libmx/src:
+>>>>>>> dashuta
 mx_binary_search.c
 mx_bubble_sort.c
 mx_count_substr.c
@@ -661,7 +715,13 @@ mx_strsplit.c
 mx_strstr.c
 mx_swap_char.c
 
+<<<<<<< HEAD
+./obj:
+.
+..
+=======
 ../uls/obj:
+>>>>>>> dashuta
 main.o
 mx_arr_dirs.o
 mx_arr_files.o
@@ -686,7 +746,13 @@ mx_printerr.o
 mx_sort_overallarr.o
 mx_uls_noatr.o
 
+<<<<<<< HEAD
+./src:
+.
+..
+=======
 ../uls/src:
+>>>>>>> dashuta
 link_to_main
 main.c
 mx_arr_dirs.c
@@ -713,8 +779,20 @@ mx_sort_overallarr.c
 mx_uls_noatr.c
 ss
 
+<<<<<<< HEAD
+./src/ss:
+.
+..
+1
+dd
+
+./src/ss/dd:
+.
+..
+=======
 ../uls/src/ss:
 1
 dd
 
 ../uls/src/ss/dd:
+>>>>>>> dashuta
