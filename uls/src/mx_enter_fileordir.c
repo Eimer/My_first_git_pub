@@ -45,7 +45,7 @@ static char **read_dir_2(char **arr_dirs, int u, int count_el, DIR *dir) {
     return overall_arr;
 }
 
-static void open_dir(char **arr_dirs, t_add_in_func *audit) {
+static void open_dir_efd(char **arr_dirs, t_add_in_func *audit) {
     DIR *dir;
     int count_el;
     char **overall_arr;
@@ -66,16 +66,13 @@ void mx_enter_fileordir(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
     char **arr_dirs = mx_arr_dirs_1(argc, argv, audit);
 
-    if (arr_files != NULL)
+    if (arr_files != NULL) {
         mx_output_with_atr(arr_files);
+        mx_del_strarr(&arr_files);
+    }
     if (arr_dirs != NULL) {
         mx_sort_overallarr(arr_dirs);
-        if (arr_files != NULL)
-            mx_printstr("\n");
-        open_dir(arr_dirs, audit);
-    }
-    if (arr_files != NULL)
-        mx_del_strarr(&arr_files);
-    if (arr_dirs != NULL)
+        open_dir_efd(arr_dirs, audit);
         mx_del_strarr(&arr_dirs);
+    }
 }

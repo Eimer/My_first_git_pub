@@ -61,7 +61,7 @@ char **mx_arr_dirs_2(int argc, char **argv) {
 
     for (int i = 0; i < argc; i++)
         if (mx_dirorfile(argv[i]) == 0
-            && ((argv[i][0] == '.' && argv[i][1] == '/') || argv[i][0] != '.'))
+            && (mx_searchstr(argv[i], "./") || argv[i][0] != '.'))
             count_dirs++;
     if (count_dirs != 0) {
         arr_dirs = (char **)malloc(sizeof(char *) * (count_dirs + 1));
@@ -69,7 +69,7 @@ char **mx_arr_dirs_2(int argc, char **argv) {
         count_dirs = 0;
         for (int i = 0; i < argc; i++)
             if (mx_dirorfile(argv[i]) == 0
-                && ((argv[i][0] == '.' && argv[i][1] == '/') 
+                && (mx_searchstr(argv[i], "./") 
                     || argv[i][0] != '.'))
                 arr_dirs[count_dirs++] = mx_strdup(argv[i]);
     }

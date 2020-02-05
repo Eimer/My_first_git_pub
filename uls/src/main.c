@@ -3,7 +3,10 @@
 int main (int argc, char **argv) {
     t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
     audit->flags = (int *)malloc(sizeof(int) * 10);
+
     audit->argc = argc;
+    audit->check = 0;
+    audit->check_n = 0;
     for (int u = 0; u < 10; u++)
         audit->flags[u] = 0;
     mx_errors(argc, argv, audit, "aARl1");

@@ -4,13 +4,13 @@
 
 
 typedef struct s_add_in_func {
-    // int count;
-    // int numb;
+    int check;
     int check_n;
     int argc;
     int *flags;
 } t_add_in_func;
 
+void mx_open_dir(char **arr_dirs, t_add_in_func *audit);
 int mx_count_obj_d(const char *str);
 void mx_print_result(char **arr, t_add_in_func *audit, char *check_a);
 void mx_flag_aR(int argc, char **argv, t_add_in_func *audit);
