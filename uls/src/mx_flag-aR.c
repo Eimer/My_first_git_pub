@@ -47,17 +47,12 @@ void mx_open_dir(char **arr_dirs, t_add_in_func *audit) {
     for (u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
-        if (check_denied(arr_dirs[u], arr_dirs, u) == 1)
+        if (check_denied(arr_dirs[u]) == 1)
             continue;
         overall_arr = read_dir_2(arr_dirs, u, &count_el, dir);
         if (overall_arr[0] != NULL)
-<<<<<<< HEAD
-            mx_print_result(overall_arr, 1, arr_dirs[u], argv);
-        namecpy(overall_arr, count_el, arr_dirs[u], argv);
-=======
             mx_print_result(overall_arr, audit, arr_dirs[u]);
         namecpy(overall_arr, count_el, arr_dirs[u], audit);
->>>>>>> dashuta
         mx_del_strarr(&overall_arr);
     }
 }
