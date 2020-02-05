@@ -1,3 +1,4 @@
+
 #include "../inc/uls.h"
 
 int mx_searchstr(const char *haystack, const char *needle) {
@@ -20,24 +21,6 @@ int mx_searchstr(const char *haystack, const char *needle) {
     }
     return 0;
 }
-<<<<<<< HEAD
-static void mx_print_n(char **arr) {
-    int u = 0;
-    for (u = 0; arr[u] != NULL; u++) {
-        mx_printstr(arr[u]);
-        mx_printstr("\n");
-    }
-}
-void mx_print_result(char **arr, int flags, char *check_a, char **argv) {
-    char **new_arr;
-    int count = 0;
-    int numb = 0;
-
-    if (flags != 2)
-    if ((arr != NULL && mx_strcmp(argv[1], check_a) != 0)
-        || (argv[2] != NULL && mx_strcmp(argv[1], ".") != 0)) {
-        mx_printstr("\n");
-=======
 
 static void mx_print_n(char **arr, int *flags) {
     int u = 0;
@@ -70,7 +53,6 @@ static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
     if (arr != NULL && audit->flags[0] == 1) {
         if (audit->check != 0)
             mx_printchar(10);
-
         mx_printstr(check_a);
         mx_printstr(":\n");
     }
@@ -118,33 +100,6 @@ static char **return_without_flags(char **arr, t_add_in_func *audit, char *check
             if (arr[count][0] != '.')
                 new_arr[numb++] = mx_strdup(arr[count]);
     }
-<<<<<<< HEAD
-    if (flags == 2) {
-        if (mx_searchstr(check_a, "/.") != 1) {
-            if ((arr != NULL && mx_strcmp(argv[1], check_a) != 0)
-            || (argv[2] != NULL && mx_strcmp(argv[1], ".") != 0)) {
-                mx_printstr("\n");
-                mx_printstr(check_a);
-                mx_printstr(":\n");
-            }
-            for (count = 0; arr[count] != NULL; count++)
-                if (arr[count][0] != '.')
-                    numb++;
-            new_arr = (char **)malloc(sizeof(char *) * numb + 1);
-            new_arr[numb] = NULL;
-            for (count = 0, numb = 0; arr[count] != NULL; count++)
-                if (arr[count][0] != '.')
-                    new_arr[numb++] = mx_strdup(arr[count]);
-        }
-    }
-        if (new_arr != NULL && flags != 3) {
-            if (new_arr[0] != NULL)
-                mx_output_with_atr(new_arr);
-            mx_del_strarr(&new_arr);
-        }
-    if (flags == 3)
-        mx_print_n(arr);
-=======
     return new_arr;
 }
 
@@ -170,5 +125,4 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
         }
         audit->flags[0] = 1;
         audit->check = 1;
->>>>>>> dashuta
 }
