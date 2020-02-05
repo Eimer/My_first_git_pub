@@ -28,5 +28,6 @@ int mx_longest_numbers_links(char *obj);
 int mx_longest_numbers_pwuid(char *obj);
 int mx_longest_numbers_pwgid(char *obj);
 int mx_longest_numbers_st_size(char *obj);
+int mx_mystrcmp(const char *s1, const char *s2);
 
 #endif

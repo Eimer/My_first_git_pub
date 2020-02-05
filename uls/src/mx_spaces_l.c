@@ -62,7 +62,7 @@ int mx_longest_numbers_pwgid(char *obj) {
     struct stat buf;
     char *buff = NULL;
     struct group *groups;
-
+    
     if (mx_dirorfile(obj) == 0) {
         dir = opendir(obj);
         while ((entry = readdir(dir)) != NULL) {
