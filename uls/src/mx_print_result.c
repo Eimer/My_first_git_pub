@@ -97,15 +97,16 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
     }
     if (audit->flags[1] == 0 && audit->flags[2] == 0)
         new_arr = return_without_flags(arr, check_a);
-    if (new_arr != NULL && (audit->flags[5] == 1 || isatty(1) == 0)) {
-        mx_print_n(new_arr, audit->flags);
-        mx_del_strarr(&new_arr);
-    }
-    if (new_arr != NULL && audit->flags[5] == 0) {
-        if (new_arr[0] != NULL && isatty(1) == 1)
-            mx_output_with_atr(new_arr);
-        mx_del_strarr(&new_arr);
-    }
+    // if (new_arr != NULL && (audit->flags[5] == 1 || isatty(1) == 0)) {
+    //     mx_print_n(new_arr, audit->flags);
+    //     mx_del_strarr(&new_arr);
+    // }
+    // if (new_arr != NULL && audit->flags[5] == 0) {
+    //     if (new_arr[0] != NULL && isatty(1) == 1)
+    //         mx_output_with_atr(new_arr);
+    //     mx_del_strarr(&new_arr);
+    // }
+    mx_output_l(new_arr[0]);
     audit->flags[0] = 1;
     audit->check = 1;
 }
