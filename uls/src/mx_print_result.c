@@ -45,20 +45,22 @@ static void mx_print_n(char **arr, int *flags) {
 
 static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
     mx_sort_overallarr(arr);
-    // if (arr != NULL && audit->flags[0] == 1) {
-    //     if (audit->check == 1)
-    //     mx_printchar(10);
-    //     mx_printstr(check_a);
-    //     mx_printstr(":\n");
-    // }
-    if (audit->flags[1] == 0 && audit->flags[2] == 0)
-        if (arr != NULL && audit->flags[0] == 1 && mx_searchstr(check_a, "/.") != 1) {
-            if (audit->check == 1)
-                mx_printchar(10);
-            mx_printstr(check_a);
-            mx_printstr(":\n");
+    if (arr != NULL && audit->flags[0] == 1) {
+        if (audit->check == 1)
+            mx_printchar(10);
+        mx_printstr(check_a);
+        mx_printstr(":\n");
     }
+    // if (audit->flags[1] == 0 && audit->flags[2] == 0)
+    //     if (arr != NULL && audit->flags[0] == 1) {
+    //         if (audit->check == 1)
+    //             mx_printchar(10);
+    //         mx_printstr(check_a);
+    //         mx_printstr(":\n");
+    // }
+    mx_sort_overallarr(arr);
     audit->check = 1;
+    audit->flags[0] = 1;
 }
 
 static char **return_a_A(char **arr, t_add_in_func *audit) {
@@ -77,6 +79,7 @@ static char **return_a_A(char **arr, t_add_in_func *audit) {
             if (mx_strcmp(arr[count], ".") != 0
                 && mx_strcmp(arr[count], "..") != 0)
                 new_arr[numb++] = mx_strdup(arr[count]);
+        mx_sort_overallarr(new_arr);
     }
     return new_arr;
 }
@@ -104,26 +107,27 @@ static char **return_without_flags(char **arr, char *check_a) {
 void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
     char **new_arr = return_a_A(arr, audit);
 
-    mx_sort_overallarr(arr);
+    if (mx_searchstr(check_a, "/.") == 1 && audit->flags[1] == 0
+        && audit->flags[2] == 0)
+        return;
     print_check_a(arr, audit, check_a);
     if (audit->flags[1] == 1) { // flag -a
-        (audit->flags[5] == 0 || isatty(1) == 1) ?
-            mx_output_with_atr(arr) : mx_print_n(arr,audit->flags);
+        mx_sort_overallarr(arr);
+        (audit->flags[5] == 0 && isatty(1) == 1) ?
+            mx_output_with_atr(arr) : mx_print_n(arr, audit->flags);
         return;
     }
-    if (audit->flags[1] == 0 && audit->flags[2] == 0 && mx_searchstr(check_a, "/.") != 1)
+    if (audit->flags[1] == 0 && audit->flags[2] == 0)
         new_arr = return_without_flags(arr, check_a);
-        if (new_arr != NULL && (audit->flags[5] == 1 || isatty(1) == 0)) {
-            mx_sort_overallarr(arr);
-            mx_print_n(new_arr, audit->flags);
-            mx_del_strarr(&new_arr);
-        }
-        if (new_arr != NULL && audit->flags[5] == 0) {
-            if (new_arr[0] != NULL && isatty(1) == 1) {
-                mx_sort_overallarr(arr);
-                mx_output_with_atr(new_arr);
-            }
-            mx_del_strarr(&new_arr);
-        }
-        audit->flags[0] = 1;
+    if (new_arr != NULL && (audit->flags[5] == 1 || isatty(1) == 0)) {
+        mx_print_n(new_arr, audit->flags);
+        mx_del_strarr(&new_arr);
+    }
+    if (new_arr != NULL && audit->flags[5] == 0) {
+        if (new_arr[0] != NULL && isatty(1) == 1)
+            mx_output_with_atr(new_arr);
+        mx_del_strarr(&new_arr);
+    }
+    audit->flags[0] = 1;
+    audit->check = 1;
 }
