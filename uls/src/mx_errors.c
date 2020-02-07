@@ -35,11 +35,11 @@ static int check_flag(char **argv, int check, int ind_str, t_add_in_func *audit)
     }
     if (argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
         && argv[ind_str][2] != '\0') {
-        mx_printstr("usage: uls [-abcd] [file ...]\n");
+        mx_printstr("usage: uls [-aARrl1] [file ...]\n");
         exit(0);
     }
     if (check == 0) {
-        mx_printerr("usage: uls [-abcd] [file ...]\n");
+        mx_printerr("usage: uls [-aARrl1] [file ...]\n");
         exit(0);
     }
     return 0;
@@ -56,6 +56,8 @@ static void write_flags(char flag, t_add_in_func *audit) {
         audit->flags[4] = 1;
     if (flag == '1')
         audit->flags[5] = 1;
+    if (flag == 'r')
+        audit->flags[6] = 1;
 }
 
 void mx_errors(int argc, char **argv, t_add_in_func *audit, char *flag) {

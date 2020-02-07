@@ -32,7 +32,7 @@ static void get_obj_pwgid(char *obj, t_spaces_l *spaces) {
     lstat(obj, &buf);
     struct group *groups = getgrgid(buf.st_gid);
     if (!groups) {
-         mx_printint(buf.st_gid);
+        mx_printint(buf.st_gid);
         for (int i = 0; i < spaces->third_col- mx_count_numbers(buf.st_gid); i++)
             mx_printchar(' ');
     }   
