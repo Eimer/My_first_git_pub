@@ -12,7 +12,7 @@ static int count_el_before_sorted(char *obj) {
     DIR *dir = NULL;
     struct dirent *entry;
 
-    if (mx_dirorfile(obj) == 0) {
+    if (mx_dirorfile(obj) == 0) {    
         dir = opendir(obj);
         while ((entry = readdir(dir)) != NULL)
             res++;
@@ -30,6 +30,7 @@ void mx_output_l(char *obj) {
 
     t_spaces_l *spaces = (t_spaces_l*)malloc(sizeof(t_spaces_l));
     spaces->total = 0;
+
     spaces->count = count_el_before_sorted(obj);
     if (spaces->count != 0) {
         sorted_arr_l = (char**)malloc(sizeof(char*) * spaces->count + 1);
@@ -38,7 +39,7 @@ void mx_output_l(char *obj) {
     if (mx_dirorfile(obj) == 0) {
         spaces->count = 0;
         tmp = mx_strjoin(obj, "/");
-        dir = opendir(tmp);;
+        dir = opendir(tmp);
         fill_struct_spaces(spaces, tmp);
         while ((entry = readdir(dir)) != NULL) {
                 sorted_arr_l[spaces->count] = mx_strnew(mx_strlen(tmp) + mx_strlen(entry->d_name));
@@ -53,15 +54,16 @@ void mx_output_l(char *obj) {
         mx_printstr("total ");
         mx_printint(spaces->total);
         mx_printchar('\n');
+        
         while (sorted_arr_l[spaces->count]) {
             mx_get_obj_info(sorted_arr_l[spaces->count], obj, spaces);
             spaces->count++;
         }
     }
     else {
-        fill_struct_spaces(spaces, obj);
-        mx_get_obj_info(obj, obj, spaces);
-    }
+            fill_struct_spaces(spaces, obj);
+            mx_get_obj_info(obj, obj, spaces);
+        }
     if (sorted_arr_l) {
         spaces->count = 0;
         while (sorted_arr_l[spaces->count]) {

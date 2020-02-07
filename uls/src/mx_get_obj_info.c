@@ -24,7 +24,6 @@ static void print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces) 
         mx_printchar(' ');
     mx_printint(obj_stat.st_nlink);
     mx_printchar(' ');
-    
 }
 
 static void get_obj_pwgid(char *obj, t_spaces_l *spaces) {
@@ -74,6 +73,8 @@ static void get_obj_time(char *obj) {
 void mx_get_obj_info(char *obj_name, char *not_need, t_spaces_l *spaces) {
     struct stat obj_stat;
     char *linked_file = mx_strnew(500);
+    
+
     if (mx_dirorfile(obj_name) == 1) {
         lstat(obj_name,&obj_stat);
         if ((S_ISLNK(obj_stat.st_mode)))

@@ -1,23 +1,16 @@
 #include "../inc/uls.h"
 
 int mx_dirorfile(const char *obj) {
-    DIR *dir;
-    int file;
+    struct stat obj_stat;
     errno = 0;
+    lstat(obj, &obj_stat);
 
-    dir = opendir(obj);
-    if (dir) {
-        closedir(dir);
+    if (S_ISDIR(obj_stat.st_mode)) {
         return 0;
     }
     else if (errno == 13)
         return 0;
-    else {
-        file = open(obj, O_RDONLY);
-        if (file != -1) {
-            close(file);
-            return 1;
-        }
-    }
+    else 
+        return 1;
     return -1;
 }
