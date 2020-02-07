@@ -4,22 +4,19 @@ char **mx_arr_dirs(int argc, char **argv) {
     char **arr_dirs = NULL;
     int count_dirs = 0;
 
-    for (int i = 1; i < argc; i++) {
-        if (mx_dirorfile(argv[i]) == 0) {
+    for (int i = 1; i < argc; i++)
+        if (mx_dirorfile(argv[i]) == 0)
             count_dirs++;
-        }
-    }
     if (count_dirs != 0) {
         arr_dirs = (char **)malloc(sizeof(char *) * (count_dirs + 1));
         arr_dirs[count_dirs] = NULL;
         count_dirs = 0;
-        for (int i = 1; i < argc; i++) {
+        for (int i = 1; i < argc; i++)
             if (mx_dirorfile(argv[i]) == 0) {
                 arr_dirs[count_dirs] = mx_strnew(mx_strlen(argv[i]));
                 mx_strcpy(arr_dirs[count_dirs], argv[i]);
                 count_dirs++;
             }
-        }
     }
     else if (argc == 1) {
         arr_dirs = (char **)malloc(sizeof(char *) * 2);
@@ -32,25 +29,20 @@ char **mx_arr_dirs(int argc, char **argv) {
 char **mx_arr_dirs_1(int argc, char **argv, t_add_in_func *audit) {
     char **arr_dirs = NULL;
     int count_dirs = 0;
-    struct stat buf;
 
-    for (int i = 1; i < argc; i++) {
-        lstat(argv[i], &buf);
-        if (mx_dirorfile(argv[i]) == 0 && !(S_ISLNK(buf.st_mode)))
+    for (int i = 1; i < argc; i++)
+        if (mx_dirorfile(argv[i]) == 0)
             count_dirs++;
-    }
     if (count_dirs != 0) {
         arr_dirs = (char **)malloc(sizeof(char *) * (count_dirs + 1));
         arr_dirs[count_dirs] = NULL;
         count_dirs = 0;
-        for (int i = 1; i < argc; i++) {
-            lstat(argv[i], &buf);
-            if (mx_dirorfile(argv[i]) == 0 && !(S_ISLNK(buf.st_mode))) {
+        for (int i = 1; i < argc; i++)
+            if (mx_dirorfile(argv[i]) == 0) {
                 arr_dirs[count_dirs] = mx_strnew(mx_strlen(argv[i]));
                 mx_strcpy(arr_dirs[count_dirs], argv[i]);
                 count_dirs++;
             }
-        }
     }
     else if (audit->check_n == 0) {
         arr_dirs = (char **)malloc(sizeof(char *) * 2);

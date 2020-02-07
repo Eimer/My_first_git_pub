@@ -1,5 +1,26 @@
 #include "../inc/uls.h"
 
+int mx_searchstr(const char *haystack, const char *needle) {
+    int i = 0;
+    int try = 0;
+    int strlen = mx_strlen(needle);
+
+    while (haystack[i]) {
+        try = i;
+        for (int j = 0; haystack[i] == needle[j] && needle[j] != '\0'; j++) {
+            if (j == strlen - 1)
+                return 1;
+            if (needle[j + 1] != haystack[i + 1]) {
+                i = try;
+                break;
+            }
+            i++;
+        }
+        i++;
+    }
+    return 0;
+}
+
 static void *memrchr(const void *s, int c, size_t n) {
     char new;
     char *str = NULL;

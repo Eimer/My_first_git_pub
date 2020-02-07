@@ -16,7 +16,7 @@
 #include <string.h>
 #include <errno.h>
 
-typedef struct  s_size {
+typedef struct s_size {
     unsigned short col;
     unsigned short row;
 } t_size;

@@ -1,27 +1,6 @@
 
 #include "../inc/uls.h"
 
-int mx_searchstr(const char *haystack, const char *needle) {
-    int i = 0;
-    int try = 0;
-    int strlen = mx_strlen(needle);
-
-    while (haystack[i]) {
-        try = i;
-        for (int j = 0; haystack[i] == needle[j] && needle[j] != '\0'; j++) {
-            if (j == strlen - 1)
-                return 1;
-            if (needle[j + 1] != haystack[i + 1]) {
-                i = try;
-                break;
-            }
-            i++;
-        }
-        i++;
-    }
-    return 0;
-}
-
 static void mx_print_n(char **arr, int *flags) {
     int u = 0;
 
@@ -44,7 +23,6 @@ static void mx_print_n(char **arr, int *flags) {
 }
 
 static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
-    mx_sort_overallarr(arr);
     if (arr != NULL && audit->flags[0] == 1) {
         if (audit->check == 1)
             mx_printchar(10);
