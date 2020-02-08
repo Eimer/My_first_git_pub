@@ -6,6 +6,8 @@ char **mx_sort(char **overall_arr, t_add_in_func *audit) {
 
     while (overall_arr[count])
         count++;
+    if (audit->flags[10] == 1)
+        return overall_arr;
     if (audit->flags[6] == 1) {
         for (int i = count; i > -1; i--)
             for (int j = count - 1; j > 0; j--)

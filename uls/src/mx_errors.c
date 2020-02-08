@@ -11,19 +11,19 @@ static void check_fileordir(char **argv, int ind_str, t_add_in_func *audit) {
         if (mx_dirorfile(argv[ind_str]) == -1 && errno != 13)
             print_error[count++] = mx_strdup(argv[ind_str]);
     audit->check_n = check_n;
-    if (check_n > 1)
-        audit->flags[0] = 1;
     for (count = 0; print_error[count] != NULL; count++);
     mx_bubble_sort(print_error, count);
     for (int j = 0; print_error[j] != NULL; j++) {
         mx_printerr("uls: ");
         mx_printerr(print_error[j]);
         mx_printerr(": No such file or directory\n");
+        audit->main_return = 1;
     }
     mx_del_strarr(&print_error);
 }
 
-static int check_flag(char **argv, int check, int ind_str, t_add_in_func *audit) {
+static int check_flag(char **argv, int check, int ind_str,
+                        t_add_in_func *audit) {
     if (argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
         && argv[ind_str][2] == '\0') {
             check_fileordir(argv, ++ind_str, audit);
@@ -33,13 +33,10 @@ static int check_flag(char **argv, int check, int ind_str, t_add_in_func *audit)
         check_fileordir(argv, ind_str, audit);
         return 1;
     }
-    if (argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
-        && argv[ind_str][2] != '\0') {
+    if ((argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
+        && argv[ind_str][2] != '\0') || check == 0) {
         mx_printstr("usage: uls [-aARrl1] [file ...]\n");
-        exit(0);
-    }
-    if (check == 0) {
-        mx_printerr("usage: uls [-aARrl1] [file ...]\n");
+        audit->main_return = 1;
         exit(0);
     }
     return 0;
@@ -48,7 +45,7 @@ static int check_flag(char **argv, int check, int ind_str, t_add_in_func *audit)
 static void write_flags(char flag, t_add_in_func *audit) {
     if (flag == 'a')
         audit->flags[1] = 1;
-    if (flag == 'A')
+    if (flag == 'A' && audit->flags[1] == 0)
         audit->flags[2] = 1;
     if (flag == 'R')
         audit->flags[3] = 1;
@@ -64,6 +61,11 @@ static void write_flags(char flag, t_add_in_func *audit) {
         audit->flags[8] = 1;
     if (flag == 'd')
         audit->flags[9] = 1;
+    if (flag == 'f') {
+        audit->flags[1] = 1;
+        audit->flags[10] = 1;
+        audit->flags[2] = 0;
+    }
 }
 
 void mx_errors(int argc, char **argv, t_add_in_func *audit, char *flag) {

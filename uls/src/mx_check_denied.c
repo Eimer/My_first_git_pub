@@ -68,7 +68,6 @@ int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit) {
         closedir(dir);
         return 0;
     }
-    mx_printerr(strerror(errno));
     if (audit->flags[1] == 1 || (mx_searchstr(arr_dirs_u, "/.") != 1))
     if (errno != 0) {
         if (audit->check == 1)
@@ -80,7 +79,7 @@ int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit) {
         mx_printerr(": ");
         mx_printerr(strerror(errno));
         mx_printerr("\n");
-        return 1;
+        audit->main_return = 1;
     }
     return 1;
 }

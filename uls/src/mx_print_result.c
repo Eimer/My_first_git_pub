@@ -1,4 +1,3 @@
-
 #include "../inc/uls.h"
 
 static void mx_print_n(char **arr, int *flags) {
@@ -34,12 +33,12 @@ static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
     audit->flags[0] = 1;
 }
 
-static char **return_a_A(char **arr, t_add_in_func *audit) {
+static char **return_a_A(char **arr, t_add_in_func *audit) { // flag -A
     char **new_arr = NULL;
     int count = 0;
     int numb = 0;
 
-    if (audit->flags[2] == 1 && audit->flags[9] == 0) { // flag -A
+    if (audit->flags[2] == 1 && audit->flags[9] == 0 && audit->flags[1] == 0) {
         for (count = 0; arr[count] != NULL; count++)
             if (mx_strcmp(arr[count], ".") != 0
                 && mx_strcmp(arr[count], "..") != 0)
