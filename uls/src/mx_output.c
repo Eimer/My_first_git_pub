@@ -36,7 +36,7 @@ static void write_tabs(int argc, char **argv, int word_len) {
 }
 
 void mx_output(int argc, char **argv, char **overall_arr) {
-    char **sorted_overall_arr = mx_sort_overallarr(overall_arr);
+    char **sorted_overall_arr = overall_arr;
     int main_row = which_element(argc, argv, sorted_overall_arr);
     int amount_obj = mx_count_obj(sorted_overall_arr);
     int buffer_count = 0;

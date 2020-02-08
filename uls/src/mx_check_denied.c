@@ -1,10 +1,32 @@
 #include "../inc/uls.h"
 
+void mx_d_flag(char **arr_files, char **arr_dirs, t_add_in_func *audit) {
+    int count_f = 0;
+    int count_d = 0;
+    char **all;
+
+    for (count_f = 0; arr_files != NULL && arr_files[count_f] != NULL;
+            count_f++);
+    for (count_d = 0; arr_dirs != NULL && arr_dirs[count_d] != NULL;
+            count_d++);
+    all = (char **)malloc(sizeof(char *) * (count_f + count_d + 1));
+    for (int count = 0; count < count_f + count_d + 1; count++)
+        all[count] = NULL;
+    for (count_f = 0; arr_files != NULL
+            && arr_files[count_f] != NULL; count_f++)
+        all[count_f] = mx_strdup(arr_files[count_f]);
+    for (count_d = 0; arr_dirs != NULL && arr_dirs[count_d] != NULL; count_d++)
+        all[count_f++] = mx_strdup(arr_dirs[count_d]);
+    mx_print_result(all, audit, NULL);
+    mx_del_strarr(&all);
+}
 int mx_searchstr(const char *haystack, const char *needle) {
     int i = 0;
     int try = 0;
     int strlen = mx_strlen(needle);
 
+    if (needle == NULL || haystack == NULL)
+        return 0;
     while (haystack[i]) {
         try = i;
         for (int j = 0; haystack[i] == needle[j] && needle[j] != '\0'; j++) {
@@ -46,7 +68,8 @@ int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit) {
         closedir(dir);
         return 0;
     }
-    if (audit->flags[1] == 0 && audit->flags[2] == 0 && mx_searchstr(arr_dirs_u, "/.") != 1)
+    mx_printerr(strerror(errno));
+    if (audit->flags[1] == 1 || (mx_searchstr(arr_dirs_u, "/.") != 1))
     if (errno != 0) {
         if (audit->check == 1)
             mx_printstr("\n");

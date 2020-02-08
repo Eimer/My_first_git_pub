@@ -24,9 +24,8 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs, t_add_in_f
             new1 = mx_strjoin(arr_dirs, "/");
             new2 = mx_strjoin(new1, overall_arr[u]);
             free(overall_arr[u]);
-            overall_arr[u] = new2;//mx_strdup(new2);
+            overall_arr[u] = new2;
             free(new1);
-            // free(new2);
         }
     }
     arr_dirs_new = mx_arr_dirs_2(count_el, overall_arr);
@@ -55,7 +54,7 @@ void mx_open_dir(char **arr_dirs, t_add_in_func *audit) {
     char **overall_arr;
     int u = 0;
 
-    mx_sort_overallarr(arr_dirs);
+    mx_sort(arr_dirs, audit);
     for (u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
@@ -74,6 +73,14 @@ void mx_enter_fileordir(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
     char **arr_dirs = mx_arr_dirs_1(argc, argv, audit);
 
+    if (audit->flags[9] == 1) {
+        mx_d_flag(arr_files, arr_dirs, audit);
+        if (arr_files != NULL)
+            mx_del_strarr(&arr_files);
+        if (arr_dirs != NULL)
+            mx_del_strarr(&arr_dirs);
+        return;
+    }
     if (arr_files != NULL) {
         mx_output_with_atr(arr_files);
         mx_del_strarr(&arr_files);

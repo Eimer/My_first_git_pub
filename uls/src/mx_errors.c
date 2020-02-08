@@ -58,6 +58,12 @@ static void write_flags(char flag, t_add_in_func *audit) {
         audit->flags[5] = 1;
     if (flag == 'r')
         audit->flags[6] = 1;
+    if (flag == 't')
+        audit->flags[7] = 1;
+    if (flag == 'S')
+        audit->flags[8] = 1;
+    if (flag == 'd')
+        audit->flags[9] = 1;
 }
 
 void mx_errors(int argc, char **argv, t_add_in_func *audit, char *flag) {

@@ -9,10 +9,10 @@ int main (int argc, char **argv) {
     audit->check_n = 0;
     for (int u = 0; u < 10; u++)
         audit->flags[u] = 0;
-    mx_errors(argc, argv, audit, "aARrl1");
+    mx_errors(argc, argv, audit, "aARrl1tSd");
     mx_enter_fileordir(argc, argv, audit);
     free(audit->flags);
     free(audit);
-    // system("leaks -q uls");
+    system("leaks -q uls");
     return 0;
 }
