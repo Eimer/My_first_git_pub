@@ -21,7 +21,7 @@ static int count_el_before_sorted(char *obj) {
     return res;
 }
 
-void mx_output_l(char *obj) {
+void mx_output_l(char *obj,t_add_in_func *audit) {
     DIR *dir = NULL;
     struct dirent *entry;
     char **sorted_arr_l = NULL;
@@ -49,7 +49,7 @@ void mx_output_l(char *obj) {
                 spaces->count++;
                 
         }
-        sorted_arr_l = mx_sort_overallarr(sorted_arr_l);
+        sorted_arr_l = mx_sort(sorted_arr_l, audit);
         spaces->count = 0;
         mx_printstr("total ");
         mx_printint(spaces->total);
