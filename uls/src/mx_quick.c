@@ -4,7 +4,7 @@ static int mx_test(char *argv) {
     struct stat buf;
 
     lstat(argv, &buf);
-    return buf.st_mtime;
+    return buf.st_atime;
 }
 
 void mx_quick(char **arr, int left, int right) {
@@ -15,9 +15,9 @@ void mx_quick(char **arr, int left, int right) {
 
     if (i < j) {
         while (i <= j) {
-            while (mx_test(arr[i]) < mx_test(pivot))
+            while (mx_test(arr[i]) > mx_test(pivot))
                 i++;
-            while (mx_test(arr[j]) > mx_test(pivot))
+            while (mx_test(arr[j]) < mx_test(pivot))
                 j--;
             if (i <= j)
                 if (mx_test(arr[i]) != mx_test(arr[j])) {

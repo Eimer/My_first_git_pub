@@ -84,6 +84,9 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
     if (audit->flags[4] == 1) {
         if (check_a != NULL)
             mx_output_l(check_a);
+        else
+            for (int u = 0; arr[u] != NULL; u++)
+                mx_output_l(arr[u]);
         return;
     }
     if (audit->flags[1] == 1 || audit->flags[9] == 1) { // flag -a

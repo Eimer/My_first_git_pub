@@ -1,20 +1,258 @@
-total 120
-drwxr-xr-x  19 dmushynska  4242    646 Feb 10 15:25 .
-drwxr-xr-x  18 dmushynska  4242    612 Jan 30 15:44 ..
+total 168
+drwxr-xr-x  22 dmushynska  4242    748 Feb 10 16:34 .
+drwxr-xr-x  18 dmushynska  4242    612 Feb 10 16:25 ..
 -rw-r--r--@  1 dmushynska  4242   6148 Jan 30 16:04 .DS_Store
 -rw-r--r--   1 dmushynska  4242     53 Feb  5 15:26 .gitignore
 drwxr-xr-x   4 dmushynska  4242    136 Feb  7 16:54 .vscode
--rw-r--r--   1 dmushynska  4242      4 Feb 10 15:25 1
--rw-r--r--   1 dmushynska  4242      0 Feb 10 15:25 2
+-rw-r--r--   1 dmushynska  4242  14029 Feb 10 16:34 1
+-rw-r--r--   1 dmushynska  4242      0 Feb 10 16:34 2
 -rw-r--r--   1 dmushynska  4242    602 Jan 30 15:44 Makefile
 -rw-r--r--   1 dmushynska  4242      0 Jan 25 11:52 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-drwxr-xr-x   5 dmushynska  4242    170 Feb  7 16:54 inc
-drwxr-xr-x   8 dmushynska  4242    272 Feb 10 15:24 libmx
+-rwxrwxrwx@  1 dmushynska  4242    217 Feb 10 16:24 compare.sh
+-rwxrwxrwx@  1 dmushynska  4242    620 Feb 10 16:15 errors.sh
+drwxr-xr-x   5 dmushynska  4242    170 Feb 10 15:32 inc
+drwxr-xr-x   8 dmushynska  4242    272 Feb 10 16:34 libmx
 -rwxr-xr-x   1 dmushynska  4242      0 Feb  5 15:26 mmmm
--rw-r--r--   1 dmushynska  4242      0 Feb  8 14:35 n1
--rw-r--r--   1 dmushynska  4242      0 Feb  8 14:35 n10
--rw-r--r--   1 dmushynska  4242      0 Feb  8 14:35 n2
-drwxr-xr-x  27 dmushynska  4242    918 Feb 10 15:24 obj
-drwxr-xr-x  30 dmushynska  4242   1020 Feb  8 20:00 src
+-rw-r--r--   1 dmushynska  4242      0 Feb 10 15:32 n1
+-rw-r--r--   1 dmushynska  4242      0 Feb 10 15:32 n10
+-rw-r--r--   1 dmushynska  4242      0 Feb 10 15:32 n2
+drwxr-xr-x  27 dmushynska  4242    918 Feb 10 16:34 obj
+drwxr-xr-x  30 dmushynska  4242   1020 Feb 10 15:34 src
 lrwxr-xr-x   1 dmushynska  4242      3 Feb  7 12:18 src_link -> src
--rwxr-xr-x   1 dmushynska  4242  33072 Feb 10 15:25 uls
+lrwxr-xr-x   1 dmushynska  4242      6 Feb 10 15:33 test_link -> ../src
+-rwxr-xr-x   1 dmushynska  4242  33072 Feb 10 16:34 uls
+
+./.vscode:
+total 16
+drwxr-xr-x   4 dmushynska  4242  136 Feb  7 16:54 .
+drwxr-xr-x  22 dmushynska  4242  748 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242  517 Jan 25 11:52 c_cpp_properties.json
+-rw-r--r--   1 dmushynska  4242  106 Feb  7 16:54 settings.json
+
+./inc:
+total 24
+drwxr-xr-x   5 dmushynska  4242   170 Feb 10 15:32 .
+drwxr-xr-x  22 dmushynska  4242   748 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242   984 Feb 10 15:32 dashuta.h
+-rw-r--r--   1 dmushynska  4242  1016 Feb  7 16:54 uls.h
+-rw-r--r--   1 dmushynska  4242   887 Feb  5 15:36 ypratsovit.h
+
+./libmx:
+total 104
+drwxr-xr-x   8 dmushynska  4242    272 Feb 10 16:34 .
+drwxr-xr-x  22 dmushynska  4242    748 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242   1199 Jan 30 15:44 Makefile
+drwxr-xr-x   3 dmushynska  4242    102 Feb 10 15:32 inc
+drwxr-xr-x   3 dmushynska  4242    102 Jan 30 15:44 libmx
+-rw-r--r--   1 dmushynska  4242  47848 Feb 10 16:34 libmx.a
+drwxr-xr-x  51 dmushynska  4242   1734 Feb 10 16:34 obj
+drwxr-xr-x  51 dmushynska  4242   1734 Feb 10 15:32 src
+
+./libmx/inc:
+total 8
+drwxr-xr-x  3 dmushynska  4242   102 Feb 10 15:32 .
+drwxr-xr-x  8 dmushynska  4242   272 Feb 10 16:34 ..
+-rw-r--r--  1 dmushynska  4242  2658 Feb 10 15:32 libmx.h
+
+./libmx/libmx:
+total 0
+drwxr-xr-x  3 dmushynska  4242  102 Jan 30 15:44 .
+drwxr-xr-x  8 dmushynska  4242  272 Feb 10 16:34 ..
+drwxr-xr-x  4 dmushynska  4242  136 Jan 30 15:44 ss
+
+./libmx/libmx/ss:
+total 0
+drwxr-xr-x  4 dmushynska  4242  136 Jan 30 15:44 .
+drwxr-xr-x  3 dmushynska  4242  102 Jan 30 15:44 ..
+-rw-r--r--  1 dmushynska  4242    0 Jan 30 15:44 oo
+-rw-r--r--  1 dmushynska  4242    0 Jan 30 15:44 w
+
+./libmx/obj:
+total 392
+drwxr-xr-x  51 dmushynska  4242  1734 Feb 10 16:34 .
+drwxr-xr-x   8 dmushynska  4242   272 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242   872 Feb 10 16:34 mx_binary_search.o
+-rw-r--r--   1 dmushynska  4242   916 Feb 10 16:34 mx_bubble_sort.o
+-rw-r--r--   1 dmushynska  4242   872 Feb 10 16:34 mx_count_substr.o
+-rw-r--r--   1 dmushynska  4242   828 Feb 10 16:34 mx_count_words.o
+-rw-r--r--   1 dmushynska  4242   748 Feb 10 16:34 mx_create_node.o
+-rw-r--r--   1 dmushynska  4242  1508 Feb 10 16:34 mx_del_extra_spaces.o
+-rw-r--r--   1 dmushynska  4242   796 Feb 10 16:34 mx_del_strarr.o
+-rw-r--r--   1 dmushynska  4242  1032 Feb 10 16:34 mx_file_to_str.o
+-rw-r--r--   1 dmushynska  4242   688 Feb 10 16:34 mx_foreach.o
+-rw-r--r--   1 dmushynska  4242   740 Feb 10 16:34 mx_get_char_index.o
+-rw-r--r--   1 dmushynska  4242   844 Feb 10 16:34 mx_get_substr_index.o
+-rw-r--r--   1 dmushynska  4242  1024 Feb 10 16:34 mx_hex_to_nbr.o
+-rw-r--r--   1 dmushynska  4242  1468 Feb 10 16:34 mx_itoa.o
+-rw-r--r--   1 dmushynska  4242   688 Feb 10 16:34 mx_list_size.o
+-rw-r--r--   1 dmushynska  4242   792 Feb 10 16:34 mx_memccpy.o
+-rw-r--r--   1 dmushynska  4242   780 Feb 10 16:34 mx_memchr.o
+-rw-r--r--   1 dmushynska  4242   876 Feb 10 16:34 mx_memcmp.o
+-rw-r--r--   1 dmushynska  4242   708 Feb 10 16:34 mx_memcpy.o
+-rw-r--r--   1 dmushynska  4242   816 Feb 10 16:34 mx_memmove.o
+-rw-r--r--   1 dmushynska  4242   784 Feb 10 16:34 mx_memrchr.o
+-rw-r--r--   1 dmushynska  4242   692 Feb 10 16:34 mx_memset.o
+-rw-r--r--   1 dmushynska  4242  1060 Feb 10 16:34 mx_nbr_to_hex.o
+-rw-r--r--   1 dmushynska  4242   796 Feb 10 16:34 mx_pop_back.o
+-rw-r--r--   1 dmushynska  4242   768 Feb 10 16:34 mx_pop_front.o
+-rw-r--r--   1 dmushynska  4242   820 Feb 10 16:34 mx_pow.o
+-rw-r--r--   1 dmushynska  4242   856 Feb 10 16:34 mx_print_strarr.o
+-rw-r--r--   1 dmushynska  4242   980 Feb 10 16:34 mx_print_unicode.o
+-rw-r--r--   1 dmushynska  4242   688 Feb 10 16:34 mx_printchar.o
+-rw-r--r--   1 dmushynska  4242  1228 Feb 10 16:34 mx_printint.o
+-rw-r--r--   1 dmushynska  4242   872 Feb 10 16:34 mx_printstr.o
+-rw-r--r--   1 dmushynska  4242   792 Feb 10 16:34 mx_push_back.o
+-rw-r--r--   1 dmushynska  4242   760 Feb 10 16:34 mx_push_front.o
+-rw-r--r--   1 dmushynska  4242   840 Feb 10 16:34 mx_realloc.o
+-rw-r--r--   1 dmushynska  4242   816 Feb 10 16:34 mx_sort_list.o
+-rw-r--r--   1 dmushynska  4242   716 Feb 10 16:34 mx_sqrt.o
+-rw-r--r--   1 dmushynska  4242   828 Feb 10 16:34 mx_str_reverse.o
+-rw-r--r--   1 dmushynska  4242   808 Feb 10 16:34 mx_strcat.o
+-rw-r--r--   1 dmushynska  4242   876 Feb 10 16:34 mx_strcmp.o
+-rw-r--r--   1 dmushynska  4242   700 Feb 10 16:34 mx_strcpy.o
+-rw-r--r--   1 dmushynska  4242   708 Feb 10 16:34 mx_strdel.o
+-rw-r--r--   1 dmushynska  4242   776 Feb 10 16:34 mx_strdup.o
+-rw-r--r--   1 dmushynska  4242  1224 Feb 10 16:34 mx_strjoin.o
+-rw-r--r--   1 dmushynska  4242   700 Feb 10 16:34 mx_strlen.o
+-rw-r--r--   1 dmushynska  4242   760 Feb 10 16:34 mx_strncpy.o
+-rw-r--r--   1 dmushynska  4242   844 Feb 10 16:34 mx_strndup.o
+-rw-r--r--   1 dmushynska  4242   764 Feb 10 16:34 mx_strnew.o
+-rw-r--r--   1 dmushynska  4242  1536 Feb 10 16:34 mx_strsplit.o
+-rw-r--r--   1 dmushynska  4242   944 Feb 10 16:34 mx_strstr.o
+-rw-r--r--   1 dmushynska  4242   656 Feb 10 16:34 mx_swap_char.o
+
+./libmx/src:
+total 392
+drwxr-xr-x  51 dmushynska  4242  1734 Feb 10 15:32 .
+drwxr-xr-x   8 dmushynska  4242   272 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242   405 Jan 30 15:44 mx_binary_search.c
+-rw-r--r--   1 dmushynska  4242   462 Jan 30 15:44 mx_bubble_sort.c
+-rw-r--r--   1 dmushynska  4242   394 Feb 10 15:32 mx_count_substr.c
+-rw-r--r--   1 dmushynska  4242   352 Jan 30 15:44 mx_count_words.c
+-rw-r--r--   1 dmushynska  4242   223 Jan 30 15:44 mx_create_node.c
+-rw-r--r--   1 dmushynska  4242   968 Jan 30 15:44 mx_del_extra_spaces.c
+-rw-r--r--   1 dmushynska  4242   168 Jan 30 15:44 mx_del_strarr.c
+-rw-r--r--   1 dmushynska  4242   447 Jan 30 15:44 mx_file_to_str.c
+-rw-r--r--   1 dmushynska  4242   138 Jan 30 15:44 mx_foreach.c
+-rw-r--r--   1 dmushynska  4242   249 Jan 30 15:44 mx_get_char_index.c
+-rw-r--r--   1 dmushynska  4242   333 Jan 30 15:44 mx_get_substr_index.c
+-rw-r--r--   1 dmushynska  4242   563 Jan 30 15:44 mx_hex_to_nbr.c
+-rw-r--r--   1 dmushynska  4242  1087 Jan 30 15:44 mx_itoa.c
+-rw-r--r--   1 dmushynska  4242   207 Jan 30 15:44 mx_list_size.c
+-rw-r--r--   1 dmushynska  4242   361 Jan 30 15:44 mx_memccpy.c
+-rw-r--r--   1 dmushynska  4242   319 Jan 30 15:44 mx_memchr.c
+-rw-r--r--   1 dmushynska  4242   362 Jan 30 15:44 mx_memcmp.c
+-rw-r--r--   1 dmushynska  4242   228 Jan 30 15:44 mx_memcpy.c
+-rw-r--r--   1 dmushynska  4242   271 Jan 30 15:44 mx_memmove.c
+-rw-r--r--   1 dmushynska  4242   320 Feb  5 18:39 mx_memrchr.c
+-rw-r--r--   1 dmushynska  4242   172 Jan 30 15:44 mx_memset.c
+-rw-r--r--   1 dmushynska  4242   575 Jan 30 15:44 mx_nbr_to_hex.c
+-rw-r--r--   1 dmushynska  4242   312 Jan 30 15:44 mx_pop_back.c
+-rw-r--r--   1 dmushynska  4242   232 Jan 30 15:44 mx_pop_front.c
+-rw-r--r--   1 dmushynska  4242   231 Jan 30 15:44 mx_pow.c
+-rw-r--r--   1 dmushynska  4242   292 Jan 30 15:44 mx_print_strarr.c
+-rw-r--r--   1 dmushynska  4242   613 Jan 30 15:44 mx_print_unicode.c
+-rw-r--r--   1 dmushynska  4242    72 Jan 30 15:44 mx_printchar.c
+-rw-r--r--   1 dmushynska  4242   630 Jan 30 15:44 mx_printint.c
+-rw-r--r--   1 dmushynska  4242   149 Jan 30 15:44 mx_printstr.c
+-rw-r--r--   1 dmushynska  4242   299 Jan 30 15:44 mx_push_back.c
+-rw-r--r--   1 dmushynska  4242   237 Jan 30 15:44 mx_push_front.c
+-rw-r--r--   1 dmushynska  4242   288 Jan 30 15:44 mx_realloc.c
+-rw-r--r--   1 dmushynska  4242   469 Jan 30 15:44 mx_sort_list.c
+-rw-r--r--   1 dmushynska  4242   166 Jan 30 15:44 mx_sqrt.c
+-rw-r--r--   1 dmushynska  4242   188 Jan 30 15:44 mx_str_reverse.c
+-rw-r--r--   1 dmushynska  4242   261 Jan 30 15:44 mx_strcat.c
+-rw-r--r--   1 dmushynska  4242   326 Jan 30 15:44 mx_strcmp.c
+-rw-r--r--   1 dmushynska  4242   188 Jan 30 15:44 mx_strcpy.c
+-rw-r--r--   1 dmushynska  4242   117 Jan 30 15:44 mx_strdel.c
+-rw-r--r--   1 dmushynska  4242   144 Jan 30 15:44 mx_strdup.c
+-rw-r--r--   1 dmushynska  4242   702 Jan 30 15:44 mx_strjoin.c
+-rw-r--r--   1 dmushynska  4242   158 Jan 30 15:44 mx_strlen.c
+-rw-r--r--   1 dmushynska  4242   233 Jan 30 15:44 mx_strncpy.c
+-rw-r--r--   1 dmushynska  4242   247 Jan 30 15:44 mx_strndup.c
+-rw-r--r--   1 dmushynska  4242   242 Jan 30 15:44 mx_strnew.c
+-rw-r--r--   1 dmushynska  4242   894 Jan 30 15:44 mx_strsplit.c
+-rw-r--r--   1 dmushynska  4242   532 Jan 31 21:13 mx_strstr.c
+-rw-r--r--   1 dmushynska  4242   126 Jan 30 15:44 mx_swap_char.c
+
+./obj:
+total 208
+drwxr-xr-x  27 dmushynska  4242   918 Feb 10 16:34 .
+drwxr-xr-x  22 dmushynska  4242   748 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242  1116 Feb 10 16:34 main.o
+-rw-r--r--   1 dmushynska  4242  2708 Feb 10 16:34 mx_arr_dirs.o
+-rw-r--r--   1 dmushynska  4242  1120 Feb 10 16:34 mx_arr_files.o
+-rw-r--r--   1 dmushynska  4242  2940 Feb 10 16:34 mx_check_denied.o
+-rw-r--r--   1 dmushynska  4242  1008 Feb 10 16:34 mx_count_col.o
+-rw-r--r--   1 dmushynska  4242  1028 Feb 10 16:34 mx_count_col_with_atr.o
+-rw-r--r--   1 dmushynska  4242  1584 Feb 10 16:34 mx_count_longest.o
+-rw-r--r--   1 dmushynska  4242   784 Feb 10 16:34 mx_count_longest_with_atr.o
+-rw-r--r--   1 dmushynska  4242   664 Feb 10 16:34 mx_count_obj.o
+-rw-r--r--   1 dmushynska  4242   864 Feb 10 16:34 mx_dirorfile.o
+-rw-r--r--   1 dmushynska  4242  2988 Feb 10 16:34 mx_enter_fileordir.o
+-rw-r--r--   1 dmushynska  4242  3052 Feb 10 16:34 mx_errors.o
+-rw-r--r--   1 dmushynska  4242  5576 Feb 10 16:34 mx_get_obj_info.o
+-rw-r--r--   1 dmushynska  4242   708 Feb 10 16:34 mx_get_screencoord.o
+-rw-r--r--   1 dmushynska  4242   928 Feb 10 16:34 mx_get_xatr.o
+-rw-r--r--   1 dmushynska  4242   796 Feb 10 16:34 mx_mystrcmp.o
+-rw-r--r--   1 dmushynska  4242  1692 Feb 10 16:34 mx_output.o
+-rw-r--r--   1 dmushynska  4242  2836 Feb 10 16:34 mx_output_l.o
+-rw-r--r--   1 dmushynska  4242  1664 Feb 10 16:34 mx_output_with_atr.o
+-rw-r--r--   1 dmushynska  4242  3848 Feb 10 16:34 mx_print_result.o
+-rw-r--r--   1 dmushynska  4242   728 Feb 10 16:34 mx_printerr.o
+-rw-r--r--   1 dmushynska  4242  1364 Feb 10 16:34 mx_quick.o
+-rw-r--r--   1 dmushynska  4242  1204 Feb 10 16:34 mx_sort_overallarr.o
+-rw-r--r--   1 dmushynska  4242  2808 Feb 10 16:34 mx_spaces_l.o
+-rw-r--r--   1 dmushynska  4242  1492 Feb 10 16:34 mx_uls_noatr.o
+
+./src:
+total 216
+drwxr-xr-x  30 dmushynska  4242  1020 Feb 10 15:34 .
+drwxr-xr-x  22 dmushynska  4242   748 Feb 10 16:34 ..
+-rw-r--r--   1 dmushynska  4242   871 Feb 10 15:42 main.c
+-rw-r--r--   1 dmushynska  4242  2505 Feb  7 16:54 mx_arr_dirs.c
+-rw-r--r--   1 dmushynska  4242   716 Jan 25 11:52 mx_arr_files.c
+-rw-r--r--   1 dmushynska  4242  2360 Feb 10 15:32 mx_check_denied.c
+-rw-r--r--   1 dmushynska  4242   505 Feb 10 15:32 mx_count_col.c
+-rw-r--r--   1 dmushynska  4242   520 Jan 25 11:52 mx_count_col_with_atr.c
+-rw-r--r--   1 dmushynska  4242  1273 Jan 25 11:52 mx_count_longest.c
+-rw-r--r--   1 dmushynska  4242   302 Jan 25 11:52 mx_count_longest_with_atr.c
+-rw-r--r--   1 dmushynska  4242   160 Jan 25 11:52 mx_count_obj.c
+-rw-r--r--   1 dmushynska  4242   297 Feb 10 15:36 mx_dirorfile.c
+-rw-r--r--   1 dmushynska  4242  2728 Feb 10 16:13 mx_enter_fileordir.c
+-rw-r--r--   1 dmushynska  4242  2967 Feb 10 15:32 mx_errors.c
+-rw-r--r--   1 dmushynska  4242  5017 Feb  7 16:54 mx_get_obj_info.c
+-rw-r--r--   1 dmushynska  4242   242 Jan 25 11:52 mx_get_screencoord.c
+-rw-r--r--   1 dmushynska  4242   364 Feb  5 15:36 mx_get_xatr.c
+-rw-r--r--   1 dmushynska  4242   206 Feb  7 16:54 mx_mystrcmp.c
+-rw-r--r--   1 dmushynska  4242  1624 Feb 10 15:32 mx_output.c
+-rw-r--r--   1 dmushynska  4242  2367 Feb  7 16:54 mx_output_l.c
+-rw-r--r--   1 dmushynska  4242  1493 Feb 10 15:32 mx_output_with_atr.c
+-rw-r--r--   1 dmushynska  4242  3514 Feb 10 16:34 mx_print_result.c
+-rw-r--r--   1 dmushynska  4242   108 Jan 25 11:52 mx_printerr.c
+-rw-r--r--   1 dmushynska  4242   901 Feb 10 16:02 mx_quick.c
+-rw-r--r--   1 dmushynska  4242  1245 Feb 10 15:56 mx_sort_overallarr.c
+-rw-r--r--   1 dmushynska  4242  2670 Feb  5 15:36 mx_spaces_l.c
+-rw-r--r--   1 dmushynska  4242   891 Jan 30 15:44 mx_uls_noatr.c
+lrwxr-xr-x   1 dmushynska  4242     3 Feb 10 15:32 src -> src
+drwxr-xr-x   4 dmushynska  4242   136 Jan 29 16:28 ss
+drwxr-xr-x   4 dmushynska  4242   136 Feb  5 15:36 zz
+
+./src/ss:
+total 0
+drwxr-xr-x   4 dmushynska  4242   136 Jan 29 16:28 .
+drwxr-xr-x  30 dmushynska  4242  1020 Feb 10 15:34 ..
+-rw-r--r--   1 dmushynska  4242     0 Jan 27 17:09 1
+drwxr-xr-x   2 dmushynska  4242    68 Jan 29 16:28 dd
+
+./src/ss/dd:
+total 0
+drwxr-xr-x  2 dmushynska  4242   68 Jan 29 16:28 .
+drwxr-xr-x  4 dmushynska  4242  136 Jan 29 16:28 ..
+
+./src/zz:
+total 0
+drwxr-xr-x   4 dmushynska  4242   136 Feb  5 15:36 .
+drwxr-xr-x  30 dmushynska  4242  1020 Feb 10 15:34 ..
+-rw-r--r--   1 dmushynska  4242     0 Feb  5 15:36 2
+-rw-r--r--   1 dmushynska  4242     0 Feb  5 15:36 3

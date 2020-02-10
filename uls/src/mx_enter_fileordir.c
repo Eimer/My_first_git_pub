@@ -83,7 +83,8 @@ void mx_enter_fileordir(int argc, char **argv, t_add_in_func *audit) {
     }
     if (arr_files != NULL) {
         mx_sort(arr_files, audit);
-        mx_output_with_atr(arr_files);
+        // mx_output_with_atr(arr_files);
+        mx_print_result(arr_files, audit, NULL);
         mx_del_strarr(&arr_files);
     }
     if (arr_dirs != NULL) {
