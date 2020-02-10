@@ -1,10 +1,9 @@
-
 #include "../inc/uls.h"
 
 static void mx_print_n(char **arr, int *flags) {
     int u = 0;
 
-    for (u = 0; arr[u] != NULL && flags[1] == 1; u++) {
+    for (u = 0; arr[u] != NULL && (flags[1] == 1 || flags[9] == 1); u++) {
         mx_printstr(arr[u]);
         mx_printstr("\n");
     }
@@ -23,30 +22,23 @@ static void mx_print_n(char **arr, int *flags) {
 }
 
 static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
-    if (arr != NULL && audit->flags[0] == 1) {
+    if (arr != NULL && audit->flags[0] == 1 && check_a != NULL) {
         if (audit->check == 1)
             mx_printchar(10);
         mx_printstr(check_a);
         mx_printstr(":\n");
     }
-    // if (audit->flags[1] == 0 && audit->flags[2] == 0)
-    //     if (arr != NULL && audit->flags[0] == 1) {
-    //         if (audit->check == 1)
-    //             mx_printchar(10);
-    //         mx_printstr(check_a);
-    //         mx_printstr(":\n");
-    // }
-    mx_sort_overallarr(arr);
+    mx_sort(arr, audit);
     audit->check = 1;
     audit->flags[0] = 1;
 }
 
-static char **return_a_A(char **arr, t_add_in_func *audit) {
+static char **return_a_A(char **arr, t_add_in_func *audit) { // flag -A
     char **new_arr = NULL;
     int count = 0;
     int numb = 0;
 
-    if (audit->flags[2] == 1) { // flag -A
+    if (audit->flags[2] == 1 && audit->flags[9] == 0 && audit->flags[1] == 0) {
         for (count = 0; arr[count] != NULL; count++)
             if (mx_strcmp(arr[count], ".") != 0
                 && mx_strcmp(arr[count], "..") != 0)
@@ -57,7 +49,7 @@ static char **return_a_A(char **arr, t_add_in_func *audit) {
             if (mx_strcmp(arr[count], ".") != 0
                 && mx_strcmp(arr[count], "..") != 0)
                 new_arr[numb++] = mx_strdup(arr[count]);
-        mx_sort_overallarr(new_arr);
+        mx_sort(new_arr, audit);
     }
     return new_arr;
 }
@@ -89,8 +81,13 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
         && audit->flags[2] == 0)
         return;
     print_check_a(arr, audit, check_a);
-    if (audit->flags[1] == 1) { // flag -a
-        mx_sort_overallarr(arr);
+    if (audit->flags[4] == 1) {
+        if (check_a != NULL)
+            mx_output_l(check_a);
+        return;
+    }
+    if (audit->flags[1] == 1 || audit->flags[9] == 1) { // flag -a
+        mx_sort(arr, audit);
         (audit->flags[5] == 0 && isatty(1) == 1) ?
             mx_output_with_atr(arr) : mx_print_n(arr, audit->flags);
         return;
