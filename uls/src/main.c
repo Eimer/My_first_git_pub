@@ -11,7 +11,8 @@ int main(int argc, char *argv[]) {
     if (argc == 1) {
         argv[1] = ".";
     }
-    mx_output_l(argv[1]);
+    for (int i = 1; i < argc; i++)
+        mx_output_l(argv[i]);
     argv = NULL;
     argc = 0;
 }
