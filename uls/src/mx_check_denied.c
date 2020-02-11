@@ -20,6 +20,7 @@ void mx_d_flag(char **arr_files, char **arr_dirs, t_add_in_func *audit) {
     mx_print_result(all, audit, NULL);
     mx_del_strarr(&all);
 }
+
 int mx_searchstr(const char *haystack, const char *needle) {
     int i = 0;
     int try = 0;
@@ -56,7 +57,19 @@ static void *memrchr(const void *s, int c, size_t n) {
         if (str[i] == new)
             return &str[i + 1];
     }
-    return NULL;
+    return str;
+}
+
+static void error(char *arr_dirs_u) {
+    DIR *dir;
+
+    errno = 0;
+    dir = opendir(arr_dirs_u);
+    mx_printerr("uls: ");
+    mx_printerr(memrchr(arr_dirs_u, '/', mx_strlen(arr_dirs_u)));
+    mx_printerr(": ");
+    mx_printerr(strerror(errno));
+    mx_printerr("\n");
 }
 
 int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit) {
@@ -70,15 +83,15 @@ int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit) {
     }
     if (audit->flags[1] == 1 || (mx_searchstr(arr_dirs_u, "/.") != 1))
     if (errno != 0) {
-        if (audit->check == 1)
+        if (audit->check == 1) {
             mx_printstr("\n");
-        mx_printstr(arr_dirs_u);
-        mx_printstr(":\n");
-        mx_printerr("uls: ");
-        mx_printerr(memrchr(arr_dirs_u, '/', mx_strlen(arr_dirs_u)));
-        mx_printerr(": ");
-        mx_printerr(strerror(errno));
-        mx_printerr("\n");
+            if (arr_dirs_u[0] == '/' && arr_dirs_u[1] == '/' && arr_dirs_u[2] != '/')
+                mx_printstr(mx_chr(arr_dirs_u, '/', mx_strlen(arr_dirs_u)));
+            else 
+                mx_printstr(arr_dirs_u);
+            mx_printstr(":\n");
+        }
+        error(arr_dirs_u);
         audit->main_return = 1;
     }
     return 1;

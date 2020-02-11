@@ -4,19 +4,24 @@ static void check_fileordir(char **argv, int ind_str, t_add_in_func *audit) {
     char **print_error = (char **)malloc(sizeof(char *) * audit->argc);
     int count = 0;
     int check_n = 0;
+    struct stat buf;
 
     for (count = 0; count < audit->argc; count++)
         print_error[count] = NULL;
-    for (count = 0, check_n = 0; ind_str < audit->argc; ind_str++, check_n++)
-        if (mx_dirorfile(argv[ind_str]) == -1 && errno != 13)
+    for (count = 0, check_n = 0; ind_str < audit->argc; ind_str++)
+        if (stat(argv[ind_str], &buf) == -1)
             print_error[count++] = mx_strdup(argv[ind_str]);
-    audit->check_n = check_n;
+    audit->check_n = audit->argc - count - 1;
     for (count = 0; print_error[count] != NULL; count++);
     mx_bubble_sort(print_error, count);
     for (int j = 0; print_error[j] != NULL; j++) {
+        errno = 0;
+        stat(print_error[j], &buf);
         mx_printerr("uls: ");
         mx_printerr(print_error[j]);
-        mx_printerr(": No such file or directory\n");
+        mx_printerr(": ");
+        mx_printerr(strerror(errno));
+        mx_printerr("\n");
         audit->main_return = 1;
     }
     mx_del_strarr(&print_error);
@@ -37,7 +42,7 @@ static int check_flag(char **argv, int check, int ind_str,
         && argv[ind_str][2] != '\0') || check == 0) {
         mx_printstr("usage: uls [-aARrl1] [file ...]\n");
         audit->main_return = 1;
-        exit(0);
+        exit(1);
     }
     return 0;
 }
