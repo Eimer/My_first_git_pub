@@ -102,6 +102,7 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
         mx_del_strarr(&new_arr);
     }
     if (new_arr != NULL && audit->flags[5] == 0) {
+        mx_sort(new_arr, audit);
         if (new_arr[0] != NULL && isatty(1) == 1)
             mx_output_with_atr(new_arr);
         mx_del_strarr(&new_arr);

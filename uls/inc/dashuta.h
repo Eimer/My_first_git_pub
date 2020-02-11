@@ -11,7 +11,7 @@ typedef struct s_add_in_func {
     int *flags;
 } t_add_in_func;
 
-void mx_quick(char **arr, int left, int right);
+char **mx_quick(char **arr, int left, int right);
 void mx_d_flag(char **arr_files, char **arr_dirs, t_add_in_func *audit);
 char **mx_sort(char **overall_arr, t_add_in_func *audit);
 void mx_open_dir(char **arr_dirs, t_add_in_func *audit);
