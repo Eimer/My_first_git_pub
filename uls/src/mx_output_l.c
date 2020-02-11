@@ -21,58 +21,66 @@ static int count_el_before_sorted(char *obj) {
     return res;
 }
 
-void mx_output_l(char *obj,t_add_in_func *audit) {
-    DIR *dir = NULL;
-    struct dirent *entry;
-    char **sorted_arr_l = NULL;
-    char *tmp = NULL;
-    struct stat buf;
+static void free_mem_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces) {
+    if (buf_struct.sorted_arr_l) {
+        spaces->count = 0;
+        while (buf_struct.sorted_arr_l[spaces->count]) {
+            free(buf_struct.sorted_arr_l[spaces->count]);
+            spaces->count++;
+        }
+        free(buf_struct.sorted_arr_l);
+        free(buf_struct.tmp);
+        closedir(buf_struct.dir);
+    }
+    free(spaces);
+}
 
+static void print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+        while (buf_struct.sorted_arr_l[spaces->count]) {
+            if (audit->flags[1] == 1)
+                mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
+            else if (audit->flags[2] == 1) {
+                if ((mx_strcmp(&buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)], "..") != 0 
+                    && mx_strcmp(&buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)], ".") != 0))
+                        mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
+            }
+            else if (buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)] != '.')
+                mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
+            spaces->count++;
+        }   
+}
+void mx_output_l(char *obj,t_add_in_func *audit) {
+    t_buffer_struct_l buf_struct;
+    
     t_spaces_l *spaces = (t_spaces_l*)malloc(sizeof(t_spaces_l));
     spaces->total = 0;
-
     spaces->count = count_el_before_sorted(obj);
     if (spaces->count != 0) {
-        sorted_arr_l = (char**)malloc(sizeof(char*) * spaces->count + 1);
-        sorted_arr_l[spaces->count] = NULL;
+        buf_struct.sorted_arr_l = (char**)malloc(sizeof(char*) * spaces->count + 1);
+        buf_struct.sorted_arr_l[spaces->count] = NULL;
     }
     if (mx_dirorfile(obj) == 0) {
         spaces->count = 0;
-        tmp = mx_strjoin(obj, "/");
-        dir = opendir(tmp);
-        fill_struct_spaces(spaces, tmp);
-        while ((entry = readdir(dir)) != NULL) {
-                sorted_arr_l[spaces->count] = mx_strnew(mx_strlen(tmp) + mx_strlen(entry->d_name));
-                sorted_arr_l[spaces->count] = mx_strjoin(tmp, entry->d_name);
-                lstat(sorted_arr_l[spaces->count], &buf);
-                spaces->total += buf.st_blocks;
+        buf_struct.tmp = mx_strjoin(obj, "/");
+        buf_struct.dir = opendir(buf_struct.tmp);
+        fill_struct_spaces(spaces, buf_struct.tmp);
+        while ((buf_struct.entry = readdir(buf_struct.dir)) != NULL) {
+                buf_struct.sorted_arr_l[spaces->count] = mx_strnew(mx_strlen(buf_struct.tmp) + mx_strlen(buf_struct.entry->d_name));
+                buf_struct.sorted_arr_l[spaces->count] = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
+                lstat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
+                spaces->total += buf_struct.buf.st_blocks;
                 spaces->count++;
-                
         }
-        sorted_arr_l = mx_sort(sorted_arr_l, audit);
+        buf_struct.sorted_arr_l = mx_sort(buf_struct.sorted_arr_l, audit);
         spaces->count = 0;
         mx_printstr("total ");
         mx_printint(spaces->total);
         mx_printchar('\n');
-        
-        while (sorted_arr_l[spaces->count]) {
-            mx_get_obj_info(sorted_arr_l[spaces->count], obj, spaces);
-            spaces->count++;
-        }
+        print_with_flags (obj, buf_struct, spaces, audit);
     }
     else {
             fill_struct_spaces(spaces, obj);
             mx_get_obj_info(obj, obj, spaces);
-        }
-    if (sorted_arr_l) {
-        spaces->count = 0;
-        while (sorted_arr_l[spaces->count]) {
-            free(sorted_arr_l[spaces->count]);
-            spaces->count++;
-        }
-        free(sorted_arr_l);
-        free(tmp);
-        closedir(dir);
-    }
-    free(spaces);
+         }
+    free_mem_l(buf_struct, spaces);
 }
