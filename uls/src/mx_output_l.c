@@ -30,7 +30,6 @@ static void free_mem_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces) {
         }
         free(buf_struct.sorted_arr_l);
         free(buf_struct.tmp);
-        closedir(buf_struct.dir);
     }
     free(spaces);
 }
@@ -51,6 +50,7 @@ static void print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_
 }
 
 void mx_output_l(char *obj,t_add_in_func *audit) {
+
     t_buffer_struct_l buf_struct;
 
     t_spaces_l *spaces = (t_spaces_l*)malloc(sizeof(t_spaces_l));
@@ -59,7 +59,7 @@ void mx_output_l(char *obj,t_add_in_func *audit) {
     if (spaces->count != 0) {
         buf_struct.sorted_arr_l = (char**)malloc(sizeof(char*) * spaces->count + 1);
         buf_struct.sorted_arr_l[spaces->count] = NULL;
-    }
+    }    
     if (mx_dirorfile(obj) == 0) {
         spaces->count = 0;
         buf_struct.tmp = mx_strjoin(obj, "/");
@@ -68,6 +68,7 @@ void mx_output_l(char *obj,t_add_in_func *audit) {
         mx_main_loop_l (buf_struct, spaces);
         mx_print_total (buf_struct, spaces, audit);
         print_with_flags (obj, buf_struct, spaces, audit);
+        closedir(buf_struct.dir);
     }
     else {
             fill_struct_spaces(spaces, obj);
