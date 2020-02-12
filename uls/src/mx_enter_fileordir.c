@@ -4,10 +4,11 @@ int mx_count_obj_d(const char *str) {
     int res = 0;
     DIR *dir;
     struct dirent *entry;
-    dir = opendir(str);
 
+    dir = opendir(str);
     while ((entry = readdir(dir)) != NULL)
-        res++;
+        // if (mx_dirorfile(entry->d_name) != -1)
+            res++;
     closedir(dir);
     return res;
 }
@@ -25,7 +26,7 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs, t_add_in_f
                 new2 = mx_strjoin(new1, overall_arr[u]);
                 free(overall_arr[u]);
                 overall_arr[u] = new2;
-            free(new1);
+                free(new1);
         }
     arr_dirs_new = mx_arr_dirs_2(count_el, overall_arr);
     if (arr_dirs_new != NULL) {
@@ -42,7 +43,8 @@ static char **read_dir_2(char **arr_dirs, int u, int *count_el, DIR *dir) {
     overall_arr = (char **)malloc(sizeof(char *) * (numb + 1));
     overall_arr[numb] = NULL;
     while ((entry = readdir(dir)) != NULL)
-        overall_arr[(*count_el)++] = mx_strdup(entry->d_name);
+        // if (mx_dirorfile(entry->d_name) != -1)
+            overall_arr[(*count_el)++] = mx_strdup(entry->d_name);
     closedir(dir);
     return overall_arr;
 }
