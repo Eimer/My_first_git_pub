@@ -3,15 +3,15 @@
 static void check_fileordir(char **argv, int ind_str, t_add_in_func *audit) {
     char **print_error = (char **)malloc(sizeof(char *) * audit->argc);
     int count = 0;
-    int check_n = 0;
     struct stat buf;
 
     for (count = 0; count < audit->argc; count++)
         print_error[count] = NULL;
-    for (count = 0, check_n = 0; ind_str < audit->argc; ind_str++)
-        if (stat(argv[ind_str], &buf) == -1)
+    for (count = 0; ind_str < audit->argc; ind_str++)
+        if (stat(argv[ind_str], &buf) == -1) {
             print_error[count++] = mx_strdup(argv[ind_str]);
-    audit->check_n = audit->argc - count - 1;
+            audit->check_n++;
+        }
     for (count = 0; print_error[count] != NULL; count++);
     mx_bubble_sort(print_error, count);
     for (int j = 0; print_error[j] != NULL; j++) {
