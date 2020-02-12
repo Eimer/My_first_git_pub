@@ -13,9 +13,8 @@ static void print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces) 
     mx_printstr( (obj_stat.st_mode & S_IWOTH) ? "w" : "-");
     if (obj_stat.st_mode & S_ISVTX)
         mx_printchar('t');
-    else if (obj_stat.st_mode & S_IXOTH){
+    else if (obj_stat.st_mode & S_IXOTH)
         mx_printchar('x');
-    }
     else
         mx_printchar('-');
     mx_get_xatr(obj_name);

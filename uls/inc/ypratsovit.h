@@ -50,5 +50,8 @@ int mx_longest_numbers_pwuid(char *obj);
 int mx_longest_numbers_pwgid(char *obj);
 int mx_longest_numbers_st_size(char *obj);
 int mx_mystrcmp(const char *s1, const char *s2);
-
+void mx_main_loop_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces);
+void mx_print_total_l(char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
+void mx_print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
+void mx_print_total (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
 #endif
