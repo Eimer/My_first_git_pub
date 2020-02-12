@@ -36,22 +36,23 @@ static void free_mem_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces) {
 }
 
 static void print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
-        while (buf_struct.sorted_arr_l[spaces->count]) {
-            if (audit->flags[1] == 1)
-                mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
-            else if (audit->flags[2] == 1) {
-                if ((mx_strcmp(&buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)], "..") != 0 
-                    && mx_strcmp(&buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)], ".") != 0))
-                        mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
-            }
-            else if (buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)] != '.')
-                mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
-            spaces->count++;
-        }   
+    while (buf_struct.sorted_arr_l[spaces->count]) {
+        if (audit->flags[1] == 1)
+            mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
+        else if (audit->flags[2] == 1) {
+            if ((mx_strcmp(&buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)], "..") != 0 
+                && mx_strcmp(&buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)], ".") != 0))
+                    mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
+        }
+        else if (buf_struct.sorted_arr_l[spaces->count][mx_strlen(buf_struct.tmp)] != '.')
+            mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
+        spaces->count++;
+    }   
 }
+
 void mx_output_l(char *obj,t_add_in_func *audit) {
     t_buffer_struct_l buf_struct;
-    
+
     t_spaces_l *spaces = (t_spaces_l*)malloc(sizeof(t_spaces_l));
     spaces->total = 0;
     spaces->count = count_el_before_sorted(obj);
