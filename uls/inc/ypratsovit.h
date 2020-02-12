@@ -53,5 +53,13 @@ int mx_mystrcmp(const char *s1, const char *s2);
 void mx_main_loop_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces);
 void mx_print_total_l(char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
 void mx_print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
-void mx_print_total (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
+void mx_print_total (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
+void mx_first_atr_if_dir(char *obj_name, t_spaces_l *spaces);
+void mx_print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces);
+void mx_first_atr_if_file(char *obj_name, t_spaces_l *spaces);
+void mx_first_atr_if_undef(char *obj_name, t_spaces_l *spaces);
+void mx_print_maj_min(char *obj_name, t_spaces_l *spaces);
+void mx_get_obj_time(char *obj);
+void mx_print_link(char *obj_name, char *linked_file, char *not_need);
+
 #endif
