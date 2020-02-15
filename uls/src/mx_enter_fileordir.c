@@ -7,8 +7,7 @@ int mx_count_obj_d(const char *str) {
 
     dir = opendir(str);
     while ((entry = readdir(dir)) != NULL)
-        // if (mx_dirorfile(entry->d_name) != -1)
-            res++;
+        res++;
     closedir(dir);
     return res;
 }
@@ -43,8 +42,7 @@ static char **read_dir_2(char **arr_dirs, int u, int *count_el, DIR *dir) {
     overall_arr = (char **)malloc(sizeof(char *) * (numb + 1));
     overall_arr[numb] = NULL;
     while ((entry = readdir(dir)) != NULL)
-        // if (mx_dirorfile(entry->d_name) != -1)
-            overall_arr[(*count_el)++] = mx_strdup(entry->d_name);
+        overall_arr[(*count_el)++] = mx_strdup(entry->d_name);
     closedir(dir);
     return overall_arr;
 }
