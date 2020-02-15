@@ -1,8 +1,7 @@
 #include "../inc/uls.h"
 
 int main(int argc, char*argv[]) {
-    t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
-
+t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
     audit->flags = (int *)malloc(sizeof(int) * 10);
     audit->main_return = 1;
     audit->argc = argc;
@@ -16,6 +15,6 @@ int main(int argc, char*argv[]) {
     mx_enter_fileordir(argc, argv, audit);
     free(audit->flags);
     free(audit);
-    //system("leaks -q uls");
+    // system("leaks -q uls");
     return audit->main_return;
 }
