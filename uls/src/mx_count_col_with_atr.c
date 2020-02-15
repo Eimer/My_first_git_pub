@@ -5,12 +5,10 @@ static int multiple(int longest) {
 
     if (multiple == 0)
         return 0;
-    if(multiple % 8 == 0)
+    if (multiple % 8 == 0)
         multiple++;
-
-    while (multiple % 8 != 0) {
+    while (multiple % 8 != 0)
         multiple++;
-    }
     return multiple;
 }
 

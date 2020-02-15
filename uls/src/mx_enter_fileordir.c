@@ -70,7 +70,7 @@ void mx_open_dir(char **arr_dirs, t_add_in_func *audit) {
 
 void mx_enter_fileordir(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
-    char **arr_dirs = mx_arr_dirs_1(argc, argv, audit);
+    char **arr_dirs = mx_arr_dirs_1(argc, argv, audit, arr_files);
 
     if (audit->flags[9] == 1) {
         mx_d_flag(arr_files, arr_dirs, audit);

@@ -20,7 +20,8 @@ void mx_print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces) {
         mx_printchar('-');
     mx_get_xatr(obj_name);
     mx_printchar(' ');
-    for (int i = 0; i < spaces->first_col - mx_count_numbers(buf.st_nlink); i++)
+    for (int i = 0; i < spaces->first_col - mx_count_numbers(buf.st_nlink);
+            i++)
         mx_printchar(' ');
     mx_printint(obj_stat.st_nlink);
     mx_printchar(' ');
@@ -32,12 +33,14 @@ static void get_obj_pwgid(char *obj, t_spaces_l *spaces) {
     struct group *groups = getgrgid(buf.st_gid);
     if (!groups) {
         mx_printint(buf.st_gid);
-        for (int i = 0; i < spaces->third_col- mx_count_numbers(buf.st_gid); i++)
+        for (int i = 0; i < spaces->third_col - mx_count_numbers(buf.st_gid);
+            i++)
             mx_printchar(' ');
     }   
     else {
     mx_printstr(groups->gr_name);
-        for (int i = 0; i < spaces->third_col- mx_strlen(groups->gr_name); i++)
+        for (int i = 0; i < spaces->third_col - mx_strlen(groups->gr_name);
+            i++)
             mx_printchar(' ');
     }
 }
@@ -72,7 +75,7 @@ void mx_get_obj_time(char *obj) {
 
 void mx_get_obj_info(char *obj_name, char *not_need, t_spaces_l *spaces) {
     char *linked_file = mx_strnew(500);
-    
+
     if (mx_dirorfile(obj_name) == 1)
         mx_first_atr_if_dir(obj_name, spaces);
     else if (mx_dirorfile(obj_name) == 0)

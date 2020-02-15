@@ -73,9 +73,8 @@ void mx_print_link(char *obj_name, char *linked_file, char *not_need) {
         if (mx_strlen(obj_name) == mx_strlen(not_need))
             mx_printstr(obj_name);
         else 
-            for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++) {
+            for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++)
                 mx_printchar(obj_name[i]);
-            }
         mx_printstr(" -> ");
         mx_printstr(linked_file);
         not_need = NULL;
@@ -84,9 +83,8 @@ void mx_print_link(char *obj_name, char *linked_file, char *not_need) {
         if (mx_strlen(obj_name) == mx_strlen(not_need))
             mx_printstr(obj_name);
         else {
-            for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++) {
-            mx_printchar(obj_name[i]);
-            }
+            for (int i = mx_strlen(not_need) + 1; i < mx_strlen(obj_name); i++)
+                mx_printchar(obj_name[i]);
         }
     mx_printchar('\n');
 }

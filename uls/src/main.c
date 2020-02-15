@@ -6,11 +6,11 @@ int main(int argc, char*argv[]) {
     audit->flags = (int *)malloc(sizeof(int) * 10);
     audit->main_return = 1;
     audit->argc = argc;
-    audit->check = 0;
+    // audit->check = 0;
     audit->check_n = 0;
     for (int u = 0; u < 10; u++)
         audit->flags[u] = 0;
-    mx_errors(argc, argv, audit, "aARrl1tSdf");
+    mx_errors(argc, argv, audit, "aARrl1df");
     if (audit->check_n > 1)
         audit->flags[0] = 1;
     mx_enter_fileordir(argc, argv, audit);
