@@ -9,8 +9,8 @@ char **mx_sort(char **overall_arr, t_add_in_func *audit) {
     if (audit->flags[10] == 1)
         return overall_arr;
     mx_bubble_sort(overall_arr, count);
-    if (audit->flags[8] == 1)
-        mx_quick(overall_arr, 0, count);
+    if (audit->flags[8] == 1 || audit->flags[7] == 1)
+        mx_quick(overall_arr, count, audit);
     if (audit->flags[6] == 1) {
         for (int i = count; i > -1; i--)
             for (int j = count - 1; j > 0; j--)

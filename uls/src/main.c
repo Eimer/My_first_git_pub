@@ -10,7 +10,7 @@ t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
     audit->check_n = 0;
     for (int u = 0; u < 10; u++)
         audit->flags[u] = 0;
-    mx_errors(argc, argv, audit, "aARrl1tSdf");
+    mx_errors(argc, argv, audit, "aARrl1dfuT");
     if (audit->check_n > 1)
         audit->flags[0] = 1;
     mx_enter_fileordir(argc, argv, audit);

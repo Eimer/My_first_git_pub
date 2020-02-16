@@ -2,7 +2,7 @@
 
 void mx_main_loop_l (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
     while ((buf_struct.entry = readdir(buf_struct.dir)) != NULL) {
-        buf_struct.sorted_arr_l[spaces->count] = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
+        buf_struct.sorted_arr_l[spaces->count] = mx_strjoin(buf_struct.tmp,buf_struct.entry->d_name);
         lstat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
         if (audit->flags[1] == 1 || audit->flags[2] == 1) {
                 spaces->total += buf_struct.buf.st_blocks;
@@ -24,6 +24,8 @@ void mx_print_total (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_
     //     test++;
     // }
     // exit(0);
+void mx_print_total (t_buffer_struct_l buf_struct, t_spaces_l *spaces,
+                     t_add_in_func *audit) {
     buf_struct.sorted_arr_l = mx_sort(buf_struct.sorted_arr_l, audit);
     spaces->count = 0;
     mx_printstr("total ");

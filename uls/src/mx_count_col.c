@@ -7,10 +7,8 @@ static int multiple(int longest) {
         return 0;
     if (multiple % 8 == 0)
         multiple++;
-
-    while (multiple % 8 != 0) {
+    while (multiple % 8 != 0)
         multiple++;
-    }
     return multiple;
 }
 

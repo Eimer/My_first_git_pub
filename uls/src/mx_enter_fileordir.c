@@ -4,8 +4,8 @@ int mx_count_obj_d(const char *str) {
     int res = 0;
     DIR *dir;
     struct dirent *entry;
-    dir = opendir(str);
 
+    dir = opendir(str);
     while ((entry = readdir(dir)) != NULL)
         res++;
     closedir(dir);
@@ -18,16 +18,15 @@ static void namecpy(char **overall_arr, int count_el, char *arr_dirs, t_add_in_f
     char *new2;
     char **arr_dirs_new;
 
-    for (u = 0; overall_arr[u] != NULL; u++) {
+    for (u = 0; overall_arr[u] != NULL; u++)
         if (mx_strcmp(overall_arr[u], ".") != 0
             && mx_strcmp(overall_arr[u], "..") != 0) {
-            new1 = mx_strjoin(arr_dirs, "/");
-            new2 = mx_strjoin(new1, overall_arr[u]);
-            free(overall_arr[u]);
-            overall_arr[u] = new2;
-            free(new1);
+                new1 = mx_strjoin(arr_dirs, "/");
+                new2 = mx_strjoin(new1, overall_arr[u]);
+                free(overall_arr[u]);
+                overall_arr[u] = new2;
+                free(new1);
         }
-    }
     arr_dirs_new = mx_arr_dirs_2(count_el, overall_arr);
     if (arr_dirs_new != NULL) {
         mx_open_dir(arr_dirs_new, audit);
@@ -54,7 +53,7 @@ void mx_open_dir(char **arr_dirs, t_add_in_func *audit) {
     char **overall_arr;
     int u = 0;
 
-    mx_sort(arr_dirs, audit);
+    mx_sort_overallarr(arr_dirs);
     for (u = 0; arr_dirs[u] != NULL; u++) {
         count_el = 0;
         dir = opendir(arr_dirs[u]);
@@ -71,7 +70,7 @@ void mx_open_dir(char **arr_dirs, t_add_in_func *audit) {
 
 void mx_enter_fileordir(int argc, char **argv, t_add_in_func *audit) {
     char **arr_files = mx_arr_files(argc, argv);
-    char **arr_dirs = mx_arr_dirs_1(argc, argv, audit);
+    char **arr_dirs = mx_arr_dirs_1(argc, argv, audit, arr_files);
 
     if (audit->flags[9] == 1) {
         mx_d_flag(arr_files, arr_dirs, audit);
