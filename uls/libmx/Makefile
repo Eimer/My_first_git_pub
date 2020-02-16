@@ -57,7 +57,7 @@ OBJ = $(addsuffix .o, $(FILES))
 CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 INC = inc
 
-all: install uninstall
+all: install
 
 install:
 	@mkdir -p $(DIROBJ)
@@ -67,10 +67,9 @@ install:
 
 uninstall:
 	@rm -rf $(DIROBJ)
+	@rm -rf $(NAME)
 
 clean:
-	@rm -rf $(NAME)
 	@rm -rf $(DIROBJ)
-	@rm -rf $(OBJ)
 
 reinstall: uninstall install

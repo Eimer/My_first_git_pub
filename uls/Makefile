@@ -1,19 +1,47 @@
 NAME = uls
 
+INC = inc/uls.h
+
 OBJ = obj
 
 LIBMX.A = ./libmx/libmx.a
 
 LIB = libmx
 
-# CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic -g -fsanitize=address
+FILES = main \
+	mx_arr_dirs \
+	mx_arr_files \
+	mx_buffer_for_get \
+	mx_buffer_l_flag \
+	mx_check_denied \
+	mx_count_col_with_atr \
+	mx_count_col \
+	mx_count_longest_with_atr \
+	mx_count_longest \
+	mx_count_obj \
+	mx_dirorfile \
+	mx_enter_fileordir \
+	mx_errors \
+	mx_get_obj_info \
+	mx_get_screencoord \
+	mx_get_xatr \
+	mx_mystrcmp \
+	mx_output_l \
+	mx_output_with_atr \
+	mx_print_atr_l \
+	mx_print_result \
+	mx_printerr \
+	mx_printint_n \
+	mx_quick \
+	mx_sort_overallarr \
+	mx_spaces_l \
+	mx_write_flags
+
 CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 
-SRC = src/*.c
+SRC = $(addprefix ./src/, $(addsuffix .c, $(FILES)))
 
-OUT = *.o 
-
-INC = inc/uls.h
+OUT = $(addsuffix .o, $(FILES))
 
 all: install
 
@@ -27,6 +55,7 @@ install:
 clean:
 	@make clean -C $(LIB)
 	@rm -rf $(OBJ)
+	@rm -rf $(OUT)
 
 uninstall:
 	@make uninstall -C $(LIB)

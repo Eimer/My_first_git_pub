@@ -16,7 +16,6 @@ static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
     audit->check_n = 2;
 }
 
-
 // flag -A
 static char **return_a_A(char **arr, t_add_in_func *audit, char *check_a) {
     char **new_arr = NULL;
@@ -62,7 +61,7 @@ static char **return_without_flags(char **arr, char *check_a) {
 
 static void printit(char **new_arr, t_add_in_func *audit, char *check_a,
                     char **arr) {
-        if (audit->flags[1] == 0 && audit->flags[2] == 0)
+    if (audit->flags[1] == 0 && audit->flags[2] == 0)
         new_arr = return_without_flags(arr, check_a);
     if (new_arr != NULL && (audit->flags[5] == 1 || isatty(1) == 0)) {
         mx_sort(new_arr, audit);
@@ -81,7 +80,7 @@ static void printit(char **new_arr, t_add_in_func *audit, char *check_a,
 void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
     if (mx_searchstr(check_a, "/.") == 1 && audit->flags[1] == 0
         && audit->flags[2] == 0)
-        return;
+            return;
     char **new_arr = return_a_A(arr, audit, check_a);
 
     if (audit->flags[4] == 1) {
