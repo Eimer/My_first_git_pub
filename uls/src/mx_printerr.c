@@ -5,3 +5,9 @@ void mx_printerr(const char *s) {
 
     write(2, s, k);
 }
+
+void mx_printcharerr(char s) {
+
+    write(2, &s, 1);
+}
+

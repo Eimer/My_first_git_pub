@@ -3,6 +3,10 @@
 static void write_flags_f(char flag, t_add_in_func *audit) {
     if (flag == 'd')
         audit->flags[9] = 1;
+    if (flag == 'u')
+        audit->flags[8] = 1;
+    if (flag == 'Y')
+        audit->flags[7] = 1;
 }
 
 void mx_write_flags(char flag, t_add_in_func *audit) {

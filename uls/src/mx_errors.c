@@ -17,10 +17,10 @@ static void check_fileordir(char **argv, int ind_str, t_add_in_func *audit) {
 
     for (count = 0; count < audit->argc; count++)
         print_error[count] = NULL;
-    for (count = 0; ind_str < audit->argc; ind_str++, audit->check_n++)
-        if (stat(argv[ind_str], &buf) == -1)
+    audit->check_n = audit->argc - ind_str;
+    for (count = 0; ind_str < audit->argc; ind_str++)
+        if (stat(argv[ind_str], &buf) == -1 && errno != 13)
             print_error[count++] = mx_strdup(argv[ind_str]);
-    // audit->check_n = audit->argc - 1;
     for (count = 0; print_error[count] != NULL; count++);
     mx_bubble_sort(print_error, count);
     for (int j = 0; print_error[j] != NULL; j++)
@@ -41,7 +41,9 @@ static int check_flag(char **argv, int check, int ind_str,
     }
     if ((argv[ind_str][0] == '-' && argv[ind_str][1] == '-'
         && argv[ind_str][2] != '\0') || check == 0) {
-        mx_printstr("usage: uls [-aARrl1df] [file ...]\n");
+        mx_printerr("uls: illegal option -- ");
+        mx_printcharerr(audit->error);
+        mx_printerr("\nusage: uls [-aARrl1dfuT] [file ...]\n");
         audit->main_return = 1;
         exit(1);
     }
@@ -63,8 +65,10 @@ void mx_errors(int argc, char **argv, t_add_in_func *audit, char *flag) {
                     check = 1;
                     break;
                 }
-                if (i_f == s_f - 1 && argv[ind_str][index] != flag[i_f])
+                if (i_f == s_f - 1) {
+                    audit->error = argv[ind_str][index];
                     if (check_flag(argv, check, ind_str, audit) == 1)
                         return;
+                }
             }
 }

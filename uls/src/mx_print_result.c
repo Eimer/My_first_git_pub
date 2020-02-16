@@ -1,19 +1,19 @@
 #include "../inc/uls.h"
 
 static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
-    if (arr != NULL && audit->flags[0] == 1 && check_a != NULL) {
-        if (audit->check_n == 1 || audit->flags[3] == 0) {
-        if (audit->check_n == 1)
-            mx_printchar(10);
-        if (check_a[0] == '/' && check_a[1] == '/' && check_a[2] != '/')
-            mx_printstr(mx_chr(check_a, '/', mx_strlen(check_a)));
-        else
-            mx_printstr(check_a);
-        mx_printstr(":\n");
+    if (arr != NULL && check_a != NULL) {
+        if (audit->check_n > 1) {
+            if (audit->check == 1)
+                mx_printchar(10);
+            if (check_a[0] == '/' && check_a[1] == '/' && check_a[2] != '/')
+                mx_printstr(mx_chr(check_a, '/', mx_strlen(check_a)));
+            else
+                mx_printstr(check_a);
+            mx_printstr(":\n");
         }
     }
-    audit->check_n = 1;
-    audit->flags[0] = 1;
+    audit->check = 1;
+    audit->check_n = 2;
 }
 
 static char **return_a_A(char **arr, t_add_in_func *audit) { // flag -A
@@ -72,7 +72,6 @@ static void printit(char **new_arr, t_add_in_func *audit, char *check_a,
             mx_output_with_atr(new_arr);
         mx_del_strarr(&new_arr);
     }
-    audit->flags[0] = 1;
     audit->check = 1;
 }
 

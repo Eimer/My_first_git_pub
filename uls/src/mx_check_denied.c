@@ -67,12 +67,15 @@ int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit) {
         return 0;
     }
     if (audit->flags[1] == 1 || (mx_searchstr(arr_dirs_u, "/.") != 1))
-    if (errno != 0) {
-        if (audit->check_n == 1)
-            mx_printstr("\n");
-        ifelse(arr_dirs_u);
-        mx_printstr(":\n");
-        error(arr_dirs_u, audit);
-    }
+        if (errno != 0) {
+            if (audit->check_n > 1) {
+                if (audit->check == 1)
+                    mx_printstr("\n");
+                ifelse(arr_dirs_u);
+                mx_printstr(":\n");
+            }
+            error(arr_dirs_u, audit);
+            audit->check = 1;
+        }
     return 1;
 }
