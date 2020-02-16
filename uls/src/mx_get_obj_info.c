@@ -4,17 +4,10 @@ void mx_print_acl(struct stat obj_stat, char *obj_name, t_spaces_l *spaces) {
     struct stat buf;
 
     lstat(obj_name, &buf);
-    mx_printstr( (obj_stat.st_mode & S_IRUSR) ? "r" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IWUSR) ? "w" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IXUSR) ? "x" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IRGRP) ? "r" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IWGRP) ? "w" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IXGRP) ? "x" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IROTH) ? "r" : "-");
-    mx_printstr( (obj_stat.st_mode & S_IWOTH) ? "w" : "-");
-    if (obj_stat.st_mode & S_ISVTX)
+    mx_print_atr_l(obj_stat, obj_name);
+    if (obj_stat.st_mode & MX_S_ISVTX)
         mx_printchar('t');
-    else if (obj_stat.st_mode & S_IXOTH)
+    else if (obj_stat.st_mode & MX_S_IXOTH)
         mx_printchar('x');
     else
         mx_printchar('-');
