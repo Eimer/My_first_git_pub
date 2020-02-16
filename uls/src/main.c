@@ -2,6 +2,7 @@
 
 int main(int argc, char*argv[]) {
 t_add_in_func *audit = (t_add_in_func *)malloc(sizeof(t_add_in_func));
+
     audit->flags = (int *)malloc(sizeof(int) * 10);
     audit->main_return = 1;
     audit->argc = argc;
