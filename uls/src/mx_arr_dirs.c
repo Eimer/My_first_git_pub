@@ -24,7 +24,7 @@ char **mx_arr_dirs(int argc, char **argv) {
 }
 
 char **mx_arr_dirs_1(int argc, char **argv, t_add_in_func *audit,
-                        char **arr_files) {
+                     char **arr_files) {
     char **arr_dirs = NULL;
     int count_dirs = 0;
 

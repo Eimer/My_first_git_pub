@@ -15,7 +15,8 @@ void mx_quick(char **overall_arr, int count, t_add_in_func *audit) {
 
     for (int i = 0; i < count - 1; i++)
         for (int j = 0; j < count - 1 - i; j++) {
-            if (mx_test(overall_arr[i], audit) > mx_test(overall_arr[j], audit)) {
+            if (mx_test(overall_arr[i], audit) > mx_test(overall_arr[j],
+                audit)) {
                 buff = overall_arr[j];
                 overall_arr[j] = overall_arr[j + 1];
                 overall_arr[j + 1] = buff;

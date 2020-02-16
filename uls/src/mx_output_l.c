@@ -50,7 +50,7 @@ static void print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_
     }
 }
 
-void mx_output_l(char *obj,t_add_in_func *audit) {
+void mx_output_l(char *obj, t_add_in_func *audit) {
     t_buffer_struct_l buf_struct;
 
     t_spaces_l *spaces = (t_spaces_l*)malloc(sizeof(t_spaces_l));

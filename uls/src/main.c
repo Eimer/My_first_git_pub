@@ -16,6 +16,6 @@ int main(int argc, char*argv[]) {
     mx_enter_fileordir(argc, argv, audit);
     free(audit->flags);
     free(audit);
-    //system("leaks -q uls");
+    // system("leaks -q uls");
     return audit->main_return;
 }

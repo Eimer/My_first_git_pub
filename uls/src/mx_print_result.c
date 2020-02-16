@@ -16,7 +16,9 @@ static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
     audit->check_n = 2;
 }
 
-static char **return_a_A(char **arr, t_add_in_func *audit) { // flag -A
+
+// flag -A
+static char **return_a_A(char **arr, t_add_in_func *audit, char *check_a) {
     char **new_arr = NULL;
     int count = 0;
     int numb = 0;
@@ -34,6 +36,7 @@ static char **return_a_A(char **arr, t_add_in_func *audit) { // flag -A
                 new_arr[numb++] = mx_strdup(arr[count]);
         mx_sort(new_arr, audit);
     }
+    print_check_a(arr, audit, check_a);
     return new_arr;
 }
 
@@ -75,13 +78,12 @@ static void printit(char **new_arr, t_add_in_func *audit, char *check_a,
     audit->check = 1;
 }
 
-void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) { // 21
-    char **new_arr = return_a_A(arr, audit);
-
+void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
     if (mx_searchstr(check_a, "/.") == 1 && audit->flags[1] == 0
         && audit->flags[2] == 0)
         return;
-    print_check_a(arr, audit, check_a);
+    char **new_arr = return_a_A(arr, audit, check_a);
+
     if (audit->flags[4] == 1) {
         if (check_a != NULL)
             mx_output_l(check_a, audit);
@@ -90,7 +92,7 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) { // 21
                 mx_output_l(arr[u], audit);
         return;
     }
-    if (audit->flags[1] == 1 || audit->flags[9] == 1) { // flag -a
+    if (audit->flags[1] == 1 || audit->flags[9] == 1) {// flag -a
         mx_sort(arr, audit);
         (audit->flags[5] == 0 && isatty(1) == 1) ?
             mx_output_with_atr(arr) : mx_print_n(arr, audit->flags);

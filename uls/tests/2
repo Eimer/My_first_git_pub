@@ -1,12 +1,9 @@
-total 3080
--rw-r--r--   1 dmushynska  4242   473001 Feb 15 18:27 1
--rw-r--r--   1 dmushynska  4242  1042083 Feb 15 18:21 2
--rw-r--r--   1 dmushynska  4242      602 Jan 30 15:44 Makefile
--rw-r--r--   1 dmushynska  4242        0 Jan 25 11:52 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-drwxr-xr-x   5 dmushynska  4242      170 Feb 15 15:36 inc
-drwxr-xr-x   9 dmushynska  4242      306 Feb 16 11:11 libmx
--rw-r--r--   1 dmushynska  4242      595 Feb 15 15:33 main.c
-drwxr-xr-x  31 dmushynska  4242     1054 Feb 16 11:11 obj
-drwxr-xr-x  31 dmushynska  4242     1054 Feb 15 17:47 src
-drwxr-xr-x   9 dmushynska  4242      306 Feb 16 11:16 tests
--rwxr-xr-x   1 dmushynska  4242    33872 Feb 16 11:11 uls
+.
+..
+1
+2
+compare.sh
+errors.sh
+output.sh
+test.txt
+uls
