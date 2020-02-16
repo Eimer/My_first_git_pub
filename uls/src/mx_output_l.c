@@ -1,10 +1,12 @@
 #include "../inc/uls.h"
 
 void mx_fill_struct_spaces(t_spaces_l *spaces, char *obj, t_add_in_func *audit) {
-    spaces->first_col = mx_longest_numbers_links(obj, audit);
-    spaces->second_col = mx_longest_numbers_pwuid(obj, audit);
-    spaces->third_col = mx_longest_numbers_pwgid(obj, audit);
-    spaces->fourth_col = mx_longest_numbers_st_size(obj, audit);
+    if (audit) {
+        spaces->first_col = mx_longest_numbers_links(obj, audit);
+        spaces->second_col = mx_longest_numbers_pwuid(obj, audit);
+        spaces->third_col = mx_longest_numbers_pwgid(obj, audit);
+        spaces->fourth_col = mx_longest_numbers_st_size(obj, audit);
+    }
 }
 
 static int count_el_before_sorted(char *obj) {

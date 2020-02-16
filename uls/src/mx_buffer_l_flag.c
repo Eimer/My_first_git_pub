@@ -18,6 +18,12 @@ void mx_main_loop_l (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_
 }
 
 void mx_print_total (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+    int test = 0;
+    while (buf_struct.sorted_arr_l[test]) {
+        printf("%s ", buf_struct.sorted_arr_l[test]);
+        test++;
+    }
+    exit(0);
     buf_struct.sorted_arr_l = mx_sort(buf_struct.sorted_arr_l, audit);
     spaces->count = 0;
     mx_printstr("total ");
