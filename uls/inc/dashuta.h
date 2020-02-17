@@ -10,6 +10,7 @@ typedef struct s_add_in_func {
     int argc;
     int *flags;
     char error;
+    char *buff;
 } t_add_in_func;
 
 // Return int

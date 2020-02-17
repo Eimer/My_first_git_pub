@@ -2,7 +2,7 @@
 
 void mx_main_loop_l (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
     while ((buf_struct.entry = readdir(buf_struct.dir)) != NULL) {
-        buf_struct.sorted_arr_l[spaces->count] = mx_strjoin(buf_struct.tmp,buf_struct.entry->d_name);
+        buf_struct.sorted_arr_l[spaces->count] = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
         lstat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
         if (audit->flags[1] == 1) {
                 spaces->total += buf_struct.buf.st_blocks;
@@ -37,4 +37,28 @@ void mx_d_flag_with_l (char *obj, t_spaces_l *spaces, t_buffer_struct_l buf_stru
     mx_fill_struct_spaces(spaces, buf_struct.tmp, NULL);
     free(buf_struct.tmp);
     mx_get_obj_info(obj, obj, spaces);
+}
+
+void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+    if (spaces->count != 0) {
+        spaces->count = 0;
+        buf_struct.tmp = mx_strjoin(obj, "/");
+        buf_struct.dir = opendir(buf_struct.tmp);
+        mx_fill_struct_spaces(spaces, buf_struct.tmp, audit);
+        mx_main_loop_l (buf_struct, spaces, audit);
+        mx_print_total (buf_struct, spaces, audit);
+        mx_print_with_flags (obj, buf_struct, spaces, audit);
+        free(buf_struct.tmp);
+        closedir(buf_struct.dir);
+    }
+}
+
+int mx_longest_space (char *buff, struct dirent *entry, char *obj, int longest) {
+    struct stat buf;
+    
+    buff = mx_strjoin(obj, entry->d_name);
+    lstat(buff, &buf);
+    if(mx_count_numbers(buf.st_nlink) > longest)
+        longest = mx_count_numbers(buf.st_nlink);
+    return longest;
 }

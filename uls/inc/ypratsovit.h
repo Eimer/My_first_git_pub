@@ -43,6 +43,7 @@
 #define MX_S_IFREG 0100000
 #define MX_S_IFLNK 0120000
 #define MX_S_IFSOCK 0140000
+
 typedef struct s_spaces_l {
     int first_col;
     int second_col;
@@ -87,5 +88,8 @@ void mx_print_link(char *obj_name, char *linked_file, char *not_need);
 void mx_d_flag_with_l(char *obj, t_spaces_l *spaces, t_buffer_struct_l buf_struct);
 void mx_fill_struct_spaces(t_spaces_l *spaces, char *obj, t_add_in_func *audit);
 void mx_print_atr_l(struct stat obj_stat, char *obj_name);
+void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
+void mx_print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
+int mx_longest_space (char *buff, struct dirent *entry, char *obj, int longest);
 
 #endif
