@@ -80,6 +80,7 @@ static void printit(char **new_arr, t_add_in_func *audit, char *check_a,
 }
 
 void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
+    mx_sort(arr, audit);
     if (mx_searchstr(check_a, "/.") == 1 && audit->flags[1] == 0
         && audit->flags[2] == 0)
             return;
@@ -94,7 +95,6 @@ void mx_print_result(char **arr, t_add_in_func *audit, char *check_a) {
         return;
     }
     if (audit->flags[1] == 1 || audit->flags[9] == 1) {// flag -a
-        mx_sort(arr, audit);
         (audit->flags[5] == 0 && isatty(1) == 1) ?
             mx_output_with_atr(arr) : mx_print_n(arr, audit->flags);
         return;
