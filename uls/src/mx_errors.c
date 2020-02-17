@@ -43,7 +43,7 @@ static int check_flag(char **argv, int check, int ind_str,
         && argv[ind_str][2] != '\0') || check == 0) {
         mx_printerr("uls: illegal option -- ");
         mx_printcharerr(audit->error);
-        mx_printerr("\nusage: uls [-aARrl1dfS] [file ...]\n");
+        mx_printerr("\nusage: uls [-aARrl1dfSt] [file ...]\n");
         audit->main_return = 1;
         exit(1);
     }

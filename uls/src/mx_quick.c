@@ -2,10 +2,16 @@
 
 static int mx_test(char *argv, t_add_in_func *audit) {
     struct stat buf;
+    char *new_str = mx_strjoin(audit->check_a, "/");
+    char *new = mx_strjoin(new_str, argv);
+    stat(new, &buf);
 
-    stat(argv, &buf);
+    free(new_str);
+    free(new);
     if (audit->flags[7] == 1)
         return buf.st_size;
+    if (audit->flags[8] == 1)
+        return buf.st_mtimespec.tv_sec;
     return buf.st_size;
 }
 
