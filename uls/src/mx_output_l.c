@@ -43,7 +43,7 @@ void free_mem_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces) {
     }
 }
 
-static void print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+void mx_print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
     while (buf_struct.sorted_arr_l[spaces->count]) {
         if (audit->flags[1] == 1) {
             mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
@@ -73,25 +73,15 @@ void mx_output_l(char *obj, t_add_in_func *audit) {
         mx_d_flag_with_l (obj, spaces, buf_struct);
     else {
         if (mx_dirorfile(obj) == 0) {
-            if (spaces->count != 0) {
-                spaces->count = 0;
-                buf_struct.tmp = mx_strjoin(obj, "/");
-                buf_struct.dir = opendir(buf_struct.tmp);
-                mx_fill_struct_spaces(spaces, buf_struct.tmp, audit);
-                mx_main_loop_l (buf_struct, spaces, audit);
-                mx_print_total (buf_struct, spaces, audit);
-                print_with_flags (obj, buf_struct, spaces, audit);
-                free(buf_struct.tmp);
-                closedir(buf_struct.dir);
-        }
+            mx_buff_func_in_loop (obj, buf_struct, spaces, audit);
     }
     else {
         mx_fill_struct_spaces(spaces, obj,audit);
         mx_get_obj_info(obj, obj, spaces);
     }
     if (mx_dirorfile(obj) == 0)
-        if (spaces->count != 0) 
-        free_mem_l(buf_struct, spaces);
+        if (spaces->count != 0)
+            free_mem_l(buf_struct, spaces);
     }
     free(spaces);
 }
