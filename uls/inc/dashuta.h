@@ -4,6 +4,7 @@
 
 // Struct
 typedef struct s_add_in_func {
+    char *check_a;
     int main_return;
     int check;
     int check_n;
