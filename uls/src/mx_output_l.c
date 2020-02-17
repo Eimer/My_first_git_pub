@@ -73,7 +73,7 @@ void mx_output_l(char *obj, t_add_in_func *audit) {
         mx_d_flag_with_l (obj, spaces, buf_struct);
     else {
         if (mx_dirorfile(obj) == 0) {
-        mx_buff_func_in_loop (obj, buf_struct, spaces, audit);
+            mx_buff_func_in_loop (obj, buf_struct, spaces, audit);
     }
     else {
         mx_fill_struct_spaces(spaces, obj,audit);
@@ -81,7 +81,7 @@ void mx_output_l(char *obj, t_add_in_func *audit) {
     }
     if (mx_dirorfile(obj) == 0)
         if (spaces->count != 0)
-        free_mem_l(buf_struct, spaces);
+            free_mem_l(buf_struct, spaces);
     }
     free(spaces);
 }

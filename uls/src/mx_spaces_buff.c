@@ -60,3 +60,27 @@ int mx_numbers_pwuid (char * obj, struct dirent *entry, int longest, t_add_in_fu
             res = mx_strlen(pwuid->pw_name);
     return res;
 }
+
+int mx_number_links (char * obj, struct dirent *entry, int longest, t_add_in_func *audit) {
+    int res = 0;
+    char *buff = NULL;
+    struct stat buf;
+
+    res = longest;
+    if (audit->flags[1] == 1) {
+        buff = mx_strjoin(obj, entry->d_name);
+        lstat(buff, &buf);
+        free(buff);
+        if (mx_count_numbers(buf.st_nlink) > res)
+            res = mx_count_numbers(buf.st_nlink);
+        }
+        else if (audit->flags[2] == 1) {
+            if (mx_strcmp(entry->d_name, ".") != 0
+                && mx_strcmp(entry->d_name, "..") != 0)
+                res = mx_longest_space (buff, entry, obj, res);
+            }
+            else
+                if (entry->d_name[0] != '.')
+                    res = mx_longest_space (buff, entry, obj, res);
+    return res;
+}

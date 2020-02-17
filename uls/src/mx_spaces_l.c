@@ -15,27 +15,11 @@ int mx_longest_numbers_links(char *obj, t_add_in_func *audit) {
     DIR *dir;
     struct dirent *entry;
     int longest = 0;
-    struct stat buf;
-    char *buff = NULL;
 
     if (mx_dirorfile(obj) == 0) {
         dir = opendir(obj);
         while ((entry = readdir(dir)) != NULL) {
-            if (audit->flags[1] == 1) {
-                buff = mx_strjoin(obj, entry->d_name);
-                lstat(buff, &buf);
-                free(buff);
-                if (mx_count_numbers(buf.st_nlink) > longest)
-                    longest = mx_count_numbers(buf.st_nlink);
-            }
-            else if (audit->flags[2] == 1) {
-                if (mx_strcmp(entry->d_name, ".") != 0
-                    && mx_strcmp(entry->d_name, "..") != 0)
-                    longest = mx_longest_space (buff, entry, obj, longest);
-            }
-            else
-                if (entry->d_name[0] != '.')
-                    longest = mx_longest_space (buff, entry, obj, longest);
+            longest = mx_number_links (obj, entry, longest, audit);
         }
         closedir(dir);
     }

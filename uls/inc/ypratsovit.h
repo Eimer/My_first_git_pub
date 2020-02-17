@@ -94,5 +94,6 @@ int mx_longest_space (char *buff, struct dirent *entry, char *obj, int longest);
 int mx_numbers_pwgid (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 int mx_numbers_pwgid_without_a (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 int mx_numbers_pwuid (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
+int mx_number_links (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 
 #endif
