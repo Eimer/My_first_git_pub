@@ -7,6 +7,6 @@ for i in "${err[@]}"; do
 	zsh compare.sh <(ls $i 2>&1) <(./uls $i 2>&1) $i
 	zsh compare.sh <(ls $i . 2>&1) <(./uls $i . 2>&1) "$i ."
 	zsh compare.sh <(ls $i .. 2>&1) <(./uls $i .. 2>&1) "$i .."
-	zsh compare.sh <(ls $i .. 2>&1) <(./uls $i .. 2>&1) "$i /dev"
-	zsh compare.sh <(ls $i .. 2>&1) <(./uls $i .. 2>&1) "$i /Users"
+	zsh compare.sh <(ls $i .. 2>&1) <(./uls $i .. 2>&1) "$i /dev/null"
+	zsh compare.sh <(ls $i .. 2>&1) <(./uls $i .. 2>&1) "$i /usr/bin"
 done

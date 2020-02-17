@@ -1,6 +1,7 @@
 #include "../inc/uls.h"
 
 static void print_check_a(char **arr, t_add_in_func *audit, char *check_a) {
+    audit->check_a = check_a;
     if (arr != NULL && check_a != NULL) {
         if (audit->check_n > 1) {
             if (audit->check == 1)
