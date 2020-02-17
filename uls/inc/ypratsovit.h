@@ -90,7 +90,7 @@ void mx_fill_struct_spaces(t_spaces_l *spaces, char *obj, t_add_in_func *audit);
 void mx_print_atr_l(struct stat obj_stat, char *obj_name);
 void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
 void mx_print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit);
-int mx_longest_space (char *buff, struct dirent *entry, char *obj, int longest);
+int mx_longest_space (struct dirent *entry, char *obj, int longest);
 int mx_numbers_pwgid (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 int mx_numbers_pwgid_without_a (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 int mx_numbers_pwuid (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
