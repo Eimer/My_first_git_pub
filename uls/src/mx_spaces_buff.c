@@ -21,7 +21,7 @@ int mx_numbers_pwgid (char * obj, struct dirent *entry, int longest, t_add_in_fu
     return res;
 }
 
-int mx_numbers_pwgid_without_a (char * obj, struct dirent *entry, int longest, t_add_in_func *audit) {
+int mx_numbers_pwgid_without_a (char *obj, struct dirent *entry, int longest, t_add_in_func *audit) {
     int res = 0;
     struct group *groups;
     struct stat buf;
@@ -65,8 +65,8 @@ int mx_number_links (char * obj, struct dirent *entry, int longest, t_add_in_fun
     int res = 0;
     char *buff = NULL;
     struct stat buf;
-
     res = longest;
+
     if (audit->flags[1] == 1) {
         buff = mx_strjoin(obj, entry->d_name);
         lstat(buff, &buf);
@@ -77,10 +77,10 @@ int mx_number_links (char * obj, struct dirent *entry, int longest, t_add_in_fun
         else if (audit->flags[2] == 1) {
             if (mx_strcmp(entry->d_name, ".") != 0
                 && mx_strcmp(entry->d_name, "..") != 0)
-                res = mx_longest_space (buff, entry, obj, res);
-            }
-            else
-                if (entry->d_name[0] != '.')
-                    res = mx_longest_space (buff, entry, obj, res);
+                res = mx_longest_space (entry, obj, res);
+        }
+        else
+            if (entry->d_name[0] != '.')
+                res = mx_longest_space (entry, obj, res);
     return res;
 }

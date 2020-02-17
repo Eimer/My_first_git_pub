@@ -53,10 +53,11 @@ void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *
     }
 }
 
-int mx_longest_space (char *buff, struct dirent *entry, char *obj, int longest) {
+int mx_longest_space (struct dirent *entry, char *obj, int longest) {
     struct stat buf;
-    
+    char *buff = NULL;
     buff = mx_strjoin(obj, entry->d_name);
+    free(buff);
     lstat(buff, &buf);
     if(mx_count_numbers(buf.st_nlink) > longest)
         longest = mx_count_numbers(buf.st_nlink);
