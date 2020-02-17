@@ -21,8 +21,16 @@ int mx_longest_numbers_links(char *obj, t_add_in_func *audit) {
     if (mx_dirorfile(obj) == 0) {
         dir = opendir(obj);
         while ((entry = readdir(dir)) != NULL) {
-            if (audit->flags[1] != 1) {
-                if (entry->d_name[0] != '.') {
+            if (audit->flags[1] == 1) {
+                    buff = mx_strjoin(obj, entry->d_name);
+                    lstat(buff, &buf);
+                    if(mx_count_numbers(buf.st_nlink) > longest)
+                        longest = mx_count_numbers(buf.st_nlink);
+                    free(buff);
+            }
+            else if (audit->flags[2] == 1){
+                if (mx_strcmp(entry->d_name, ".") != 0 
+                    && mx_strcmp(entry->d_name, "..") != 0) {
                     buff = mx_strjoin(obj, entry->d_name);
                     lstat(buff, &buf);
                     if(mx_count_numbers(buf.st_nlink) > longest)
@@ -31,11 +39,13 @@ int mx_longest_numbers_links(char *obj, t_add_in_func *audit) {
                 }
             }
             else {
-                buff = mx_strjoin(obj, entry->d_name);
-                lstat(buff, &buf);
-                if(mx_count_numbers(buf.st_nlink) > longest)
-                    longest = mx_count_numbers(buf.st_nlink);
-                free(buff);
+                if (entry->d_name[0] != '.') {
+                    buff = mx_strjoin(obj, entry->d_name);
+                    lstat(buff, &buf);
+                    if(mx_count_numbers(buf.st_nlink) > longest)
+                            longest = mx_count_numbers(buf.st_nlink);
+                    free(buff);
+                }
             }
         }
         closedir(dir);
