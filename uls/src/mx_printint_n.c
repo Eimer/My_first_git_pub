@@ -30,7 +30,7 @@ void mx_print_n(char **arr, int *flags) {
         mx_printstr(arr[u]);
         mx_printstr("\n");
     }
-    for (u = 0; arr[u] != NULL && flags[2] == 1; u++) {
+    for (u = 0; arr[u] != NULL && flags[2] == 1 && flags[1] == 0; u++) {
         if (mx_strcmp(arr[u], ".") != 0 && mx_strcmp(arr[u], "..") != 0) {
             mx_printstr(arr[u]);
             mx_printstr("\n");

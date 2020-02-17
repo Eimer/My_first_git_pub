@@ -67,6 +67,8 @@ static void printit(char **new_arr, t_add_in_func *audit, char *check_a,
         mx_sort(new_arr, audit);
         mx_print_n(new_arr, audit->flags);
         mx_del_strarr(&new_arr);
+        audit->check = 1;
+        return;
     }
     if (new_arr != NULL && audit->flags[5] == 0) {
         mx_sort(new_arr, audit);
