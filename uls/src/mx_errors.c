@@ -35,7 +35,7 @@ static int check_flag(char **argv, int check, int ind_str,
             check_fileordir(argv, ++ind_str, audit);
             return 1;
     }
-    if (argv[ind_str][0] != '-') {
+    if (argv[ind_str][0] != '-' || mx_strcmp(argv[ind_str], "-") == 0) {
         check_fileordir(argv, ind_str, audit);
         return 1;
     }

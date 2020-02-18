@@ -58,7 +58,7 @@ int mx_longest_numbers_pwgid(char *obj, t_add_in_func *audit) {
                 longest = mx_numbers_pwgid (obj, entry, longest, audit);
             }
             else {
-                longest = mx_numbers_pwgid_without_a (obj, entry, longest, audit);           
+                longest = mx_numbers_pwgid_without_a (obj, entry, longest, audit);
             }
         }
         closedir(dir);
@@ -89,7 +89,7 @@ int mx_longest_numbers_st_size(char *obj, t_add_in_func *audit) {
                 buff = mx_strjoin(obj, entry->d_name);
                 lstat(buff, &buf);
                 if (mx_count_numbers(buf.st_size) > longest)
-                    longest = mx_count_numbers(buf.st_size);             
+                    longest = mx_count_numbers(buf.st_size);
             }
         }
         closedir(dir);
