@@ -1,6 +1,7 @@
 #include "../inc/uls.h"
 
-void mx_main_loop_l (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+void mx_main_loop_l (t_buffer_struct_l buf_struct,
+                        t_spaces_l *spaces, t_add_in_func *audit) {
     spaces->total = 0;
     while ((buf_struct.entry = readdir(buf_struct.dir)) != NULL) {
         if (audit->flags[1] == 1) {
@@ -38,7 +39,8 @@ void mx_d_flag_with_l (char *obj, t_spaces_l *spaces, t_buffer_struct_l buf_stru
     mx_get_obj_info(obj, obj, spaces);
 }
 
-void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, 
+                            t_spaces_l *spaces, t_add_in_func *audit) {
     if (spaces->count != 0) {
         spaces->count = 0;
         buf_struct.tmp = mx_strjoin(obj, "/");
