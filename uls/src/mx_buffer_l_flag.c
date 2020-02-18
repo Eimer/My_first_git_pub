@@ -1,22 +1,30 @@
 #include "../inc/uls.h"
 
 void mx_main_loop_l (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+    spaces->total = 0;
     while ((buf_struct.entry = readdir(buf_struct.dir)) != NULL) {
-        buf_struct.sorted_arr_l[spaces->count] = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
-        lstat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
         if (audit->flags[1] == 1) {
                 spaces->total += buf_struct.buf.st_blocks;
+                buf_struct.sorted_arr_l[spaces->count]
+                    = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
+                stat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
                 spaces->count++;
         }
         else if (audit->flags[2] == 1) {
-            if (mx_strcmp(buf_struct.entry->d_name, ".") != 0 
+            if (mx_strcmp(buf_struct.entry->d_name, ".") != 0
                 && mx_strcmp(buf_struct.entry->d_name, "..") != 0) {
+                    buf_struct.sorted_arr_l[spaces->count] 
+                        = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
+                stat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
                     spaces->count++;
                     spaces->total += buf_struct.buf.st_blocks;
                 }
         }
         else 
             if(buf_struct.entry->d_name[0] != '.') {
+                buf_struct.sorted_arr_l[spaces->count]
+                    = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
+                stat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
                 spaces->total += buf_struct.buf.st_blocks;
                 spaces->count++;
         }
@@ -45,7 +53,7 @@ void mx_buff_func_in_loop (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *
         buf_struct.tmp = mx_strjoin(obj, "/");
         buf_struct.dir = opendir(buf_struct.tmp);
         mx_fill_struct_spaces(spaces, buf_struct.tmp, audit);
-        mx_main_loop_l (buf_struct, spaces, audit);
+        mx_main_loop_l ( buf_struct, spaces, audit);
         mx_print_total (buf_struct, spaces, audit);
         mx_print_with_flags (obj, buf_struct, spaces, audit);
         free(buf_struct.tmp);

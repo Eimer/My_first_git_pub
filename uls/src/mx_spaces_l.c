@@ -89,7 +89,7 @@ int mx_longest_numbers_st_size(char *obj, t_add_in_func *audit) {
                 buff = mx_strjoin(obj, entry->d_name);
                 lstat(buff, &buf);
                 if (mx_count_numbers(buf.st_size) > longest)
-                    longest = mx_count_numbers(buf.st_size);                  
+                    longest = mx_count_numbers(buf.st_size);             
             }
         }
         closedir(dir);

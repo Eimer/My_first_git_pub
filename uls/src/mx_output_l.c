@@ -20,7 +20,7 @@ static int count_el_before_sorted(char *obj, t_add_in_func *audit) {
             if (audit->flags[1] == 1) {
                 res++;
             }
-            else if (audit->flags[2] == 1){
+            else if (audit->flags[2] == 1) {
                 if (mx_strcmp(entry->d_name, ".") != 0 && mx_strcmp(entry->d_name, "..") != 0)
                     res++;
             }
@@ -43,7 +43,7 @@ void free_mem_l(t_buffer_struct_l buf_struct, t_spaces_l *spaces) {
     }
 }
 
-void mx_print_with_flags (char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
+void mx_print_with_flags(char *obj, t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_func *audit) {
     while (buf_struct.sorted_arr_l[spaces->count]) {
         if (audit->flags[1] == 1) {
             mx_get_obj_info(buf_struct.sorted_arr_l[spaces->count], obj, spaces);
