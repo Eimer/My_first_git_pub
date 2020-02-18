@@ -59,6 +59,7 @@ typedef struct s_buffer_struct_l {
     char **sorted_arr_l;
     char *tmp;
     struct stat buf;
+    bool ifcase;
 } t_buffer_struct_l;
 
 int mx_count_longest_with_atr(char **overall_arr);
