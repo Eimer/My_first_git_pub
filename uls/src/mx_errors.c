@@ -35,7 +35,7 @@ static int check_flag(char **argv, int check, int ind_str,
             check_fileordir(argv, ++ind_str, audit);
             return 1;
     }
-    if (argv[ind_str][0] != '-') {
+    if (argv[ind_str][0] != '-' || mx_strcmp(argv[ind_str], "-") == 0) {
         check_fileordir(argv, ind_str, audit);
         return 1;
     }
@@ -43,7 +43,7 @@ static int check_flag(char **argv, int check, int ind_str,
         && argv[ind_str][2] != '\0') || check == 0) {
         mx_printerr("uls: illegal option -- ");
         mx_printcharerr(audit->error);
-        mx_printerr("\nusage: uls [-aARrl1dfuT] [file ...]\n");
+        mx_printerr("\nusage: uls [-aARrl1dfSt] [file ...]\n");
         audit->main_return = 1;
         exit(1);
     }
