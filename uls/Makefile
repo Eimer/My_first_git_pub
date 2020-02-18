@@ -36,7 +36,8 @@ FILES = main \
 	mx_sort_overallarr \
 	mx_spaces_l \
 	mx_write_flags \
-	mx_spaces_buff
+	mx_spaces_buff \
+	mx_buff_lstat
 
 CLANG = -std=c11 -Werror -Wextra -Wall -Wpedantic
 

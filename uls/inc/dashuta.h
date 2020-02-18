@@ -23,7 +23,6 @@ int mx_check_denied(char *arr_dirs_u, t_add_in_func *audit);
 void mx_printcharerr(char s);
 void mx_flag_r(int argc, char **argv);
 void mx_print_n(char **arr, int *flags);
-void mx_output_l(char *obj, t_add_in_func *audit);
 void mx_write_flags(char flag, t_add_in_func *audit);
 void mx_open_dir(char **arr_dirs, t_add_in_func *audit);
 void mx_quick(char **overall_arr, int count, t_add_in_func *audit);

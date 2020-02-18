@@ -96,5 +96,8 @@ int mx_numbers_pwgid (char * obj, struct dirent *entry, int longest, t_add_in_fu
 int mx_numbers_pwgid_without_a (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 int mx_numbers_pwuid (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
 int mx_number_links (char * obj, struct dirent *entry, int longest, t_add_in_func *audit);
+void mx_output_l(char *obj, t_add_in_func *audit);
+int mx_longest_numbers_links_f(char **obj);
+void mx_buff_lstat (t_buffer_struct_l buf_struct, t_spaces_l *spaces);
 
 #endif

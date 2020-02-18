@@ -4,28 +4,19 @@ void mx_main_loop_l (t_buffer_struct_l buf_struct, t_spaces_l *spaces, t_add_in_
     spaces->total = 0;
     while ((buf_struct.entry = readdir(buf_struct.dir)) != NULL) {
         if (audit->flags[1] == 1) {
-                spaces->total += buf_struct.buf.st_blocks;
-                buf_struct.sorted_arr_l[spaces->count]
-                    = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
-                stat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
+                mx_buff_lstat (buf_struct, spaces);
                 spaces->count++;
         }
         else if (audit->flags[2] == 1) {
             if (mx_strcmp(buf_struct.entry->d_name, ".") != 0
                 && mx_strcmp(buf_struct.entry->d_name, "..") != 0) {
-                    buf_struct.sorted_arr_l[spaces->count] 
-                        = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
-                stat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
+                    mx_buff_lstat (buf_struct, spaces);
                     spaces->count++;
-                    spaces->total += buf_struct.buf.st_blocks;
                 }
         }
         else 
             if(buf_struct.entry->d_name[0] != '.') {
-                buf_struct.sorted_arr_l[spaces->count]
-                    = mx_strjoin(buf_struct.tmp, buf_struct.entry->d_name);
-                stat(buf_struct.sorted_arr_l[spaces->count], &buf_struct.buf);
-                spaces->total += buf_struct.buf.st_blocks;
+                mx_buff_lstat (buf_struct, spaces);
                 spaces->count++;
         }
     }

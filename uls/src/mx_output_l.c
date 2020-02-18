@@ -76,7 +76,7 @@ void mx_output_l(char *obj, t_add_in_func *audit) {
             mx_buff_func_in_loop (obj, buf_struct, spaces, audit);
     }
     else {
-        mx_fill_struct_spaces(spaces, obj,audit);
+        mx_fill_struct_spaces(spaces, obj ,audit);
         mx_get_obj_info(obj, obj, spaces);
     }
     if (mx_dirorfile(obj) == 0)
