@@ -53,8 +53,7 @@ void mx_open_dir(char **arr_dirs, t_add_in_func *audit) {
     char **overall_arr;
     int u = 0;
 
-    (audit->flags[6] == 1) ?
-        mx_sort(arr_dirs, audit) : mx_sort_overallarr(arr_dirs);
+    mx_sort(arr_dirs, audit);
     for (u = 0; arr_dirs[u] != NULL; u++) {
         audit->check_a = arr_dirs[u];
         count_el = 0;
