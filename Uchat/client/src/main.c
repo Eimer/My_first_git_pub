@@ -66,5 +66,6 @@ int main(int argc, char *argv[]) {
    }
 
    printf("%s\n",buffer);
+   close(sockfd);
    return 0;
 }

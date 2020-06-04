@@ -7,7 +7,8 @@
 
 #include <netdb.h>
 #include <netinet/in.h>
-
+#include <stdbool.h>
+#include <stddef.h>
 #include <string.h>
 
 #endif
