@@ -1,18 +1,13 @@
 #include "server.h"
 
-void doprocessing (int sock);
-
 int main() {
-   int sockfd, newsockfd, portno;
-   int clilen;
-   //char buffer[256];
+   int sockfd, portno, clilen;
+   int newsockfd = 0;
    struct sockaddr_in serv_addr, cli_addr;
-   //int n;
    int pid;
 
    /* First call to socket() function */
    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
    if (sockfd < 0) {
       perror("ERROR opening socket");
       exit(1);
@@ -26,21 +21,26 @@ int main() {
    serv_addr.sin_addr.s_addr = INADDR_ANY;
    serv_addr.sin_port = htons(portno);
 
-   /* Now bind the host address using bind() call.*/
    if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
       perror("ERROR on binding");
       exit(1);
    }
+
    listen(sockfd,5);
    clilen = sizeof(cli_addr);
 
-   while (1) {
+   while (true) {
       newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, (socklen_t *)&clilen);
 
       if (newsockfd < 0) {
          perror("ERROR on accept");
          exit(1);
       }
+      else {
+         printf("%s ", "\033[0;32mUser connected with id:\033[0;32m");
+         printf("%d\n", newsockfd);
+      }
+
       /* Create child process */
       pid = fork();
 
@@ -48,35 +48,12 @@ int main() {
          perror("ERROR on fork");
          exit(1);
       }
+
       if (pid == 0) {
-         /* This is the client process */
          close(sockfd);
          doprocessing(newsockfd);
          exit(0);
       }
-      else {
-         close(newsockfd);
-      }
-   } /* end of while */
-}
-
-void doprocessing (int sock) {
-   int n;
-   char buffer[256];
-   bzero(buffer,256);
-   n = read(sock,buffer,255);
-
-   if (n < 0) {
-      perror("ERROR reading from socket");
-      exit(1);
-   }
-
-   printf("Here is the message: %s\n",buffer);
-   n = write(sock,"I got your message",18);
-
-   if (n < 0) {
-      perror("ERROR writing to socket");
-      exit(1);
    }
 
 }

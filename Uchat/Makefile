@@ -22,7 +22,7 @@ SV_INCS =	$(addprefix $(SV_INCD)/, $(SV_INC))
 
 CL_SRC		=	main.c \
 
-SV_SRC		= 	main.c \
+SV_SRC		= 	main.c doprocessing.c
 
 CL_SRCS	=	$(addprefix $(CL_SRCD)/, $(CL_SRC))
 SV_SRCS =	$(addprefix $(SV_SRCD)/, $(SV_SRC))

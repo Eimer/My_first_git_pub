@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include <netdb.h>
 #include <netinet/in.h>
-
 #include <string.h>
 
+void doprocessing(int sock);
 #endif
