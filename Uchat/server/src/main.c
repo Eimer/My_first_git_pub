@@ -5,7 +5,7 @@ int main() {
    int newsockfd = 0;
    struct sockaddr_in serv_addr, cli_addr;
    int pid;
-
+   int rc = 1;
    /* First call to socket() function */
    sockfd = socket(AF_INET, SOCK_STREAM, 0);
    if (sockfd < 0) {
@@ -21,6 +21,8 @@ int main() {
    serv_addr.sin_addr.s_addr = INADDR_ANY;
    serv_addr.sin_port = htons(portno);
 
+   setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (char *)&rc, sizeof(int));
+
    if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
       perror("ERROR on binding");
       exit(1);
@@ -31,7 +33,6 @@ int main() {
 
    while (true) {
       newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, (socklen_t *)&clilen);
-
       if (newsockfd < 0) {
          perror("ERROR on accept");
          exit(1);
@@ -48,8 +49,7 @@ int main() {
          perror("ERROR on fork");
          exit(1);
       }
-
-      if (pid == 0) {
+      else if (pid == 0) {
          close(sockfd);
          doprocessing(newsockfd);
          exit(0);

@@ -9,6 +9,8 @@ CL_INCD	=	client/inc
 SV_INCD =	server/inc
 CL_OBJD	=	client/obj
 SV_OBJD =	server/obj
+CL_GTK_FLAGS = `pkg-config --cflags  --libs gtk+-3.0`
+CL_GTK_SORT_FLAGS = `pkg-config --cflags gtk+-3.0`
 
 LMXD	=	libmx
 LMXA:=	$(LMXD)/libmx.a
@@ -21,8 +23,11 @@ CL_INCS	=	$(addprefix $(CL_INCD)/, $(CL_INC))
 SV_INCS =	$(addprefix $(SV_INCD)/, $(SV_INC))
 
 CL_SRC		=	main.c \
+				mx_init_auth_screen.c \
+				mx_interface.c \
 
-SV_SRC		= 	main.c doprocessing.c
+SV_SRC		= 	main.c \
+				doprocessing.c \
 
 CL_SRCS	=	$(addprefix $(CL_SRCD)/, $(CL_SRC))
 SV_SRCS =	$(addprefix $(SV_SRCD)/, $(SV_SRC))
@@ -38,11 +43,11 @@ install: install_client install_server
 install_client: $(LMXA) $(CL_NAME)
 
 $(CL_NAME): $(CL_OBJS)
-	@clang $(CFLG) $(CL_OBJS) -L$(LMXD) -lmx -o $@
+	@clang $(CFLG) $(CL_OBJS) $(CL_GTK_FLAGS) -L$(LMXD) -lmx -o $@
 	@printf "\r\33[2K$@ \033[32;1mcreated\033[0m\n"
 
 $(CL_OBJD)/%.o: $(CL_SRCD)/%.c $(CL_INCS)
-	@clang $(CFLG) -c $< -o $@ -I$(CL_INCD) -I$(LMXI)
+	@clang $(CFLG) -c $< $(CL_GTK_SORT_FLAGS) -o $@ -I$(CL_INCD) -I$(LMXI)
 	@printf "\r\33[2K$(CL_NAME) \033[33;1mcompile \033[0m$(<:$(CL_SRCD)/%.c=%) "
 
 $(CL_OBJS): | $(CL_OBJD)

@@ -1,14 +1,19 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "../inc/general.h"
+#include <gtk/gtk.h>
 
-#include <netdb.h>
-#include <netinet/in.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <string.h>
+typedef struct s_interface {
+    GtkWidget *window;
+    GtkWidget *box;
+    GtkWidget *button_login;
+    GtkWidget *button_register;
+    GtkWidget *entry_login;
+    GtkWidget *entry_passwd;
+} t_interface;
+
+void mx_init_auth_screen();
+void mx_interface(int argc, char *argv[]);
 
 #endif
