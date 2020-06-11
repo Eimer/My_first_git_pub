@@ -4,8 +4,10 @@ int main() {
    int sockfd, portno, clilen;
    int newsockfd = 0;
    struct sockaddr_in serv_addr, cli_addr;
-   int pid;
+   //int pid;
    int rc = 1;
+   pthread_t x = NULL;
+
    /* First call to socket() function */
    sockfd = socket(AF_INET, SOCK_STREAM, 0);
    if (sockfd < 0) {
@@ -42,18 +44,18 @@ int main() {
          printf("%d\n", newsockfd);
       }
 
+      pthread_create(&x, NULL, doprocessing, (void *)&newsockfd);
       /* Create child process */
-      pid = fork();
+      //pid = fork();
 
-      if (pid < 0) {
-         perror("ERROR on fork");
-         exit(1);
+      // if (pid < 0) {
+      //    perror("ERROR on fork");
+      //    exit(1);
+      // }
+      // else if (pid == 0) {
+      //    close(sockfd);
+      //    doprocessing(newsockfd);
+      //    exit(0);
+      // }
       }
-      else if (pid == 0) {
-         close(sockfd);
-         doprocessing(newsockfd);
-         exit(0);
-      }
-   }
-
 }

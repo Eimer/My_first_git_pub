@@ -24,4 +24,9 @@ void mx_init_auth_screen() {
     gtk_box_pack_start(GTK_BOX(auth_interface.box), auth_interface.button_register, false, false, 0);
     gtk_container_add(GTK_CONTAINER(auth_interface.window), auth_interface.box);
     gtk_widget_show_all(auth_interface.window);
+
+    // GtkBuilder* builder = gtk_builder_new_from_file("auth_interface.glade");
+    // GtkWidget* b1 = GTK_WIDGET(gtk_builder_get_object(builder, "aw_1"));
+
+    // gtk_widget_show_all(b1);
 }

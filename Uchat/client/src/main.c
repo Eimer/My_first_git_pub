@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
    int rc = 0;
 
    /////////
-   mx_interface(argc, argv);
+   //mx_interface(argc, argv);
    ///////
    if (argc < 3) {
       fprintf(stderr,"usage %s hostname port\n", argv[0]);
